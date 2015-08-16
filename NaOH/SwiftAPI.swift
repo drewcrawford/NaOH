@@ -34,7 +34,7 @@ func debugValue(var value: UnsafePointer<UInt8>, size: Int) -> String {
 }
 
 
-enum NaOHError: ErrorType {
+public enum NaOHError: ErrorType {
     case OOM
     case ProtectionError
     case HashError
