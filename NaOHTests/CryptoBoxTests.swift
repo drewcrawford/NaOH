@@ -36,14 +36,14 @@ class CryptoBoxTests :XCTestCase {
     
     func testCryptoBox() {
         let (alice, bob) = aliceBob()
-        let cipher = try! crypto_box(knownPlaintext, nonce: notVeryNonce, to: alice, from: bob.secretKey!)
+        let cipher = try! crypto_box(knownPlaintext, to: alice, from: bob.secretKey!, nonce: notVeryNonce)
         print("\(cipher)")
         XCTAssert(cipher == knownCiphertext)
     }
     
     func testCryptoBoxOpen() {
         let (alice, bob) = aliceBob()
-        let plain = try! crypto_box_open(knownCiphertext, nonce: notVeryNonce, to: alice.secretKey!, from: bob)
+        let plain = try! crypto_box_open(knownCiphertext, to: alice.secretKey!, from: bob, nonce: notVeryNonce)
         XCTAssert(plain == knownPlaintext)
     }
     

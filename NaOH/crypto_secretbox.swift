@@ -18,7 +18,7 @@ func sodium_random(size: Int) -> [UInt8] {
     return buf
 }
 
-func crypto_secretbox(var message: [UInt8], var nonce: [UInt8] = sodium_random(Int(crypto_secretbox_NONCEBYTES)), key: Key) throws -> [UInt8] {
+func crypto_secretbox(var message: [UInt8], key: Key, var nonce: [UInt8] = sodium_random(Int(crypto_secretbox_NONCEBYTES))) throws -> [UInt8] {
     assert(nonce.count == Int(crypto_secretbox_NONCEBYTES))
     var c = [UInt8](count: crypto_secretbox_macbytes() + message.count, repeatedValue: 0)
     try! key.unlock()
@@ -29,7 +29,7 @@ func crypto_secretbox(var message: [UInt8], var nonce: [UInt8] = sodium_random(I
     return c
 }
 
-func crypto_secretbox_open(var ciphertext: [UInt8], var nonce: [UInt8], key: Key) throws -> [UInt8] {
+func crypto_secretbox_open(var ciphertext: [UInt8], key: Key, var nonce: [UInt8]) throws -> [UInt8] {
     
     var plaintext = [UInt8](count: ciphertext.count - crypto_secretbox_macbytes(), repeatedValue: 0)
     try! key.unlock()

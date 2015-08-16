@@ -18,13 +18,13 @@ class CryptoSecretBoxTests : XCTestCase {
     private let known_plaintext: [UInt8] = [0,1,2]
     func testEncrypt() {
         let k = try! Key(password: "My password", salt: "My salt is 32 characters   sjej")
-        let result = try! crypto_secretbox([0,1,2], nonce: NotReallyNonce, key: k)
+        let result = try! crypto_secretbox([0,1,2], key: k, nonce: NotReallyNonce)
         XCTAssert(result == known_ciphertext)
     }
     
     func testDecrypt() {
         let k = try! Key(password: "My password", salt: "My salt is 32 characters   sjej")
-        let result = try! crypto_secretbox_open(known_ciphertext, nonce: NotReallyNonce, key: k)
+        let result = try! crypto_secretbox_open(known_ciphertext, key: k, nonce: NotReallyNonce)
         XCTAssert(result == known_plaintext)
     }
     
@@ -33,7 +33,7 @@ class CryptoSecretBoxTests : XCTestCase {
         var badCipher = known_ciphertext
         badCipher[3] = 2
         do {
-            try crypto_secretbox_open(badCipher, nonce: NotReallyNonce, key: k)
+            try crypto_secretbox_open(badCipher, key: k, nonce: NotReallyNonce)
             XCTFail()
         }
         catch NaOHError.CryptoSecretBoxError { /* */ }
