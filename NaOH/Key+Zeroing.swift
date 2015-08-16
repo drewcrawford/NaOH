@@ -14,7 +14,7 @@ import Foundation
 
 extension Key {
     /**Creates a key from the existing memory, importing it into the NaOH memory system and zeroing out the source */
-    convenience init (inout zeroingMemory: [UInt8]) {
+    public convenience init (inout zeroingMemory: [UInt8]) {
         self.init(uninitializedSize: zeroingMemory.count)
         zeroingMemory.withUnsafeMutableBufferPointer { (inout ptr: UnsafeMutableBufferPointer<UInt8>) -> () in
             memcpy(addrAsVoid, ptr.baseAddress, ptr.count)
