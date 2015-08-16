@@ -13,15 +13,17 @@
 import Foundation
 public final class PublicKey {
     let publicKey : [UInt8]
-    let secretKey : Key
+    let secretKey : Key?
+    
+    /**Generates a random key */
     init() {
         var pk = [UInt8](count: Int(crypto_box_PUBLICKEYBYTES), repeatedValue: 0)
         secretKey = Key(uninitializedSize: Int(crypto_box_SECRETKEYBYTES))
         
-        if crypto_box_keypair(&pk, secretKey.addr) != 0 {
+        if crypto_box_keypair(&pk, secretKey!.addr) != 0 {
             preconditionFailure("Can't generate keypair")
         }
-        try! secretKey.lock()
+        try! secretKey!.lock()
         publicKey = pk
     }
     

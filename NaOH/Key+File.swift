@@ -53,7 +53,7 @@ extension PublicKey {
     - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
     */
     func saveToFile(file: String) throws {
-        try self.secretKey.saveToFile(file)
+        try self.secretKey!.saveToFile(file)
     }
     
     /** Reads the key from the file indicated.

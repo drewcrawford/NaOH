@@ -1,6 +1,6 @@
 //
 //  SwiftAPI.swift
-//  SwiftSodium
+//  NaOH
 //
 //  Created by Drew Crawford on 8/15/15.
 //  Copyright © 2015 DrewCrawfordApps. All rights reserved.
@@ -38,7 +38,8 @@ enum NaOHError: ErrorType {
     case OOM
     case ProtectionError
     case HashError
-    case CryptoBoxError
+    case CryptoSecretBoxError
     case FilePermissionsLookSuspicious
+    case CryptoBoxError
 }
 
