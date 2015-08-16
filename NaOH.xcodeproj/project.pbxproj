@@ -14,6 +14,7 @@
 		3A19220A1B8112170092C6B1 /* CryptoBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922091B8112170092C6B1 /* CryptoBoxTests.swift */; };
 		3A19220C1B8112A30092C6B1 /* alice.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A19220B1B8112A30092C6B1 /* alice.key */; };
 		3A19220E1B8118140092C6B1 /* bob.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A19220D1B8118140092C6B1 /* bob.key */; };
+		3A1922131B811DD50092C6B1 /* Key+Zeroing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922121B811DD50092C6B1 /* Key+Zeroing.swift */; };
 		3A526F6B1B80AC130092BA60 /* SwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F681B80AC130092BA60 /* SwiftAPI.swift */; };
 		3A526F6C1B80AC130092BA60 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F691B80AC130092BA60 /* Key.swift */; };
 		3A526F6D1B80AC130092BA60 /* crypto_secretbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */; };
@@ -97,6 +98,7 @@
 		3A1922091B8112170092C6B1 /* CryptoBoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoBoxTests.swift; sourceTree = "<group>"; };
 		3A19220B1B8112A30092C6B1 /* alice.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = alice.key; sourceTree = "<group>"; };
 		3A19220D1B8118140092C6B1 /* bob.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bob.key; sourceTree = "<group>"; };
+		3A1922121B811DD50092C6B1 /* Key+Zeroing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Key+Zeroing.swift"; sourceTree = "<group>"; };
 		3A526F681B80AC130092BA60 /* SwiftAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAPI.swift; sourceTree = "<group>"; };
 		3A526F691B80AC130092BA60 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_secretbox.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				3A1922011B8107330092C6B1 /* Key+File.swift */,
 				3A1922051B810D390092C6B1 /* PublicKey.swift */,
 				3A1922071B8110660092C6B1 /* crypto_box.swift */,
+				3A1922121B811DD50092C6B1 /* Key+Zeroing.swift */,
 			);
 			path = NaOH;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A1922131B811DD50092C6B1 /* Key+Zeroing.swift in Sources */,
 				3A1922061B810D390092C6B1 /* PublicKey.swift in Sources */,
 				3A526F6D1B80AC130092BA60 /* crypto_secretbox.swift in Sources */,
 				3A1922081B8110660092C6B1 /* crypto_box.swift in Sources */,
