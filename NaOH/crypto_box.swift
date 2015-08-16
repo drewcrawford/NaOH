@@ -11,7 +11,12 @@
 //  inthe LICENSE file.
 
 import Foundation
-public func crypto_box(var plaintext: [UInt8], to: PublicKey, from: Key, var nonce: [UInt8] = sodium_random(Int(crypto_box_NONCEBYTES))) throws -> [UInt8] {
+
+public func crypto_box_nonce() -> [UInt8] {
+    return sodium_random(Int(crypto_box_NONCEBYTES))
+}
+
+public func crypto_box(var plaintext: [UInt8], to: PublicKey, from: Key, var nonce: [UInt8]) throws -> [UInt8] {
     assert(nonce.count == Int(crypto_box_NONCEBYTES))
     var ciphertext = [UInt8](count: Int(crypto_box_macbytes()) + plaintext.count, repeatedValue: 0)
     try! from.unlock()
@@ -22,7 +27,7 @@ public func crypto_box(var plaintext: [UInt8], to: PublicKey, from: Key, var non
     return ciphertext
 }
 
-public func crypto_box_open(var ciphertext: [UInt8], to: Key, from: PublicKey, var nonce: [UInt8] = sodium_random(Int(crypto_box_NONCEBYTES))) throws -> [UInt8]  {
+public func crypto_box_open(var ciphertext: [UInt8], to: Key, from: PublicKey, var nonce: [UInt8]) throws -> [UInt8]  {
     assert(nonce.count == Int(crypto_box_NONCEBYTES))
     var plaintext = [UInt8](count: ciphertext.count - crypto_box_macbytes(), repeatedValue: 0)
     try! to.unlock()

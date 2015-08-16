@@ -26,7 +26,7 @@ This operation is often useful in public/private crypto to deliver a secret key.
                 sodium_memzero(ptr.baseAddress, ptr.count)
             })
         }
-        let cipher = try crypto_box(key, to: publicKey, from: fromKey)
+        let cipher = try crypto_box(key, to: publicKey, from: fromKey, nonce: crypto_box_nonce())
         return cipher
     }
 }
