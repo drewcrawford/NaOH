@@ -38,4 +38,10 @@ public final class PublicKey {
         }
         publicKey = pk
     }
+    
+    /**Creates a public key without a corresponding secret key. */
+    public init(publicKeyBytes: [UInt8]) {
+        self.publicKey = publicKeyBytes
+        self.secretKey = nil
+    }
 }
