@@ -10,6 +10,18 @@ NaOH is the sodium flavor trusted by Nitrogen, FISA, caffeine, and various other
     2.  Keys are locked down entirely when not in critical sections, increasing the complexity of an exploitable attack
     3.  Critical memory is zeroed-on-free, even with optimizations enabled.  Although this currently isn't possible for the library's *inputs*.
 
+# Install
+
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
+add
+
+```
+git "https://code.sealedabstract.com/drewcrawford/NaOH.git" "master"
+```
+
+to your Cartfile.
+
 # Releasing
 
 We use libsodium's numbers, with a 4th section tracking changes only this project makes.  e.g.
