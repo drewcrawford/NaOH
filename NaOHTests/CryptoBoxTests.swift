@@ -4,9 +4,9 @@
 //
 //  Created by Drew Crawford on 8/15/15.
 //  Copyright © 2015 DrewCrawfordApps. All rights reserved.
-//  This file is part of SwiftSodium.  It is subject to the license terms in the LICENSE
+//  This file is part of NaOH.  It is subject to the license terms in the LICENSE
 //  file found in the top level of this distribution
-//  No part of SwiftSodium, including this file, may be copied, modified,
+//  No part of NaOH, including this file, may be copied, modified,
 //propagated, or distributed except according to the terms contained
 //  in the LICENSE file.
 import XCTest
