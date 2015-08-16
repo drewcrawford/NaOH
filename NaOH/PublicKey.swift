@@ -16,7 +16,7 @@ public final class PublicKey {
     let secretKey : Key?
     
     /**Generates a random key */
-    init() {
+    public init() {
         var pk = [UInt8](count: Int(crypto_box_PUBLICKEYBYTES), repeatedValue: 0)
         secretKey = Key(uninitializedSize: Int(crypto_box_SECRETKEYBYTES))
         
@@ -27,7 +27,7 @@ public final class PublicKey {
         publicKey = pk
     }
     
-    init(secretKey: Key) {
+    public init(secretKey: Key) {
         self.secretKey = secretKey
         try! secretKey.unlock()
         defer { try! secretKey.lock() }

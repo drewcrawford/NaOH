@@ -17,7 +17,7 @@ extension Key {
 - note: This function ensures that the key is saved to a file only readable by the user.
 - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
 */
-    func saveToFile(file: String) throws {
+    public func saveToFile(file: String) throws {
         //create a locked down file
         //so that we only write if everything's good
         try NSData().writeToFile(file, options: NSDataWritingOptions())
@@ -33,7 +33,7 @@ extension Key {
 /** Reads the key from the file indicated.
 - note: This function ensures that the key is read from a file only readable by the user.
 - warning: Using the keychain is probably better, but it isn't appropriate for certain applications. */
-    convenience init (readFromFile file: String) throws {
+    public convenience init (readFromFile file: String) throws {
         //check attributes
         let attributes = try NSFileManager.defaultManager().attributesOfItemAtPath(file)
         if attributes[NSFilePosixPermissions]?.shortValue != 0o0600 {
@@ -52,14 +52,14 @@ extension PublicKey {
     - note: This function ensures that the key is saved to a file only readable by the user.
     - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
     */
-    func saveToFile(file: String) throws {
+    public func saveToFile(file: String) throws {
         try self.secretKey!.saveToFile(file)
     }
     
     /** Reads the key from the file indicated.
     - note: This function ensures that the key is read from a file only readable by the user.
     - warning: Using the keychain is probably better, but it isn't appropriate for certain applications. */
-    convenience init (readFromFile file: String) throws {
+    public convenience init (readFromFile file: String) throws {
         let secretKey = try Key(readFromFile: file)
         self.init(secretKey: secretKey)
     }
