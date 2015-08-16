@@ -16,7 +16,8 @@ extension Key {
     
     /**Encrypts the receiver to another public key, from another secret key.
 This operation is often useful in public/private crypto to deliver a secret key. */
-    public func encrypted(toPublicKey publicKey: PublicKey, fromKey: Key) throws -> [UInt8] {
+    public func encrypted(toPublicKey publicKey: PublicKey, fromKey: Key, appendNonce: Bool) throws -> [UInt8] {
+        precondition(appendNonce, "Not implemented")
         try! self.unlock()
         defer { try! self.lock() }
         let keyData = UnsafeMutableBufferPointer(start: self.addr, count: size)
@@ -26,7 +27,13 @@ This operation is often useful in public/private crypto to deliver a secret key.
                 sodium_memzero(ptr.baseAddress, ptr.count)
             })
         }
-        let cipher = try crypto_box(key, to: publicKey, from: fromKey, nonce: crypto_box_nonce())
+        let cipher = try crypto_box_appendnonce(key, to: publicKey, from: fromKey)
         return cipher
+    }
+    
+    /**The companion initializer to key.encrypted(...) */
+    public convenience init(decrypt:[UInt8], secretKey: Key, fromKey: PublicKey) throws {
+        var keyData = try crypto_box_open_appendnonce(decrypt, to: secretKey, from: fromKey)
+        self.init(zeroingMemory:&keyData)
     }
 }

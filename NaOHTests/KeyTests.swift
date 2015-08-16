@@ -30,7 +30,9 @@ class KeyTests : XCTestCase {
         let alice = PublicKey()
         let bob = PublicKey()
         let jeff = Key(randomSize: 32)
-        let _ = try! jeff.encrypted(toPublicKey: alice, fromKey: bob.secretKey!)
+        let keyData = try! jeff.encrypted(toPublicKey: alice, fromKey: bob.secretKey!, appendNonce:true)
+        let key2 = try! Key(decrypt: keyData, secretKey: alice.secretKey!, fromKey: bob)
+        XCTAssert(key2.hash==jeff.hash)
     }
 }
 
