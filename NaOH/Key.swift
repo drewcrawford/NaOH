@@ -99,10 +99,14 @@ extension Key {
     }
     
     /**Generates a random key */
-    public convenience init(randomSize: Int) throws {
+    public convenience init(randomSize: Int) {
         sodium_init_wrap()
         self.init(uninitializedSize: randomSize)
         randombytes_buf(self.addrAsVoid, randomSize)
-        try lock()
+        try! lock()
+    }
+    
+    public convenience init(forSecretBox _: Bool) {
+        self.init(randomSize: Int(crypto_secretbox_KEYBYTES))
     }
 }

@@ -29,7 +29,7 @@ class KeyTests : XCTestCase {
     func testCrypto() {
         let alice = PublicKey()
         let bob = PublicKey()
-        let jeff = try! Key(randomSize: 32)
+        let jeff = Key(randomSize: 32)
         let _ = try! jeff.encrypted(toPublicKey: alice, fromKey: bob.secretKey!)
     }
 }

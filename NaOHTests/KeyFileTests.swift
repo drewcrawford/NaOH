@@ -17,7 +17,7 @@ import XCTest
 class KeyFileTests : XCTestCase {
     func testKeyLoadSave() {
         let temporaryFile = "/tmp/test.key"
-        let k = try! Key(randomSize: 32)
+        let k = Key(randomSize: 32)
         try! k.saveToFile(temporaryFile)
     
         let j = try! Key(readFromFile: temporaryFile)
