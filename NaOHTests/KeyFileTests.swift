@@ -15,12 +15,21 @@ import XCTest
 @testable import NaOH
 
 class KeyFileTests : XCTestCase {
-func testKeyLoadSave() {
+    func testKeyLoadSave() {
         let temporaryFile = "/tmp/test.key"
         let k = try! Key(randomSize: 32)
         try! k.saveToFile(temporaryFile)
     
         let j = try! Key(readFromFile: temporaryFile)
         XCTAssert(k.hash == j.hash)
+    }
+    
+    func testPublicKeyLoadSave() {
+        let pk = PublicKey()
+        try! pk.saveToFile("/tmp/test.key")
+        
+        let pk2 = try! PublicKey(readFromFile: "/tmp/test.key")
+        
+        XCTAssert(pk.publicKey == pk2.publicKey)
     }
 }

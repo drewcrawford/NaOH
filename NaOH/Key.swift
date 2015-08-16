@@ -29,7 +29,7 @@ public final class Key {
     }
     
     let size: Int
-    init(uninitializedSize: Int) {
+    internal init(uninitializedSize: Int) {
         sodium_init_wrap()
         self.size = uninitializedSize
         addr = UnsafeMutablePointer<UInt8>(sodium_malloc(size))

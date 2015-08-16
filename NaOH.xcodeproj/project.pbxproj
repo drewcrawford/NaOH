@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A1922021B8107330092C6B1 /* Key+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922011B8107330092C6B1 /* Key+File.swift */; };
 		3A1922041B810A7B0092C6B1 /* KeyFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922031B810A7B0092C6B1 /* KeyFileTests.swift */; };
+		3A1922061B810D390092C6B1 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922051B810D390092C6B1 /* PublicKey.swift */; };
 		3A526F6B1B80AC130092BA60 /* SwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F681B80AC130092BA60 /* SwiftAPI.swift */; };
 		3A526F6C1B80AC130092BA60 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F691B80AC130092BA60 /* Key.swift */; };
 		3A526F6D1B80AC130092BA60 /* crypto_secretbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */; };
@@ -87,6 +88,7 @@
 /* Begin PBXFileReference section */
 		3A1922011B8107330092C6B1 /* Key+File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Key+File.swift"; sourceTree = "<group>"; };
 		3A1922031B810A7B0092C6B1 /* KeyFileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyFileTests.swift; sourceTree = "<group>"; };
+		3A1922051B810D390092C6B1 /* PublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		3A526F681B80AC130092BA60 /* SwiftAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAPI.swift; sourceTree = "<group>"; };
 		3A526F691B80AC130092BA60 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_secretbox.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				3AAAC7AD1B80AB40009431FC /* NaOH.h */,
 				3AAAC7AF1B80AB40009431FC /* Info.plist */,
 				3A1922011B8107330092C6B1 /* Key+File.swift */,
+				3A1922051B810D390092C6B1 /* PublicKey.swift */,
 			);
 			path = NaOH;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A1922061B810D390092C6B1 /* PublicKey.swift in Sources */,
 				3A526F6D1B80AC130092BA60 /* crypto_secretbox.swift in Sources */,
 				3A1922021B8107330092C6B1 /* Key+File.swift in Sources */,
 				3A526F6B1B80AC130092BA60 /* SwiftAPI.swift in Sources */,

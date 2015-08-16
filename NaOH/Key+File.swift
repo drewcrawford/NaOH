@@ -46,3 +46,21 @@ extension Key {
         sodium_memzero(mutableData.mutableBytes, mutableData.length)
     }
 }
+
+extension PublicKey {
+    /**Saves the key to the file indicated.
+    - note: This function ensures that the key is saved to a file only readable by the user.
+    - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
+    */
+    func saveToFile(file: String) throws {
+        try self.secretKey.saveToFile(file)
+    }
+    
+    /** Reads the key from the file indicated.
+    - note: This function ensures that the key is read from a file only readable by the user.
+    - warning: Using the keychain is probably better, but it isn't appropriate for certain applications. */
+    convenience init (readFromFile file: String) throws {
+        let secretKey = try Key(readFromFile: file)
+        self.init(secretKey: secretKey)
+    }
+}
