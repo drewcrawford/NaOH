@@ -34,10 +34,11 @@ func debugValue(var value: UnsafePointer<UInt8>, size: Int) -> String {
 }
 
 
-enum SwiftSodiumError: ErrorType {
+enum NaOHError: ErrorType {
     case OOM
     case ProtectionError
     case HashError
     case CryptoBoxError
+    case FilePermissionsLookSuspicious
 }
 

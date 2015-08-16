@@ -36,7 +36,7 @@ class CryptoBoxTests : XCTestCase {
             try crypto_secretbox_open(badCipher, nonce: NotReallyNonce, key: k)
             XCTFail()
         }
-        catch SwiftSodiumError.CryptoBoxError { /* */ }
+        catch NaOHError.CryptoBoxError { /* */ }
         catch { XCTFail() }
     }
     

@@ -34,7 +34,7 @@ func crypto_secretbox_open(var ciphertext: [UInt8], var nonce: [UInt8], key: Key
     defer { try! key.lock() }
     
     if crypto_secretbox_open_easy(&plaintext, &ciphertext, UInt64(ciphertext.count), &nonce, key.addr) != 0 {
-        throw SwiftSodiumError.CryptoBoxError
+        throw NaOHError.CryptoBoxError
     }
     return plaintext
 }

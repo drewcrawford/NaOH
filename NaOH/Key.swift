@@ -41,13 +41,13 @@ public final class Key {
     
     func lock() throws {
         if sodium_mprotect_noaccess(addrAsVoid) != 0 {
-            throw SwiftSodiumError.ProtectionError
+            throw NaOHError.ProtectionError
         }
     }
     
     func unlock() throws {
         if sodium_mprotect_readwrite(addrAsVoid) != 0 {
-            throw SwiftSodiumError.ProtectionError
+            throw NaOHError.ProtectionError
         }
     }
     
@@ -93,8 +93,16 @@ extension Key {
         }
         
         if crypto_pwhash_scryptsalsa208sha256(addr, UInt64(size), &bytes, UInt64(bytes.count - 1), saltPtr, crypto_pwhash_scryptsalsa208sha256_OPSLIMIT_INTERACTIVE, Int(crypto_pwhash_scryptsalsa208sha256_MEMLIMIT_INTERACTIVE)) != 0 {
-            throw SwiftSodiumError.OOM
+            throw NaOHError.OOM
         }
+        try lock()
+    }
+    
+    /**Generates a random key */
+    public convenience init(randomSize: Int) throws {
+        sodium_init_wrap()
+        self.init(uninitializedSize: randomSize)
+        randombytes_buf(self.addrAsVoid, randomSize)
         try lock()
     }
 }
