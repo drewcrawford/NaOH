@@ -12,8 +12,8 @@
 
 import Foundation
 public final class PublicKey {
-    let publicKey : [UInt8]
-    let secretKey : Key?
+    public let publicKey : [UInt8]
+    public let secretKey : Key?
     
     /**Generates a random key */
     public init() {
