@@ -33,3 +33,6 @@ Note that our API is incomplete and is subject to change.  In particular, we don
 
 We don't currently have any official releases, although we shold probably cut one.  Open an issue.
 
+# Mailing list
+
+We use [discuss.sa](http://discuss.sealedabstract.com/c/code-sa/NaOH)
