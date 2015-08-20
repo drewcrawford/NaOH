@@ -41,5 +41,6 @@ public enum NaOHError: ErrorType {
     case CryptoSecretBoxError
     case FilePermissionsLookSuspicious
     case CryptoBoxError
+    case WontOverwriteKey
 }
 

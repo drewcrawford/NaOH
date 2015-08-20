@@ -18,6 +18,9 @@ extension Key {
 - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
 */
     public func saveToFile(file: String) throws {
+        if NSFileManager.defaultManager().fileExistsAtPath(file) {
+            throw NaOHError.WontOverwriteKey
+        }
         //create a locked down file
         //so that we only write if everything's good
         try NSData().writeToFile(file, options: NSDataWritingOptions())

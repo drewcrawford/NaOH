@@ -34,5 +34,17 @@ class KeyTests : XCTestCase {
         let key2 = try! Key(decrypt: keyData, secretKey: alice.secretKey!, fromKey: bob)
         XCTAssert(key2.hash==jeff.hash)
     }
+    
+    func testOverwriteKey() {
+        let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().UUIDString)test.key"
+        let alice = PublicKey()
+        try! alice.saveToFile(temporaryFile)
+        do {
+            try alice.saveToFile(temporaryFile)
+            XCTFail("Overwrote existing key")
+        }
+        catch NaOHError.WontOverwriteKey { /* */ }
+        catch { XCTFail("\(error)") }
+    }
 }
 
