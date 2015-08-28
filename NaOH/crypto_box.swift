@@ -21,7 +21,7 @@ public func crypto_box_nonce() -> [UInt8] {
 */
 public func crypto_box_appendnonce(plaintext: [UInt8], to: PublicKey, from: Key, nonce: [UInt8] = crypto_box_nonce()) throws -> [UInt8] {
     var ciphertext = try crypto_box(plaintext, to: to, from: from, nonce: nonce)
-    ciphertext.extend(nonce)
+    ciphertext.appendContentsOf(nonce)
     return ciphertext
 }
 

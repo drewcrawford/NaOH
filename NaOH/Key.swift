@@ -81,7 +81,7 @@ extension Key: CustomStringConvertible {
 extension Key {
     public convenience init(password: String, salt: String) throws  {
         sodium_init_wrap()
-        var saltBytes = salt.cStringUsingEncoding(NSUTF8StringEncoding)!
+        let saltBytes = salt.cStringUsingEncoding(NSUTF8StringEncoding)!
         assert(saltBytes.count == Int(crypto_pwhash_scryptsalsa208sha256_SALTBYTES))
         
         var bytes = password.cStringUsingEncoding(NSUTF8StringEncoding)!

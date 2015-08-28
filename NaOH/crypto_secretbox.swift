@@ -22,7 +22,7 @@ func sodium_random(size: Int) -> [UInt8] {
 - note: The idea is that you don't have to send the nonce separately.*/
 public func crypto_secretbox_appendnonce(message: [UInt8], key: Key, nonce: [UInt8] = sodium_random(Int(crypto_secretbox_NONCEBYTES))) throws -> [UInt8] {
     var ciphertext = try crypto_secretbox(message, key: key, nonce: nonce)
-    ciphertext.extend(nonce)
+    ciphertext.appendContentsOf(nonce)
     return ciphertext
 }
 
