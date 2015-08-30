@@ -1,0 +1,12 @@
+types:
+  - test
+
+xcs:
+  type: test
+  script:
+    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsIntegrateNow --botID fc03b092ecd597b3488984a34d029eec --username drew --hostname localhost --sslPolicy localhost"
+  only:
+    - master
+  tags:
+    - xc7
+
