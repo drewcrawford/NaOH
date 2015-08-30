@@ -5,7 +5,7 @@ xcs:
   type: test
   script:
     - "env"
-    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI forceGitLabBranch --branchName CaveJohnsonAuto --hostname code.sealedabstract.com " 
+    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI forceGitLabBranch --branchName CaveJohnsonAuto --hostname code.sealedabstract.com --projectID 9" 
     - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsIntegrateNow --botID fc03b092ecd597b3488984a34d029eec --username drew --hostname localhost --sslPolicy localhost"
   only:
     - master
