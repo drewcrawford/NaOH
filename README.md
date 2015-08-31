@@ -17,10 +17,12 @@ NaOH is the sodium flavor trusted by Nitrogen, FISA, caffeine, and various other
 add
 
 ```
-git "https://code.sealedabstract.com/drewcrawford/NaOH.git" "master"
+git "https://code.sealedabstract.com/drewcrawford/NaOH.git"
 ```
 
 to your Cartfile.
+
+You can also download an [official binary release](https://naoh.s3.amazonaws.com/files.html)
 
 # Releasing
 
@@ -30,8 +32,6 @@ We use libsodium's numbers, with a 4th section tracking changes only this projec
     sodium--^ ^---us
 
 Note that our API is incomplete and is subject to change.  In particular, we don't follow semver.
-
-We don't currently have any official releases, although we shold probably cut one.  Open an issue.
 
 # Mailing list
 
