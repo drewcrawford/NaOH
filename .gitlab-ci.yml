@@ -7,8 +7,8 @@ xcs:
     - "env"
     - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI forceGitLabBranch --branchName CaveJohnsonAuto --hostname code.sealedabstract.com --projectID 9" 
     - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsIntegrateNow --botID fc03b092ecd597b3488984a34d029eec --hostname localhost --sslPolicy localhost"
-    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI waitForIntegration --hostname localhost --sha ce3eec98296e1d1f54122f67d648c80f74907ee6 --botID fc03b092ecd597b3488984a34d029eec --sslPolicy localhost"
-    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsStatusToShell --hostname localhost --sha ce3eec98296e1d1f54122f67d648c80f74907ee6 --botID fc03b092ecd597b3488984a34d029eec --sslPolicy localhost"
+    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI waitForIntegration --hostname localhost --botID fc03b092ecd597b3488984a34d029eec --sslPolicy localhost"
+    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsStatusToShell --hostname localhost --botID fc03b092ecd597b3488984a34d029eec --sslPolicy localhost"
   only:
     - master
   tags:
