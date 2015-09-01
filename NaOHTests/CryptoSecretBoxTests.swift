@@ -17,19 +17,19 @@ class CryptoSecretBoxTests : XCTestCase {
     private let known_ciphertext: [UInt8] = [238,208,130,110,75,188,8,14,80,51,115,51,112,13,233,240,85,118,104]
     private let known_plaintext: [UInt8] = [0,1,2]
     func testEncrypt() {
-        let k = try! Key(password: "My password", salt: "My salt is 32 characters   sjej")
+        let k = try! Key(password: "My password", salt: "My salt is 32 characters   sjej", keySize: KeySizes.crypto_secretbox)
         let result = try! crypto_secretbox([0,1,2], key: k, nonce: NotReallyNonce)
         XCTAssert(result == known_ciphertext)
     }
     
     func testDecrypt() {
-        let k = try! Key(password: "My password", salt: "My salt is 32 characters   sjej")
+        let k = try! Key(password: "My password", salt: "My salt is 32 characters   sjej", keySize: KeySizes.crypto_secretbox)
         let result = try! crypto_secretbox_open(known_ciphertext, key: k, nonce: NotReallyNonce)
         XCTAssert(result == known_plaintext)
     }
     
     func testBadDecrypt() {
-        let k = try! Key(password: "My password", salt: "My salt is 32 characters   sjej")
+        let k = try! Key(password: "My password", salt: "My salt is 32 characters   sjej", keySize: KeySizes.crypto_secretbox)
         var badCipher = known_ciphertext
         badCipher[3] = 2
         do {

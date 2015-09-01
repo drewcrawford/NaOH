@@ -78,8 +78,27 @@ extension Key: CustomStringConvertible {
     }
 }
 
+public enum KeySizes {
+    case crypto_box_seed
+    case crypto_stream_chacha20
+    case crypto_secretbox
+    
+    var size: Int {
+        get {
+            switch(self) {
+            case .crypto_box_seed:
+                return Int(crypto_box_SEEDBYTES)
+            case .crypto_stream_chacha20:
+                return Int(crypto_stream_chacha20_KEYBYTES)
+            case .crypto_secretbox:
+                return Int(crypto_secretbox_KEYBYTES)
+            }
+        }
+    }
+}
+
 extension Key {
-    public convenience init(password: String, salt: String) throws  {
+    public convenience init(password: String, salt: String, keySize: KeySizes) throws  {
         sodium_init_wrap()
         let saltBytes = salt.cStringUsingEncoding(NSUTF8StringEncoding)!
         assert(saltBytes.count == Int(crypto_pwhash_scryptsalsa208sha256_SALTBYTES))
@@ -87,7 +106,7 @@ extension Key {
         var bytes = password.cStringUsingEncoding(NSUTF8StringEncoding)!
         
         
-        self.init(uninitializedSize: Int(crypto_box_SEEDBYTES))
+        self.init(uninitializedSize: Int(keySize.size))
         let saltPtr = saltBytes.withUnsafeBufferPointer { (saltPtr) -> UnsafePointer<UInt8> in
             return unsafeBitCast(saltPtr.baseAddress, UnsafePointer<UInt8>.self)
         }
