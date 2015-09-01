@@ -16,6 +16,8 @@
 		3A19220E1B8118140092C6B1 /* bob.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A19220D1B8118140092C6B1 /* bob.key */; };
 		3A1922131B811DD50092C6B1 /* Key+Zeroing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922121B811DD50092C6B1 /* Key+Zeroing.swift */; };
 		3A19221B1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A19221A1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift */; };
+		3A2AF84C1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */; settings = {ASSET_TAGS = (); }; };
+		3A2AF84E1B95B52500A3BEF3 /* CryptoStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */; settings = {ASSET_TAGS = (); }; };
 		3A526F6B1B80AC130092BA60 /* SwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F681B80AC130092BA60 /* SwiftAPI.swift */; };
 		3A526F6C1B80AC130092BA60 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F691B80AC130092BA60 /* Key.swift */; };
 		3A526F6D1B80AC130092BA60 /* crypto_secretbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */; };
@@ -101,6 +103,8 @@
 		3A19220D1B8118140092C6B1 /* bob.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bob.key; sourceTree = "<group>"; };
 		3A1922121B811DD50092C6B1 /* Key+Zeroing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Key+Zeroing.swift"; sourceTree = "<group>"; };
 		3A19221A1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Key+EncryptedWithPublicKey.swift"; sourceTree = "<group>"; };
+		3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_stream_chacha20.swift; sourceTree = "<group>"; };
+		3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoStreamTests.swift; sourceTree = "<group>"; };
 		3A526F681B80AC130092BA60 /* SwiftAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAPI.swift; sourceTree = "<group>"; };
 		3A526F691B80AC130092BA60 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_secretbox.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 				3A1922071B8110660092C6B1 /* crypto_box.swift */,
 				3A1922121B811DD50092C6B1 /* Key+Zeroing.swift */,
 				3A19221A1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift */,
+				3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */,
 			);
 			path = NaOH;
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 				3AAAC7BB1B80AB40009431FC /* Info.plist */,
 				3A1922031B810A7B0092C6B1 /* KeyFileTests.swift */,
 				3A1922091B8112170092C6B1 /* CryptoBoxTests.swift */,
+				3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */,
 			);
 			path = NaOHTests;
 			sourceTree = "<group>";
@@ -492,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A2AF84C1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift in Sources */,
 				3A1922131B811DD50092C6B1 /* Key+Zeroing.swift in Sources */,
 				3A1922061B810D390092C6B1 /* PublicKey.swift in Sources */,
 				3A19221B1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift in Sources */,
@@ -509,6 +516,7 @@
 			files = (
 				3A19220A1B8112170092C6B1 /* CryptoBoxTests.swift in Sources */,
 				3A526FE01B80AD4F0092BA60 /* KeyTests.swift in Sources */,
+				3A2AF84E1B95B52500A3BEF3 /* CryptoStreamTests.swift in Sources */,
 				3A526FDF1B80AD4F0092BA60 /* CryptoSecretBoxTests.swift in Sources */,
 				3A1922041B810A7B0092C6B1 /* KeyFileTests.swift in Sources */,
 			);
