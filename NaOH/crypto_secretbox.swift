@@ -36,7 +36,7 @@ public func crypto_secretbox_open_appendnonce(ciphertextAndNonce: [UInt8], key: 
 }
 
 public func crypto_secretbox(var message: [UInt8], key: Key, var nonce: [UInt8]) throws -> [UInt8] {
-    assert(nonce.count == Int(crypto_secretbox_NONCEBYTES))
+    precondition(nonce.count == Int(crypto_secretbox_NONCEBYTES))
     var c = [UInt8](count: crypto_secretbox_macbytes() + message.count, repeatedValue: 0)
     try! key.unlock()
     defer { try! key.lock() }

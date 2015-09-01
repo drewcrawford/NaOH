@@ -101,7 +101,7 @@ extension Key {
     public convenience init(password: String, salt: String, keySize: KeySizes) throws  {
         sodium_init_wrap()
         let saltBytes = salt.cStringUsingEncoding(NSUTF8StringEncoding)!
-        assert(saltBytes.count == Int(crypto_pwhash_scryptsalsa208sha256_SALTBYTES))
+        precondition(saltBytes.count == Int(crypto_pwhash_scryptsalsa208sha256_SALTBYTES))
         
         var bytes = password.cStringUsingEncoding(NSUTF8StringEncoding)!
         

@@ -34,7 +34,7 @@ public func crypto_box_open_appendnonce(var ciphertextAndNonce: [UInt8], to: Key
 
 
 public func crypto_box(var plaintext: [UInt8], to: PublicKey, from: Key, var nonce: [UInt8]) throws -> [UInt8] {
-    assert(nonce.count == Int(crypto_box_NONCEBYTES))
+    precondition(nonce.count == Int(crypto_box_NONCEBYTES))
     var ciphertext = [UInt8](count: Int(crypto_box_macbytes()) + plaintext.count, repeatedValue: 0)
     try! from.unlock()
     defer { try! from.lock() }
@@ -45,7 +45,7 @@ public func crypto_box(var plaintext: [UInt8], to: PublicKey, from: Key, var non
 }
 
 public func crypto_box_open(var ciphertext: [UInt8], to: Key, from: PublicKey, var nonce: [UInt8]) throws -> [UInt8]  {
-    assert(nonce.count == Int(crypto_box_NONCEBYTES))
+    precondition(nonce.count == Int(crypto_box_NONCEBYTES))
     var plaintext = [UInt8](count: ciphertext.count - crypto_box_macbytes(), repeatedValue: 0)
     try! to.unlock()
     defer { try! to.lock() }
