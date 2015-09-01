@@ -18,6 +18,8 @@ func sodium_random(size: Int) -> [UInt8] {
     return buf
 }
 
+public let crypto_secretbox_NONCESIZE = Int(crypto_secretbox_NONCEBYTES)
+
 /**This is like crypto_secretbox, but it appends the nonce to the end of the ciphertext
 - note: The idea is that you don't have to send the nonce separately.*/
 public func crypto_secretbox_appendnonce(message: [UInt8], key: Key, nonce: [UInt8] = sodium_random(Int(crypto_secretbox_NONCEBYTES))) throws -> [UInt8] {
