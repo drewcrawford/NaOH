@@ -46,5 +46,9 @@ class KeyTests : XCTestCase {
         catch NaOHError.WontOverwriteKey { /* */ }
         catch { XCTFail("\(error)") }
     }
+    
+    func testCryptoBoxKey() {
+        let _ = Key(forCryptoBox: true)
+    }
 }
 

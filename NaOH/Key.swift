@@ -128,4 +128,15 @@ extension Key {
     public convenience init(forSecretBox _: Bool) {
         self.init(randomSize: Int(crypto_secretbox_KEYBYTES))
     }
+    
+    public convenience init(forCryptoBox _: Bool) {
+        self.init(uninitializedSize: Int(crypto_box_SECRETKEYBYTES))
+        var publicKeyBytes = [UInt8](count: Int(crypto_box_PUBLICKEYBYTES), repeatedValue: 0)
+        publicKeyBytes.withUnsafeMutableBufferPointer { (inout ptr: UnsafeMutableBufferPointer<UInt8>) -> () in
+            if crypto_box_keypair(ptr.baseAddress, addr) != 0 {
+                preconditionFailure("Can't generate keypair")
+            }
+        }
+        try! lock()
+    }
 }
