@@ -12,12 +12,6 @@
 
 import Foundation
 
-func sodium_random(size: Int) -> [UInt8] {
-    var buf = [UInt8](count: size, repeatedValue: 0)
-    randombytes_buf(&buf, size)
-    return buf
-}
-
 public let crypto_secretbox_NONCESIZE = Int(crypto_secretbox_NONCEBYTES)
 
 /**This is like crypto_secretbox, but it appends the nonce to the end of the ciphertext
