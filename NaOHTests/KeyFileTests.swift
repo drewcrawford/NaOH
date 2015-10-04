@@ -31,6 +31,6 @@ class KeyFileTests : XCTestCase {
         
         let pk2 = try! PublicKey(readFromFile: temporaryFile)
         
-        XCTAssert(pk.publicKey == pk2.publicKey)
+        XCTAssert(pk.bytes == pk2.bytes)
     }
 }

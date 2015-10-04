@@ -38,7 +38,7 @@ public func crypto_box(var plaintext: [UInt8], to: PublicKey, from: Key, var non
     var ciphertext = [UInt8](count: Int(crypto_box_macbytes()) + plaintext.count, repeatedValue: 0)
     try! from.unlock()
     defer { try! from.lock() }
-    if crypto_box_easy(&ciphertext, &plaintext, UInt64(plaintext.count), &nonce, to.publicKey, from.addr) != 0 {
+    if crypto_box_easy(&ciphertext, &plaintext, UInt64(plaintext.count), &nonce, to.bytes, from.addr) != 0 {
         throw NaOHError.CryptoBoxError
     }
     return ciphertext
@@ -49,7 +49,7 @@ public func crypto_box_open(var ciphertext: [UInt8], to: Key, from: PublicKey, v
     var plaintext = [UInt8](count: ciphertext.count - crypto_box_macbytes(), repeatedValue: 0)
     try! to.unlock()
     defer { try! to.lock() }
-    if crypto_box_open_easy(&plaintext, &ciphertext, UInt64(ciphertext.count), &nonce, from.publicKey, to.addr) != 0 {
+    if crypto_box_open_easy(&plaintext, &ciphertext, UInt64(ciphertext.count), &nonce, from.bytes, to.addr) != 0 {
         throw NaOHError.CryptoBoxError
     }
     return plaintext

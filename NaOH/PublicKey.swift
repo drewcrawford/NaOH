@@ -12,7 +12,7 @@
 
 import Foundation
 public final class PublicKey {
-    public let publicKey : [UInt8]
+    public let bytes : [UInt8]
     public let secretKey : Key?
     
     /**Generates a random key */
@@ -24,7 +24,7 @@ public final class PublicKey {
             preconditionFailure("Can't generate keypair")
         }
         try! secretKey!.lock()
-        publicKey = pk
+        bytes = pk
     }
     
     public init(secretKey: Key) {
@@ -36,12 +36,12 @@ public final class PublicKey {
         if crypto_scalarmult_base(&pk, secretKey.addr) != 0 {
             preconditionFailure("Can't generate keypair")
         }
-        publicKey = pk
+        bytes = pk
     }
     
     /**Creates a public key without a corresponding secret key. */
     public init(publicKeyBytes: [UInt8]) {
-        self.publicKey = publicKeyBytes
+        self.bytes = publicKeyBytes
         self.secretKey = nil
     }
 }

@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
+# 1.0.3.2 - Unreleased
+
+* Add a convenience initializer for cryptobox keys
+* Add sodium_random
+* Rename PublicKey.publicKey to PublicKey.bytes for clarity
+
 # 1.0.3.1 - 2015-09-22
 
 * Update to final Swift 2 runtime
