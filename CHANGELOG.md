@@ -8,6 +8,7 @@ This project does not follow semver.
 * Add a convenience initializer for cryptobox keys
 * Add sodium_random
 * Rename PublicKey.publicKey to PublicKey.bytes for clarity
+# Add sodium_memcmp for constant-time array compare
 
 # 1.0.3.1 - 2015-09-22
 
