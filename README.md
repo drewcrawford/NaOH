@@ -22,7 +22,7 @@ git "https://code.sealedabstract.com/drewcrawford/NaOH.git"
 
 to your Cartfile.
 
-You can also download an [official binary release](https://naoh.s3.amazonaws.com/files.html)
+You can also download an [official binary release](https://code.sealedabstract.com/drewcrawford/NaOH/tags)
 
 # Releasing
 
