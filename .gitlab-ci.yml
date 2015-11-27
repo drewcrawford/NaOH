@@ -17,7 +17,7 @@ xcs:
     - master
   tags:
     - xc7
-    
+
   artifacts:
     paths:
-    - binaries/
+    - /tmp/NaOH/
