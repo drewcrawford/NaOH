@@ -3,12 +3,13 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
-# 1.0.3.2 - Unreleased
+# 1.0.3.2 - 2015-11-27
 
 * Add a convenience initializer for cryptobox keys
 * Add sodium_random
 * Rename PublicKey.publicKey to PublicKey.bytes for clarity
-# Add sodium_memcmp for constant-time array compare
+* Add sodium_memcmp for constant-time array compare
+* Updating to "Swift 2.1" (Xcode 7.1 runtime) 
 
 # 1.0.3.1 - 2015-09-22
 
