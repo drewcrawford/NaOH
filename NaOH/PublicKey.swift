@@ -45,3 +45,7 @@ public final class PublicKey {
         self.secretKey = nil
     }
 }
+
+func == (a: PublicKey, b: PublicKey) -> Bool {
+    return a.bytes == b.bytes
+}

@@ -85,6 +85,7 @@
 		3AAAC7B51B80AB40009431FC /* NaOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAAC7AA1B80AB40009431FC /* NaOH.framework */; };
 		3AC7C1BF1BC157A20036FABB /* memcmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7C1BE1BC157A20036FABB /* memcmp.swift */; };
 		3AC7C1C11BC1594D0036FABB /* MemCmpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7C1C01BC1594D0036FABB /* MemCmpTests.swift */; };
+		3AD35A341C14E3FB0095BFB4 /* PublicKey+Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD35A331C14E3FB0095BFB4 /* PublicKey+Human.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +180,7 @@
 		3AAAC7BB1B80AB40009431FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AC7C1BE1BC157A20036FABB /* memcmp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memcmp.swift; sourceTree = "<group>"; };
 		3AC7C1C01BC1594D0036FABB /* MemCmpTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemCmpTests.swift; sourceTree = "<group>"; };
+		3AD35A331C14E3FB0095BFB4 /* PublicKey+Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PublicKey+Human.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 				3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */,
 				3A8ED35B1BB27E6E00164375 /* Random.swift */,
 				3AC7C1BE1BC157A20036FABB /* memcmp.swift */,
+				3AD35A331C14E3FB0095BFB4 /* PublicKey+Human.swift */,
 			);
 			path = NaOH;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				3A19221B1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift in Sources */,
 				3A526F6D1B80AC130092BA60 /* crypto_secretbox.swift in Sources */,
 				3A1922081B8110660092C6B1 /* crypto_box.swift in Sources */,
+				3AD35A341C14E3FB0095BFB4 /* PublicKey+Human.swift in Sources */,
 				3A1922021B8107330092C6B1 /* Key+File.swift in Sources */,
 				3AC7C1BF1BC157A20036FABB /* memcmp.swift in Sources */,
 				3A526F6B1B80AC130092BA60 /* SwiftAPI.swift in Sources */,

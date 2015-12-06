@@ -50,5 +50,12 @@ class KeyTests : XCTestCase {
     func testCryptoBoxKey() {
         let _ = Key(forCryptoBox: true)
     }
+    
+    func testHumanReadable() {
+        let a = PublicKey(secretKey: Key(forCryptoBox: true))
+        let str = a.humanReadable
+        let b = PublicKey(humanReadableString: str)
+        XCTAssert(a == b)
+    }
 }
 
