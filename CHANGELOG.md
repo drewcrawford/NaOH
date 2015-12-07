@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
+# 1.0.6.1 - 2015-12-07
+
+* Adding PublicKey.humanReadable and corresponding constructor
+* Updating to Xcode 7.1.1
+
 # 1.0.6.0 - 2015-11-27
 
 * Updating libsodium to 1.0.6.  See upstream's [changelog](https://github.com/jedisct1/libsodium/releases/tag/1.0.6)
