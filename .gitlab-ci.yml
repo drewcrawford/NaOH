@@ -33,6 +33,8 @@ archive:
       - "rm -rf /tmp/$FRAMEWORK_NAME/"
       - "mkdir -p /tmp/$FRAMEWORK_NAME"
       - "mv $FRAMEWORK_NAME.framework.zip /tmp/$FRAMEWORK_NAME/$ZIPFILE"
+   only:
+    - master
 
    artifacts:
       paths:
