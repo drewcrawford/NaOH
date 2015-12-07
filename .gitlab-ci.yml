@@ -5,6 +5,7 @@ types:
 variables:
   XCSBOT: "fc03b092ecd597b3488984a34d029eec"
   GITLAB_PROJECT_ID: "9"
+  FRAMEWORK_NAME: "CLIKit"
 
 xcs:
   type: test
@@ -24,14 +25,14 @@ archive:
    script:
       - "CJ=/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI"
       - "CARTHAGE=/usr/local/bin/carthage"
-      - "$CJ setVersion --infoPlistPath NaOH/Info.plist --version ${CI_BUILD_ID}"
+      - "$CJ setVersion --infoPlistPath $FRAMEWORK_NAME/Info.plist --version ${CI_BUILD_ID}"
       - "$CARTHAGE build --no-skip-current"
-      - "$CARTHAGE archive NaOH"
+      - "$CARTHAGE archive $FRAMEWORK_NAME"
 
-      - "ZIPFILE=$($CJ getNameVersionString --infoPlistPath NaOH/Info.plist --productName NaOH)-dev-${CI_BUILD_ID}.zip"
-      - "rm -rf /tmp/NaOH/"
-      - "mkdir -p /tmp/NaOH"
-      - "mv NaOH.framework.zip /tmp/NaOH/$ZIPFILE"
+      - "ZIPFILE=$($CJ getNameVersionString --infoPlistPath $FRAMEWORK_NAME/Info.plist --productName $FRAMEWORK_NAME)-dev-${CI_BUILD_ID}.zip"
+      - "rm -rf /tmp/$FRAMEWORK_NAME/"
+      - "mkdir -p /tmp/$FRAMEWORK_NAME"
+      - "mv $FRAMEWORK_NAME.framework.zip /tmp/$FRAMEWORK_NAME/$ZIPFILE"
 
    artifacts:
       paths:
