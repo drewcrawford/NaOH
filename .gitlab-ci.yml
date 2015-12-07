@@ -25,7 +25,7 @@ archive:
       - "ls"
       - "CJ=/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI"
       - "CARTHAGE=/usr/local/bin/carthage"
-      - "$CJ setVersion --infoPlistPath NaOH/NaOH/Info.plist"
+      - "$CJ setVersion --infoPlistPath NaOH/NaOH/Info.plist --version ${CI_BUILD_ID}"
       - "$CARTHAGE build --no-skip-current"
       - "$CARTHAGE archive NaOH"
 
