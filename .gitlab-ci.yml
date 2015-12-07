@@ -29,7 +29,7 @@ archive:
       - "$CARTHAGE build --no-skip-current"
       - "$CARTHAGE archive NaOH"
 
-      - "ZIPFILE=$($CJ getNameVersionString --infoPlistPath NaOH/NaOH/Info.plist --productName NaOH)-dev-${CI_BUILD_ID}.zip"
+      - "ZIPFILE=$($CJ getNameVersionString --infoPlistPath NaOH/Info.plist --productName NaOH)-dev-${CI_BUILD_ID}.zip"
       - "rm -rf /tmp/NaOH/"
       - "mkdir -p /tmp/NaOH"
       - "mv NaOH.framework.zip /tmp/NaOH/$ZIPFILE"
