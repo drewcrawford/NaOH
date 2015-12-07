@@ -1,5 +1,6 @@
 types:
   - test
+  - package
 
 variables:
   XCSBOT: "fc03b092ecd597b3488984a34d029eec"
@@ -18,6 +19,21 @@ xcs:
   tags:
     - xc7
 
-  artifacts:
-    paths:
-    - /tmp/NaOH/
+xcs:
+   type: package
+   script:
+      - "ls"
+      - "CJ=/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI"
+      - "CARTHAGE=/usr/local/bin/carthage"
+      - "$CJ setVersion --infoPlistPath NaOH/NaOH/Info.plist"
+      - "$CARTHAGE build --no-skip-current"
+      - "$CARTHAGE archive NaOH"
+
+      - "ZIPFILE=$($CJ getNameVersionString --infoPlistPath NaOH/NaOH/Info.plist --productName NaOH)-dev-${CI_BUILD_ID}.zip"
+      - "rm -rf /tmp/NaOH/"
+      - "mkdir -p /tmp/NaOH"
+      - "mv NaOH.framework.zip /tmp/NaOH/$ZIPFILE"
+
+    artifacts:
+      paths:
+      - /tmp/NaOH/
