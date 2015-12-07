@@ -22,7 +22,6 @@ xcs:
 archive:
    type: package
    script:
-      - "ls"
       - "CJ=/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI"
       - "CARTHAGE=/usr/local/bin/carthage"
       - "$CJ setVersion --infoPlistPath NaOH/Info.plist --version ${CI_BUILD_ID}"
