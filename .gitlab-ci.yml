@@ -34,6 +34,6 @@ archive:
       - "mkdir -p /tmp/NaOH"
       - "mv NaOH.framework.zip /tmp/NaOH/$ZIPFILE"
 
-    artifacts:
+   artifacts:
       paths:
       - /tmp/NaOH/
