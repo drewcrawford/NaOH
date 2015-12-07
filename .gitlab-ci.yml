@@ -5,7 +5,7 @@ types:
 variables:
   XCSBOT: "fc03b092ecd597b3488984a34d029eec"
   GITLAB_PROJECT_ID: "9"
-  FRAMEWORK_NAME: "CLIKit"
+  FRAMEWORK_NAME: "NaOH"
 
 xcs:
   type: test
