@@ -19,7 +19,7 @@ xcs:
   tags:
     - xc7
 
-package:
+archive:
    type: package
    script:
       - "ls"
