@@ -1,5 +1,7 @@
 NaOH (pronounced "sodium hydroxide") is a strongly opinionated Swift binding for the security library libsodium, a fork of DJB's NaCl.
 
+For more information about NaCl, the cryptographic technology inside NaOH, read [this whitepaper](http://nacl.cr.yp.to/securing-communication.pdf) or djb's [paper](http://cr.yp.to/highspeed/coolnacl-20120725.pdf).
+
 NaOH is the sodium flavor trusted by Nitrogen, FISA, caffeine, and various other projects Drew works on.
 
 # What opinions?
