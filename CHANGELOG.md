@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
+# Unreleased
+
+* Add genericHash for arrays
+
 # 1.0.6.1 - 2015-12-07
 
 * Adding PublicKey.humanReadable and corresponding constructor
