@@ -9,7 +9,7 @@
 import Foundation
 
 extension Array {
-    var genericHash: [UInt8] {
+    public var genericHash: [UInt8] {
         get {
             precondition(Element.self == UInt8.self, "genericHash is only implemented for type UInt8, not \(Element.self)") //I'm not sure this works for other arrays
             //sadly, we can't extend a particular one until Swift 3
