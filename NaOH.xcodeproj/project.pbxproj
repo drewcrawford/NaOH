@@ -85,6 +85,9 @@
 		3AAAC7B51B80AB40009431FC /* NaOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAAC7AA1B80AB40009431FC /* NaOH.framework */; };
 		3AAC8C7D1C1CFEEA00B82F4D /* GenericHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC8C7C1C1CFEEA00B82F4D /* GenericHash.swift */; };
 		3AAC8C7F1C1CFEF500B82F4D /* GenericHashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC8C7E1C1CFEF500B82F4D /* GenericHashTests.swift */; };
+		3AB474D51C1D988800651809 /* increment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB474D41C1D988800651809 /* increment.swift */; };
+		3AB474D71C1D998A00651809 /* IncrementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB474D61C1D998A00651809 /* IncrementTests.swift */; };
+		3AB474D91C1D9A1D00651809 /* Integer192Bit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB474D81C1D9A1D00651809 /* Integer192Bit.swift */; };
 		3AC7C1BF1BC157A20036FABB /* memcmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7C1BE1BC157A20036FABB /* memcmp.swift */; };
 		3AC7C1C11BC1594D0036FABB /* MemCmpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7C1C01BC1594D0036FABB /* MemCmpTests.swift */; };
 		3AD35A341C14E3FB0095BFB4 /* PublicKey+Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD35A331C14E3FB0095BFB4 /* PublicKey+Human.swift */; };
@@ -182,6 +185,9 @@
 		3AAAC7BB1B80AB40009431FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AAC8C7C1C1CFEEA00B82F4D /* GenericHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericHash.swift; sourceTree = "<group>"; };
 		3AAC8C7E1C1CFEF500B82F4D /* GenericHashTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericHashTests.swift; sourceTree = "<group>"; };
+		3AB474D41C1D988800651809 /* increment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = increment.swift; sourceTree = "<group>"; };
+		3AB474D61C1D998A00651809 /* IncrementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementTests.swift; sourceTree = "<group>"; };
+		3AB474D81C1D9A1D00651809 /* Integer192Bit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integer192Bit.swift; sourceTree = "<group>"; };
 		3AC7C1BE1BC157A20036FABB /* memcmp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memcmp.swift; sourceTree = "<group>"; };
 		3AC7C1C01BC1594D0036FABB /* MemCmpTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemCmpTests.swift; sourceTree = "<group>"; };
 		3AD35A331C14E3FB0095BFB4 /* PublicKey+Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PublicKey+Human.swift"; sourceTree = "<group>"; };
@@ -245,6 +251,8 @@
 				3AC7C1BE1BC157A20036FABB /* memcmp.swift */,
 				3AD35A331C14E3FB0095BFB4 /* PublicKey+Human.swift */,
 				3AAC8C7C1C1CFEEA00B82F4D /* GenericHash.swift */,
+				3AB474D41C1D988800651809 /* increment.swift */,
+				3AB474D81C1D9A1D00651809 /* Integer192Bit.swift */,
 			);
 			path = NaOH;
 			sourceTree = "<group>";
@@ -262,6 +270,7 @@
 				3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */,
 				3AC7C1C01BC1594D0036FABB /* MemCmpTests.swift */,
 				3AAC8C7E1C1CFEF500B82F4D /* GenericHashTests.swift */,
+				3AB474D61C1D998A00651809 /* IncrementTests.swift */,
 			);
 			path = NaOHTests;
 			sourceTree = "<group>";
@@ -521,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A2AF84C1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift in Sources */,
+				3AB474D51C1D988800651809 /* increment.swift in Sources */,
 				3AAC8C7D1C1CFEEA00B82F4D /* GenericHash.swift in Sources */,
 				3A1922131B811DD50092C6B1 /* Key+Zeroing.swift in Sources */,
 				3A8ED35C1BB27E6E00164375 /* Random.swift in Sources */,
@@ -533,6 +543,7 @@
 				3AC7C1BF1BC157A20036FABB /* memcmp.swift in Sources */,
 				3A526F6B1B80AC130092BA60 /* SwiftAPI.swift in Sources */,
 				3A526F6C1B80AC130092BA60 /* Key.swift in Sources */,
+				3AB474D91C1D9A1D00651809 /* Integer192Bit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +558,7 @@
 				3A2AF84E1B95B52500A3BEF3 /* CryptoStreamTests.swift in Sources */,
 				3A526FDF1B80AD4F0092BA60 /* CryptoSecretBoxTests.swift in Sources */,
 				3A1922041B810A7B0092C6B1 /* KeyFileTests.swift in Sources */,
+				3AB474D71C1D998A00651809 /* IncrementTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

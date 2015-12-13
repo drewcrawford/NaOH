@@ -6,6 +6,8 @@ This project does not follow semver.
 # Unreleased
 
 * Add genericHash for arrays
+* Convert to Integer192Bit for nonce arguments.  Integer192 has its own constant-time incrementation function.
+* Updating to Xcode 7.2
 
 # 1.0.6.1 - 2015-12-07
 

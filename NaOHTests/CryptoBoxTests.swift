@@ -17,7 +17,7 @@ import XCTest
 class CryptoBoxTests :XCTestCase {
     
     private let knownPlaintext : [UInt8] = [0,1,2]
-    private let notVeryNonce : [UInt8] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+    private let notVeryNonce = Integer192Bit(array: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23])
     
     private let knownCiphertext : [UInt8] = [211, 170, 214, 228, 186, 238, 171, 198, 216, 148, 136, 65, 140, 6, 22, 100, 5, 32, 23]
     

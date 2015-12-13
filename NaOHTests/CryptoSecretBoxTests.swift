@@ -13,7 +13,7 @@ import XCTest
 @testable import NaOH
 
 class CryptoSecretBoxTests : XCTestCase {
-    private let NotReallyNonce: [UInt8] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+    private let NotReallyNonce = Integer192Bit(array: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24])
     private let known_ciphertext: [UInt8] = [238,208,130,110,75,188,8,14,80,51,115,51,112,13,233,240,85,118,104]
     private let known_plaintext: [UInt8] = [0,1,2]
     func testEncrypt() {
