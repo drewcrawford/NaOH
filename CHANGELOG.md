@@ -3,11 +3,12 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
-# Unreleased
+# 1.0.7.0 - 2015-12-14
 
 * Add genericHash for arrays
 * Convert to Integer192Bit for nonce arguments.  Integer192 has its own constant-time incrementation function.
 * Updating to Xcode 7.2
+* Update to libsodium 1.0.7.  See upstream's [changelog](https://github.com/jedisct1/libsodium/releases/tag/1.0.7).
 
 # 1.0.6.1 - 2015-12-07
 
