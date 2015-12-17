@@ -13,6 +13,7 @@ xcs:
     - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI forceGitLabBranch --branchName CaveJohnsonAuto --hostname code.sealedabstract.com --projectID $GITLAB_PROJECT_ID"
     - "sleep 1" 
     - "XCSBUILDNO=`/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsIntegrateNow --botID $XCSBOT --hostname localhost --sslPolicy localhost`"
+    - "echo XCS BUILDNO $XCSBUILDNO"
     - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI waitForIntegration --hostname localhost --botID $XCSBOT --sslPolicy localhost --buildNumber $XCSBUILDNO"
     - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsStatusToShell --hostname localhost --botID $XCSBOT --sslPolicy localhost --buildNumber $XCSBUILDNO"
   only:

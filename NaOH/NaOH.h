@@ -9,8 +9,12 @@
 //  No part of NaOH, including this file, may be copied, modified,
 //  propagated, or distributed except according to the terms contained
 //  inthe LICENSE file.
-
+#import "TargetConditionals.h"
+#if TARGET_OS_IOS
+#import <UIKit/UIKit.h>
+#else
 #import <Cocoa/Cocoa.h>
+#endif
 
 //! Project version number for NaOH.
 FOUNDATION_EXPORT double NaOHVersionNumber;
