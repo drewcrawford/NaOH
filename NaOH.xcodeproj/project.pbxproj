@@ -99,6 +99,7 @@
 		3A8ED35C1BB27E6E00164375 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8ED35B1BB27E6E00164375 /* Random.swift */; };
 		3A98E1281C23A2A800B267A0 /* NaOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF839C11C22BAE6003EDAC1 /* NaOH.framework */; };
 		3A98E1291C23A2A800B267A0 /* NaOH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF839C11C22BAE6003EDAC1 /* NaOH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A98E1F31C240F2800B267A0 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3A526FE21B80B4E90092BA60 /* LICENSE */; };
 		3AAAC7AE1B80AB40009431FC /* NaOH.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AAAC7AD1B80AB40009431FC /* NaOH.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AAAC7B51B80AB40009431FC /* NaOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAAC7AA1B80AB40009431FC /* NaOH.framework */; };
 		3AAC8C7D1C1CFEEA00B82F4D /* GenericHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC8C7C1C1CFEEA00B82F4D /* GenericHash.swift */; };
@@ -977,6 +978,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A98E1F31C240F2800B267A0 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
