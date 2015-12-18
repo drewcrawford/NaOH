@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
+# 1.0.7.1 - 2015-12-18
+
+* iOS support
+
 # 1.0.7.0 - 2015-12-14
 
 * Add genericHash for arrays
