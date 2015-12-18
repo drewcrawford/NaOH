@@ -42,7 +42,7 @@ archiveiOS:
    script:
       - "CJ=/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI"
       - "CARTHAGE=/usr/local/bin/carthage"
-      - "$CJ setVersion --infoPlistPath $FRAMEWORK_NAME/Info.plist --version ${CI_BUILD_ID}"
+      - "$CJ setVersion --infoPlistPath ${FRAMEWORK_NAME}-iOS/Info.plist --version ${CI_BUILD_ID}"
       - "$CARTHAGE build --no-skip-current --platform ios"
       - "$CARTHAGE archive $FRAMEWORK_NAME"
 
