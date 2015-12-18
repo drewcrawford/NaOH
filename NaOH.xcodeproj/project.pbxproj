@@ -97,6 +97,8 @@
 		3A526FE31B80B4E90092BA60 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3A526FE21B80B4E90092BA60 /* LICENSE */; };
 		3A6C74E11C0842700055B55B /* crypto_aead_aes256gcm.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C74E01C0842700055B55B /* crypto_aead_aes256gcm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A8ED35C1BB27E6E00164375 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8ED35B1BB27E6E00164375 /* Random.swift */; };
+		3A98E1281C23A2A800B267A0 /* NaOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF839C11C22BAE6003EDAC1 /* NaOH.framework */; };
+		3A98E1291C23A2A800B267A0 /* NaOH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF839C11C22BAE6003EDAC1 /* NaOH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3AAAC7AE1B80AB40009431FC /* NaOH.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AAAC7AD1B80AB40009431FC /* NaOH.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AAAC7B51B80AB40009431FC /* NaOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAAC7AA1B80AB40009431FC /* NaOH.framework */; };
 		3AAC8C7D1C1CFEEA00B82F4D /* GenericHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC8C7C1C1CFEEA00B82F4D /* GenericHash.swift */; };
@@ -188,6 +190,13 @@
 			remoteGlobalIDString = 3A410E9F1C239C6000C1C879;
 			remoteInfo = NaOHiOSTestHostApp;
 		};
+		3A98E12A1C23A2A800B267A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AAAC7A11B80AB40009431FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AF839C01C22BAE6003EDAC1;
+			remoteInfo = "NaOH-iOS";
+		};
 		3AAAC7B61B80AB40009431FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3AAAC7A11B80AB40009431FC /* Project object */;
@@ -196,6 +205,20 @@
 			remoteInfo = NaOH;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3A98E12C1C23A2A800B267A0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3A98E1291C23A2A800B267A0 /* NaOH.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3A1922011B8107330092C6B1 /* Key+File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Key+File.swift"; sourceTree = "<group>"; };
@@ -359,6 +382,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A98E1281C23A2A800B267A0 /* NaOH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,10 +798,12 @@
 				3A410E9C1C239C6000C1C879 /* Sources */,
 				3A410E9D1C239C6000C1C879 /* Frameworks */,
 				3A410E9E1C239C6000C1C879 /* Resources */,
+				3A98E12C1C23A2A800B267A0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3A98E12B1C23A2A800B267A0 /* PBXTargetDependency */,
 			);
 			name = NaOHiOSTestHostApp;
 			productName = NaOHiOSTestHostApp;
@@ -883,6 +909,7 @@
 					};
 					3AF839C01C22BAE6003EDAC1 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = P5GM95Q9VV;
 					};
 				};
 			};
@@ -1064,6 +1091,11 @@
 			target = 3A410E9F1C239C6000C1C879 /* NaOHiOSTestHostApp */;
 			targetProxy = 3A410EB41C239C6000C1C879 /* PBXContainerItemProxy */;
 		};
+		3A98E12B1C23A2A800B267A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3AF839C01C22BAE6003EDAC1 /* NaOH-iOS */;
+			targetProxy = 3A98E12A1C23A2A800B267A0 /* PBXContainerItemProxy */;
+		};
 		3AAAC7B71B80AB40009431FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3AAAC7A91B80AB40009431FC /* NaOH */;
@@ -1097,6 +1129,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = NaOHiOSTestHostApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1112,6 +1145,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = NaOHiOSTestHostApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1310,6 +1344,7 @@
 		3AF839C61C22BAE6003EDAC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1335,6 +1370,7 @@
 		3AF839C71C22BAE6003EDAC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
