@@ -1,14 +1,15 @@
 //
-//  NaOHiOSTests.swift
-//  NaOHiOSTests
+//  NaOHiOSTestHostAppTests.swift
+//  NaOHiOSTestHostAppTests
 //
 //  Created by Drew Crawford on 12/17/15.
 //  Copyright © 2015 DrewCrawfordApps. All rights reserved.
 //
 
 import XCTest
+@testable import NaOHiOSTestHostApp
 
-class NaOHiOSTests: XCTestCase {
+class NaOHiOSTestHostAppTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

@@ -18,6 +18,22 @@
 		3A19221B1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A19221A1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift */; };
 		3A2AF84C1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */; };
 		3A2AF84E1B95B52500A3BEF3 /* CryptoStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */; };
+		3A410EA31C239C6000C1C879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A410EA21C239C6000C1C879 /* AppDelegate.swift */; };
+		3A410EA51C239C6000C1C879 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A410EA41C239C6000C1C879 /* ViewController.swift */; };
+		3A410EA81C239C6000C1C879 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A410EA61C239C6000C1C879 /* Main.storyboard */; };
+		3A410EAA1C239C6000C1C879 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A410EA91C239C6000C1C879 /* Assets.xcassets */; };
+		3A410EAD1C239C6000C1C879 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A410EAB1C239C6000C1C879 /* LaunchScreen.storyboard */; };
+		3A410EB81C239C6000C1C879 /* NaOHiOSTestHostAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A410EB71C239C6000C1C879 /* NaOHiOSTestHostAppTests.swift */; };
+		3A410EC01C239C7B00C1C879 /* CryptoSecretBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526FDD1B80AD4F0092BA60 /* CryptoSecretBoxTests.swift */; };
+		3A410EC11C239C7B00C1C879 /* KeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526FDE1B80AD4F0092BA60 /* KeyTests.swift */; };
+		3A410EC21C239C7F00C1C879 /* KeyFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922031B810A7B0092C6B1 /* KeyFileTests.swift */; };
+		3A410EC31C239C7F00C1C879 /* CryptoBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922091B8112170092C6B1 /* CryptoBoxTests.swift */; };
+		3A410EC41C239C7F00C1C879 /* CryptoStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */; };
+		3A410EC51C239C7F00C1C879 /* MemCmpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7C1C01BC1594D0036FABB /* MemCmpTests.swift */; };
+		3A410EC61C239C7F00C1C879 /* GenericHashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC8C7E1C1CFEF500B82F4D /* GenericHashTests.swift */; };
+		3A410EC71C239C7F00C1C879 /* IncrementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB474D61C1D998A00651809 /* IncrementTests.swift */; };
+		3A410EC81C239CA900C1C879 /* bob.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A19220D1B8118140092C6B1 /* bob.key */; };
+		3A410EC91C239CA900C1C879 /* alice.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A19220B1B8112A30092C6B1 /* alice.key */; };
 		3A526F6B1B80AC130092BA60 /* SwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F681B80AC130092BA60 /* SwiftAPI.swift */; };
 		3A526F6C1B80AC130092BA60 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F691B80AC130092BA60 /* Key.swift */; };
 		3A526F6D1B80AC130092BA60 /* crypto_secretbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */; };
@@ -162,34 +178,22 @@
 		3AF83A471C22BD2C003EDAC1 /* utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF83A121C22BD2C003EDAC1 /* utils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF83A481C22BD2C003EDAC1 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF83A131C22BD2C003EDAC1 /* version.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF83A4A1C22BD94003EDAC1 /* libsodium.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF83A491C22BD94003EDAC1 /* libsodium.a */; };
-		3AF83A521C22BDD3003EDAC1 /* NaOHiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF83A511C22BDD3003EDAC1 /* NaOHiOSTests.swift */; };
-		3AF83A541C22BDD3003EDAC1 /* NaOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF839C11C22BAE6003EDAC1 /* NaOH.framework */; };
-		3AF83A5A1C22BDD9003EDAC1 /* CryptoSecretBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526FDD1B80AD4F0092BA60 /* CryptoSecretBoxTests.swift */; };
-		3AF83A5B1C22BDDC003EDAC1 /* KeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526FDE1B80AD4F0092BA60 /* KeyTests.swift */; };
-		3AF83A5C1C22BDDE003EDAC1 /* KeyFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922031B810A7B0092C6B1 /* KeyFileTests.swift */; };
-		3AF83A5D1C22BDE1003EDAC1 /* CryptoBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922091B8112170092C6B1 /* CryptoBoxTests.swift */; };
-		3AF83A5E1C22BDE3003EDAC1 /* CryptoStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */; };
-		3AF83A5F1C22BDE5003EDAC1 /* MemCmpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7C1C01BC1594D0036FABB /* MemCmpTests.swift */; };
-		3AF83A601C22BDE7003EDAC1 /* GenericHashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAC8C7E1C1CFEF500B82F4D /* GenericHashTests.swift */; };
-		3AF83A611C22BDEA003EDAC1 /* IncrementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB474D61C1D998A00651809 /* IncrementTests.swift */; };
-		3AF83A621C22BE11003EDAC1 /* bob.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A19220D1B8118140092C6B1 /* bob.key */; };
-		3AF83A631C22BE13003EDAC1 /* alice.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A19220B1B8112A30092C6B1 /* alice.key */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3A410EB41C239C6000C1C879 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AAAC7A11B80AB40009431FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A410E9F1C239C6000C1C879;
+			remoteInfo = NaOHiOSTestHostApp;
+		};
 		3AAAC7B61B80AB40009431FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3AAAC7A11B80AB40009431FC /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3AAAC7A91B80AB40009431FC;
 			remoteInfo = NaOH;
-		};
-		3AF83A551C22BDD3003EDAC1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3AAAC7A11B80AB40009431FC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3AF839C01C22BAE6003EDAC1;
-			remoteInfo = "NaOH-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -205,6 +209,16 @@
 		3A19221A1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Key+EncryptedWithPublicKey.swift"; sourceTree = "<group>"; };
 		3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_stream_chacha20.swift; sourceTree = "<group>"; };
 		3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoStreamTests.swift; sourceTree = "<group>"; };
+		3A410EA01C239C6000C1C879 /* NaOHiOSTestHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaOHiOSTestHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A410EA21C239C6000C1C879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3A410EA41C239C6000C1C879 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3A410EA71C239C6000C1C879 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3A410EA91C239C6000C1C879 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3A410EAC1C239C6000C1C879 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3A410EAE1C239C6000C1C879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A410EB31C239C6000C1C879 /* NaOHiOSTestHostAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaOHiOSTestHostAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A410EB71C239C6000C1C879 /* NaOHiOSTestHostAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaOHiOSTestHostAppTests.swift; sourceTree = "<group>"; };
+		3A410EB91C239C6000C1C879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A526F681B80AC130092BA60 /* SwiftAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAPI.swift; sourceTree = "<group>"; };
 		3A526F691B80AC130092BA60 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_secretbox.swift; sourceTree = "<group>"; };
@@ -338,12 +352,23 @@
 		3AF83A121C22BD2C003EDAC1 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		3AF83A131C22BD2C003EDAC1 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		3AF83A491C22BD94003EDAC1 /* libsodium.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsodium.a; path = "libsodium-ios/libsodium.a"; sourceTree = "<group>"; };
-		3AF83A4F1C22BDD3003EDAC1 /* NaOHiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaOHiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AF83A511C22BDD3003EDAC1 /* NaOHiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaOHiOSTests.swift; sourceTree = "<group>"; };
-		3AF83A531C22BDD3003EDAC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3A410E9D1C239C6000C1C879 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A410EB01C239C6000C1C879 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3AAAC7A61B80AB40009431FC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -368,17 +393,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3AF83A4C1C22BDD3003EDAC1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3AF83A541C22BDD3003EDAC1 /* NaOH.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A410EA11C239C6000C1C879 /* NaOHiOSTestHostApp */ = {
+			isa = PBXGroup;
+			children = (
+				3A410EA21C239C6000C1C879 /* AppDelegate.swift */,
+				3A410EA41C239C6000C1C879 /* ViewController.swift */,
+				3A410EA61C239C6000C1C879 /* Main.storyboard */,
+				3A410EA91C239C6000C1C879 /* Assets.xcassets */,
+				3A410EAB1C239C6000C1C879 /* LaunchScreen.storyboard */,
+				3A410EAE1C239C6000C1C879 /* Info.plist */,
+			);
+			path = NaOHiOSTestHostApp;
+			sourceTree = "<group>";
+		};
+		3A410EB61C239C6000C1C879 /* NaOHiOSTestHostAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				3A410EB71C239C6000C1C879 /* NaOHiOSTestHostAppTests.swift */,
+				3A410EB91C239C6000C1C879 /* Info.plist */,
+			);
+			path = NaOHiOSTestHostAppTests;
+			sourceTree = "<group>";
+		};
 		3AAAC7A01B80AB40009431FC = {
 			isa = PBXGroup;
 			children = (
@@ -386,7 +425,8 @@
 				3AAAC7AC1B80AB40009431FC /* NaOH */,
 				3AAAC7B81B80AB40009431FC /* NaOHTests */,
 				3AF839C21C22BAE6003EDAC1 /* NaOH-iOS */,
-				3AF83A501C22BDD3003EDAC1 /* NaOHiOSTests */,
+				3A410EA11C239C6000C1C879 /* NaOHiOSTestHostApp */,
+				3A410EB61C239C6000C1C879 /* NaOHiOSTestHostAppTests */,
 				3AAAC7AB1B80AB40009431FC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -397,7 +437,8 @@
 				3AAAC7AA1B80AB40009431FC /* NaOH.framework */,
 				3AAAC7B41B80AB40009431FC /* NaOHTests.xctest */,
 				3AF839C11C22BAE6003EDAC1 /* NaOH.framework */,
-				3AF83A4F1C22BDD3003EDAC1 /* NaOHiOSTests.xctest */,
+				3A410EA01C239C6000C1C879 /* NaOHiOSTestHostApp.app */,
+				3A410EB31C239C6000C1C879 /* NaOHiOSTestHostAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -596,15 +637,6 @@
 			path = "libsodium-ios/sodium";
 			sourceTree = "<group>";
 		};
-		3AF83A501C22BDD3003EDAC1 /* NaOHiOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				3AF83A511C22BDD3003EDAC1 /* NaOHiOSTests.swift */,
-				3AF83A531C22BDD3003EDAC1 /* Info.plist */,
-			);
-			path = NaOHiOSTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -735,6 +767,41 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3A410E9F1C239C6000C1C879 /* NaOHiOSTestHostApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A410EBA1C239C6000C1C879 /* Build configuration list for PBXNativeTarget "NaOHiOSTestHostApp" */;
+			buildPhases = (
+				3A410E9C1C239C6000C1C879 /* Sources */,
+				3A410E9D1C239C6000C1C879 /* Frameworks */,
+				3A410E9E1C239C6000C1C879 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NaOHiOSTestHostApp;
+			productName = NaOHiOSTestHostApp;
+			productReference = 3A410EA01C239C6000C1C879 /* NaOHiOSTestHostApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3A410EB21C239C6000C1C879 /* NaOHiOSTestHostAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A410EBD1C239C6000C1C879 /* Build configuration list for PBXNativeTarget "NaOHiOSTestHostAppTests" */;
+			buildPhases = (
+				3A410EAF1C239C6000C1C879 /* Sources */,
+				3A410EB01C239C6000C1C879 /* Frameworks */,
+				3A410EB11C239C6000C1C879 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3A410EB51C239C6000C1C879 /* PBXTargetDependency */,
+			);
+			name = NaOHiOSTestHostAppTests;
+			productName = NaOHiOSTestHostAppTests;
+			productReference = 3A410EB31C239C6000C1C879 /* NaOHiOSTestHostAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3AAAC7A91B80AB40009431FC /* NaOH */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AAAC7BE1B80AB40009431FC /* Build configuration list for PBXNativeTarget "NaOH" */;
@@ -790,24 +857,6 @@
 			productReference = 3AF839C11C22BAE6003EDAC1 /* NaOH.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		3AF83A4E1C22BDD3003EDAC1 /* NaOHiOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3AF83A571C22BDD3003EDAC1 /* Build configuration list for PBXNativeTarget "NaOHiOSTests" */;
-			buildPhases = (
-				3AF83A4B1C22BDD3003EDAC1 /* Sources */,
-				3AF83A4C1C22BDD3003EDAC1 /* Frameworks */,
-				3AF83A4D1C22BDD3003EDAC1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3AF83A561C22BDD3003EDAC1 /* PBXTargetDependency */,
-			);
-			name = NaOHiOSTests;
-			productName = NaOHiOSTests;
-			productReference = 3AF83A4F1C22BDD3003EDAC1 /* NaOHiOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -818,6 +867,13 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = DrewCrawfordApps;
 				TargetAttributes = {
+					3A410E9F1C239C6000C1C879 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					3A410EB21C239C6000C1C879 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 3A410E9F1C239C6000C1C879;
+					};
 					3AAAC7A91B80AB40009431FC = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -825,9 +881,6 @@
 						CreatedOnToolsVersion = 7.0;
 					};
 					3AF839C01C22BAE6003EDAC1 = {
-						CreatedOnToolsVersion = 7.2;
-					};
-					3AF83A4E1C22BDD3003EDAC1 = {
 						CreatedOnToolsVersion = 7.2;
 					};
 				};
@@ -838,6 +891,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 3AAAC7A01B80AB40009431FC;
 			productRefGroup = 3AAAC7AB1B80AB40009431FC /* Products */;
@@ -847,12 +901,32 @@
 				3AAAC7A91B80AB40009431FC /* NaOH */,
 				3AAAC7B31B80AB40009431FC /* NaOHTests */,
 				3AF839C01C22BAE6003EDAC1 /* NaOH-iOS */,
-				3AF83A4E1C22BDD3003EDAC1 /* NaOHiOSTests */,
+				3A410E9F1C239C6000C1C879 /* NaOHiOSTestHostApp */,
+				3A410EB21C239C6000C1C879 /* NaOHiOSTestHostAppTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3A410E9E1C239C6000C1C879 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A410EAD1C239C6000C1C879 /* LaunchScreen.storyboard in Resources */,
+				3A410EAA1C239C6000C1C879 /* Assets.xcassets in Resources */,
+				3A410EA81C239C6000C1C879 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A410EB11C239C6000C1C879 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A410EC91C239CA900C1C879 /* alice.key in Resources */,
+				3A410EC81C239CA900C1C879 /* bob.key in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3AAAC7A81B80AB40009431FC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -878,15 +952,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3AF83A4D1C22BDD3003EDAC1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3AF83A631C22BE13003EDAC1 /* alice.key in Resources */,
-				3AF83A621C22BE11003EDAC1 /* bob.key in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -906,6 +971,31 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3A410E9C1C239C6000C1C879 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A410EA51C239C6000C1C879 /* ViewController.swift in Sources */,
+				3A410EA31C239C6000C1C879 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A410EAF1C239C6000C1C879 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A410EC41C239C7F00C1C879 /* CryptoStreamTests.swift in Sources */,
+				3A410EC11C239C7B00C1C879 /* KeyTests.swift in Sources */,
+				3A410EC21C239C7F00C1C879 /* KeyFileTests.swift in Sources */,
+				3A410EC01C239C7B00C1C879 /* CryptoSecretBoxTests.swift in Sources */,
+				3A410EC71C239C7F00C1C879 /* IncrementTests.swift in Sources */,
+				3A410EC31C239C7F00C1C879 /* CryptoBoxTests.swift in Sources */,
+				3A410EC61C239C7F00C1C879 /* GenericHashTests.swift in Sources */,
+				3A410EC51C239C7F00C1C879 /* MemCmpTests.swift in Sources */,
+				3A410EB81C239C6000C1C879 /* NaOHiOSTestHostAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3AAAC7A51B80AB40009431FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -965,38 +1055,101 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3AF83A4B1C22BDD3003EDAC1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3AF83A5E1C22BDE3003EDAC1 /* CryptoStreamTests.swift in Sources */,
-				3AF83A5B1C22BDDC003EDAC1 /* KeyTests.swift in Sources */,
-				3AF83A5C1C22BDDE003EDAC1 /* KeyFileTests.swift in Sources */,
-				3AF83A5A1C22BDD9003EDAC1 /* CryptoSecretBoxTests.swift in Sources */,
-				3AF83A611C22BDEA003EDAC1 /* IncrementTests.swift in Sources */,
-				3AF83A5D1C22BDE1003EDAC1 /* CryptoBoxTests.swift in Sources */,
-				3AF83A601C22BDE7003EDAC1 /* GenericHashTests.swift in Sources */,
-				3AF83A5F1C22BDE5003EDAC1 /* MemCmpTests.swift in Sources */,
-				3AF83A521C22BDD3003EDAC1 /* NaOHiOSTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3A410EB51C239C6000C1C879 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A410E9F1C239C6000C1C879 /* NaOHiOSTestHostApp */;
+			targetProxy = 3A410EB41C239C6000C1C879 /* PBXContainerItemProxy */;
+		};
 		3AAAC7B71B80AB40009431FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3AAAC7A91B80AB40009431FC /* NaOH */;
 			targetProxy = 3AAAC7B61B80AB40009431FC /* PBXContainerItemProxy */;
 		};
-		3AF83A561C22BDD3003EDAC1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3AF839C01C22BAE6003EDAC1 /* NaOH-iOS */;
-			targetProxy = 3AF83A551C22BDD3003EDAC1 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		3A410EA61C239C6000C1C879 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A410EA71C239C6000C1C879 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3A410EAB1C239C6000C1C879 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A410EAC1C239C6000C1C879 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		3A410EBB1C239C6000C1C879 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = NaOHiOSTestHostApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTestHostApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3A410EBC1C239C6000C1C879 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = NaOHiOSTestHostApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTestHostApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3A410EBE1C239C6000C1C879 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = NaOHiOSTestHostAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTestHostAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaOHiOSTestHostApp.app/NaOHiOSTestHostApp";
+			};
+			name = Debug;
+		};
+		3A410EBF1C239C6000C1C879 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = NaOHiOSTestHostAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTestHostAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaOHiOSTestHostApp.app/NaOHiOSTestHostApp";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		3AAAC7BC1B80AB40009431FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1202,36 +1355,25 @@
 			};
 			name = Release;
 		};
-		3AF83A581C22BDD3003EDAC1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = NaOHiOSTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		3AF83A591C22BDD3003EDAC1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = NaOHiOSTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3A410EBA1C239C6000C1C879 /* Build configuration list for PBXNativeTarget "NaOHiOSTestHostApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A410EBB1C239C6000C1C879 /* Debug */,
+				3A410EBC1C239C6000C1C879 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3A410EBD1C239C6000C1C879 /* Build configuration list for PBXNativeTarget "NaOHiOSTestHostAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A410EBE1C239C6000C1C879 /* Debug */,
+				3A410EBF1C239C6000C1C879 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		3AAAC7A41B80AB40009431FC /* Build configuration list for PBXProject "NaOH" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1266,14 +1408,7 @@
 				3AF839C71C22BAE6003EDAC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		3AF83A571C22BDD3003EDAC1 /* Build configuration list for PBXNativeTarget "NaOHiOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3AF83A581C22BDD3003EDAC1 /* Debug */,
-				3AF83A591C22BDD3003EDAC1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
