@@ -11,6 +11,10 @@
 //  in the LICENSE file.
 
 import Foundation
+#if SWIFT_PACKAGE_MANAGER
+import CSodium
+#endif
+
 public func sodium_random(size: Int) -> [UInt8] {
     var buf = [UInt8](count: size, repeatedValue: 0)
     randombytes_buf(&buf, size)

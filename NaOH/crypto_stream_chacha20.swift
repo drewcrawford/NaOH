@@ -11,6 +11,10 @@
 //  in the LICENSE file.
 
 import Foundation
+#if SWIFT_PACKAGE_MANAGER
+import CSodium
+#endif
+
 public let crypto_stream_chacha20_NONCESIZE = Int(crypto_stream_chacha20_NONCEBYTES)
 
 public extension Key {

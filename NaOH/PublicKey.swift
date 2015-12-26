@@ -11,6 +11,10 @@
 //  in the LICENSE file.
 
 import Foundation
+#if SWIFT_PACKAGE_MANAGER
+import CSodium
+#endif
+
 public final class PublicKey {
     public let bytes : [UInt8]
     public let secretKey : Key?

@@ -11,6 +11,9 @@
 //  in the LICENSE file.
 
 import Foundation
+#if SWIFT_PACKAGE_MANAGER
+import CSodium
+#endif
 
 /**Constant time memory comparison of arrays for cryptographic purposes
 - warning: Note that this is only constant time for constant-sized inputs.*/

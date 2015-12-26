@@ -11,6 +11,9 @@
 //  in the LICENSE file.
 
 import Foundation
+#if SWIFT_PACKAGE_MANAGER
+import CSodium
+#endif
 
 public let crypto_secretbox_NONCESIZE = Int(crypto_secretbox_NONCEBYTES)
 

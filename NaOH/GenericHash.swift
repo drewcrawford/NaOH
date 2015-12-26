@@ -7,6 +7,9 @@
 //
 
 import Foundation
+#if SWIFT_PACKAGE_MANAGER
+import CSodium
+#endif
 
 extension Array {
     public var genericHash: [UInt8] {

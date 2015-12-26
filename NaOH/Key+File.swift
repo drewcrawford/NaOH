@@ -11,6 +11,9 @@
 //  inthe LICENSE file.
 
 import Foundation
+#if SWIFT_PACKAGE_MANAGER
+import CSodium
+#endif
 
 extension Key {
     /**Saves the key to the file indicated.

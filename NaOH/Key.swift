@@ -11,6 +11,9 @@
 //  in the LICENSE file.
 
 import Foundation
+#if SWIFT_PACKAGE_MANAGER
+import CSodium
+#endif
 /**A secure key storage class.
 
 You should use this because:

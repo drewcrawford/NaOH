@@ -11,6 +11,9 @@
 //  in the LICENSE file.
 
 import Foundation
+#if SWIFT_PACKAGE_MANAGER
+import CSodium
+#endif
 
 extension Array {
     /**Increments an array of UInt8 (interpreted as an arbitrarily-long unsigned number) in a way resistant to timing attacks. */
