@@ -14,6 +14,9 @@ import Foundation
 #if SWIFT_PACKAGE_MANAGER
 import CSodium
 #endif
+#if os(Linux)
+import Glibc
+#endif
 
 extension Key {
     /**Saves the key to the file indicated.
@@ -42,7 +45,13 @@ extension Key {
     public convenience init (readFromFile file: String) throws {
         //check attributes
         let attributes = try NSFileManager.defaultManager().attributesOfItemAtPath(file)
-        if attributes[NSFilePosixPermissions]?.shortValue != 0o0600 {
+        #if SWIFT_PACKAGE_MANAGER
+            //corelibs-foundation does something odd here: https://github.com/apple/swift-corelibs-foundation/blame/master/Foundation/NSFileManager.swift#L324
+            let attribute = (attributes[NSFilePosixPermissions] as? NSNumber)?.shortValue
+        #else
+            let attribute = attributes[NSFilePosixPermissions]?.shortValue
+        #endif
+        if attribute != 0o0600 {
             throw NaOHError.FilePermissionsLookSuspicious
         }
         let mutableData = try NSMutableData(contentsOfFile: file, options: NSDataReadingOptions())

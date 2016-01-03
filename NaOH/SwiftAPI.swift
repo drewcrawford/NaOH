@@ -13,6 +13,7 @@
 import Foundation
 #if SWIFT_PACKAGE_MANAGER
 import CSodium
+import libdispatch
 #endif
 
 func sodium_init_wrap() {
@@ -30,7 +31,11 @@ func sodium_init_wrap() {
 func debugValue(var value: UnsafePointer<UInt8>, size: Int) -> String {
     var str = ""
     for i in 0..<size {
-        str += NSString(format: "%02X", value.memory) as String
+        #if SWIFT_PACKAGE_MANAGER
+            str += NSString(format: "%02X", value.memory).bridge() //⛏138
+        #else
+            str += NSString(format: "%02X", value.memory) as String
+        #endif
         if i != size - 1 { value = value.successor() }
     }
     return str

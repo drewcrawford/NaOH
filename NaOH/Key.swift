@@ -14,6 +14,19 @@ import Foundation
 #if SWIFT_PACKAGE_MANAGER
 import CSodium
 #endif
+
+#if SWIFT_PACKAGE_MANAGER
+    extension NSString {
+        public convenience init(format: NSString, _ args: CVarArgType...) {
+            let ptr = withVaList(args) { (vaPtr) -> CVaListPointer in
+                return vaPtr
+            }
+            self.init(format: format.bridge(), arguments: ptr) //⛏138
+        }
+    }
+
+#endif
+
 /**A secure key storage class.
 
 You should use this because:
@@ -65,7 +78,13 @@ public final class Key {
             }
             var str = ""
             for char in hash {
-                str += NSString(format: "%02X", char) as String
+                let format: NSString
+                format = NSString(format: "%02X", char)
+                #if SWIFT_PACKAGE_MANAGER
+                str += format.bridge() //⛏138
+                #else
+                str += format as String
+                #endif
             }
             return str
         }
@@ -103,10 +122,12 @@ public enum KeySizes {
 extension Key {
     public convenience init(password: String, salt: String, keySize: KeySizes) throws  {
         sodium_init_wrap()
-        let saltBytes = salt.cStringUsingEncoding(NSUTF8StringEncoding)!
+        let saltBytes = [UInt8](salt.utf8)
         precondition(saltBytes.count == Int(crypto_pwhash_scryptsalsa208sha256_SALTBYTES))
         
-        var bytes = password.cStringUsingEncoding(NSUTF8StringEncoding)!
+        var bytes = password.utf8.map { i8 in
+            Int8(i8)
+        }
         
         
         self.init(uninitializedSize: Int(keySize.size))

@@ -3,3 +3,9 @@ module CSodium [system] {
     link "../libsodium/libsodium/src/libsodium/.libs/libsodium.dylib"
     export *
 }
+
+module libdispatch [system] {
+    header "/usr/local/include/dispatch/dispatch.h"
+    link "dispatch"
+    export *
+}

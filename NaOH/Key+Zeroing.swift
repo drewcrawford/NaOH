@@ -14,6 +14,9 @@ import Foundation
 #if SWIFT_PACKAGE_MANAGER
 import CSodium
 #endif
+#if os(Linux)
+    import Glibc
+#endif
 
 extension Key {
     /**Creates a key from the existing memory, importing it into the NaOH memory system and zeroing out the source */
