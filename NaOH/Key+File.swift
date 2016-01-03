@@ -46,7 +46,7 @@ extension Key {
         //check attributes
         let attributes = try NSFileManager.defaultManager().attributesOfItemAtPath(file)
         #if SWIFT_PACKAGE_MANAGER
-            //corelibs-foundation does something odd here: https://github.com/apple/swift-corelibs-foundation/blame/master/Foundation/NSFileManager.swift#L324
+            //corelibs-foundation does something odd here; ⛏448
             let attribute = (attributes[NSFilePosixPermissions] as? NSNumber)?.shortValue
         #else
             let attribute = attributes[NSFilePosixPermissions]?.shortValue
