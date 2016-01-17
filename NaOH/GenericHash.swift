@@ -5,7 +5,9 @@
 //  Created by Drew Crawford on 12/12/15.
 //  Copyright © 2015 DrewCrawfordApps. All rights reserved.
 //
-
+#if ATBUILD
+    import CSodium
+#endif
 import Foundation
 
 extension Array {

@@ -1,0 +1,5 @@
+module CSodium [system] {
+    header "libsodium/src/libsodium/include/sodium.h"
+    link "sodium"
+    export *
+}

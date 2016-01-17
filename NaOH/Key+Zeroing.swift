@@ -9,7 +9,9 @@
 //  No part of NaOH, including this file, may be copied, modified,
 //  propagated, or distributed except according to the terms contained
 //  inthe LICENSE file.
-
+#if ATBUILD
+    import CSodium
+#endif
 import Foundation
 
 extension Key {

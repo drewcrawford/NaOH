@@ -11,6 +11,9 @@
 //  in the LICENSE file.
 
 import Foundation
+#if ATBUILD
+    import CSodium
+#endif
 
 func sodium_init_wrap() {
     struct Static {

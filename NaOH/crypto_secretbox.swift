@@ -12,6 +12,10 @@
 
 import Foundation
 
+#if ATBUILD
+    import CSodium
+#endif
+
 public let crypto_secretbox_NONCESIZE = Int(crypto_secretbox_NONCEBYTES)
 
 /**This is like crypto_secretbox, but it appends the nonce to the end of the ciphertext

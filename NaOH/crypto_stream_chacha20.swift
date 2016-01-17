@@ -9,7 +9,9 @@
 //  No part of NaOH, including this file, may be copied, modified,
 //  propagated, or distributed except according to the terms contained
 //  in the LICENSE file.
-
+#if ATBUILD
+    import CSodium
+#endif
 import Foundation
 public let crypto_stream_chacha20_NONCESIZE = Int(crypto_stream_chacha20_NONCEBYTES)
 

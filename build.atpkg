@@ -1,0 +1,18 @@
+(package
+  :name "NaOH"
+  
+  :tasks {
+    :libsodium {
+      :tool "shell"
+      :script "./libsodium/build.sh"
+    }
+    :default {
+      :tool "atllbuild"
+      :source ["NaOH/**.swift"]
+      :name "NaOH"
+      :outputType "static-library"
+      :dependencies ["libsodium"]
+      :compileOptions ["-I" "libsodium/"]
+    }
+  }
+)

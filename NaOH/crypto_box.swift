@@ -11,6 +11,9 @@
 //  inthe LICENSE file.
 
 import Foundation
+#if ATBUILD
+    import CSodium
+#endif
 
 public func crypto_box_nonce() -> Integer192Bit {
     return Integer192Bit(random: true)
