@@ -14,4 +14,5 @@ if [ ! -f Makefile ]; then
 fi
 if [ ! -f src/libsodium/.libs/libsodium.a ]; then
     make -j8
+    rm src/libsodium/.libs/libsodium.dylib
 fi

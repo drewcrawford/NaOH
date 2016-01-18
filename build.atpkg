@@ -12,7 +12,18 @@
       :name "NaOH"
       :outputType "static-library"
       :dependencies ["libsodium"]
-      :compileOptions ["-I" "libsodium/"]
+      :compileOptions ["-I" "libsodium/" "-enable-testing"]
+    }
+
+    :build-tests {
+      :tool "atllbuild"
+      :source ["NaOHTests/**.swift"]
+      :name "NaOHTests"
+      :outputType "executable"
+      :dependencies ["default"]
+      :compileOptions ["-F" "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/" "-I" "libsodium/"]
+      :linkOptions ["-F" "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/" "-L" "libsodium/libsodium/src/libsodium/.libs/" "-lsodium" "-target" "x86_64-apple-macosx10.11" "-Xlinker" "-rpath" "-Xlinker" "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/" "-Xlinker" "-bundle"]
+      :linkWithProduct ["NaOH.a"]
     }
   }
 )
