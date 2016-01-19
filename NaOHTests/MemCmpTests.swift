@@ -19,3 +19,11 @@ class MemCmpTests : XCTestCase {
         XCTAssert(!sodium_memcmp([1,2,3], [1,3,3]))
     }
 }
+#if ATBUILD
+extension MemCmpTests : XCTestCaseProvider {
+    var allTests : [(String, () -> Void)] {
+        return [
+            ("testMemCmp", testMemCmp)]
+    }
+}
+#endif

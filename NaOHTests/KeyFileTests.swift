@@ -34,3 +34,12 @@ class KeyFileTests : XCTestCase {
         XCTAssert(pk.bytes == pk2.bytes)
     }
 }
+
+extension KeyFileTests : XCTestCaseProvider {
+    var allTests : [(String, () -> Void)] {
+        return [
+            ("testKeyLoadSave", testKeyLoadSave),
+            ("testPublicKeyLoadSave",testPublicKeyLoadSave)
+        ]
+    }
+}

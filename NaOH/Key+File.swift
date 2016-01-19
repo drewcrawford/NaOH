@@ -14,6 +14,9 @@ import Foundation
 #if ATBUILD
 import CSodium
 #endif
+#if os(Linux)
+import Glibc //⛏567
+#endif
 
 extension Key {
     /**Saves the key to the file indicated.
@@ -42,7 +45,8 @@ extension Key {
     public convenience init (readFromFile file: String) throws {
         //check attributes
         let attributes = try NSFileManager.defaultManager().attributesOfItemAtPath(file)
-        if attributes[NSFilePosixPermissions]?.shortValue != 0o0600 {
+        guard let num = attributes[NSFilePosixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[NSFilePosixPermissions]) an NSNumber?") }
+        if num.shortValue != 0o0600 {
             throw NaOHError.FilePermissionsLookSuspicious
         }
         let mutableData = try NSMutableData(contentsOfFile: file, options: NSDataReadingOptions())

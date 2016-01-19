@@ -22,8 +22,13 @@ class CryptoBoxTests :XCTestCase {
     private let knownCiphertext : [UInt8] = [211, 170, 214, 228, 186, 238, 171, 198, 216, 148, 136, 65, 140, 6, 22, 100, 5, 32, 23]
     
     func aliceBob() -> (PublicKey, PublicKey) {
+        #if ATBUILD
+            let alicePath = "NaOHTests/alice.key"
+            let bobPath = "NaOHTests/bob.key"
+        #else
         let alicePath = NSBundle(forClass: CryptoBoxTests.self).pathForResource("alice", ofType: "key")!
         let bobPath = NSBundle(forClass: CryptoBoxTests.self).pathForResource("bob", ofType: "key")!
+        #endif
         
         //fix the permsisions on this key so we don't freak out the security goalie
         try! NSFileManager.defaultManager().setAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: alicePath)
@@ -46,5 +51,14 @@ class CryptoBoxTests :XCTestCase {
         let plain = try! crypto_box_open(knownCiphertext, to: alice.secretKey!, from: bob, nonce: notVeryNonce)
         XCTAssert(plain == knownPlaintext)
     }
-    
 }
+#if ATBUILD
+extension CryptoBoxTests : XCTestCaseProvider {
+    var allTests : [(String, () -> Void)] {
+        return [
+        ("testCryptoBox", testCryptoBox),
+        ("testCryptoBoxOpen", testCryptoBoxOpen)
+        ]
+    }
+}
+#endif

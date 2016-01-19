@@ -34,3 +34,12 @@ class IncrementTestsTests : XCTestCase {
         
     }
 }
+#if ATBUILD
+extension IncrementTestsTests : XCTestCaseProvider {
+        var allTests : [(String, () -> Void)] {
+            return [
+                ("testInteger192Bit", testInteger192Bit)
+            ]
+        }
+}
+#endif

@@ -27,3 +27,11 @@ class GenericHashTests : XCTestCase {
         XCTAssert(hash1 != ([0,1,2,3] as [UInt8]).genericHash)
     }
 }
+
+extension GenericHashTests : XCTestCaseProvider {
+    var allTests : [(String, () -> Void)] {
+        return [
+            ("testGenericHash", testGenericHash)
+        ]
+    }
+}

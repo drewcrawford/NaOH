@@ -1,0 +1,3 @@
+[submodule "AnarchyDispatch"]
+	path = AnarchyDispatch
+	url = git@github.com:AnarchyTools/AnarchyDispatch.git

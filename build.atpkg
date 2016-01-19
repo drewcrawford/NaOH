@@ -1,18 +1,30 @@
 (package
   :name "NaOH"
+
+  :import ["AnarchyDispatch/build.atpkg"]
   
   :tasks {
     :libsodium {
       :tool "shell"
       :script "./libsodium/build.sh"
     }
-    :default {
+
+    :NaOH {
       :tool "atllbuild"
       :source ["NaOH/**.swift"]
       :name "NaOH"
       :outputType "static-library"
-      :dependencies ["libsodium"]
+      :dependencies ["libsodium" "AnarchyDispatch.default"]
+
       :compileOptions ["-I" "libsodium/" "-enable-testing"]
+      :overlays {
+        :osx {
+          :overlay ["AnarchyDispatch.compile-osx"]
+        }
+        :linux {
+          :overlay ["AnarchyDispatch.compile-linux"]
+        }
+      }
     }
 
     :build-tests {
@@ -20,10 +32,26 @@
       :source ["NaOHTests/**.swift"]
       :name "NaOHTests"
       :outputType "executable"
-      :dependencies ["default"]
-      :compileOptions ["-F" "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/" "-I" "libsodium/"]
-      :linkOptions ["-F" "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/" "-L" "libsodium/libsodium/src/libsodium/.libs/" "-lsodium" "-target" "x86_64-apple-macosx10.11" "-Xlinker" "-rpath" "-Xlinker" "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/" "-Xlinker" "-bundle"]
+      :dependencies ["NaOH"]
+      :xctestify true
+      :xctestStrict true
+      :compileOptions ["-I" "libsodium/"]
+      :linkOptions ["-Xlinker" "libsodium/libsodium/src/libsodium/.libs/libsodium.a"]
       :linkWithProduct ["NaOH.a"]
+      :overlays {
+        :osx {
+          :overlay ["AnarchyDispatch.compile-osx"]
+        }
+        :linux {
+          :overlay ["AnarchyDispatch.compile-linux"]
+        }
+      }
+    }
+
+    :run-tests {
+      :tool "xctestrun"
+      :testExecutable ".atllbuild/products/NaOHTests"
+      :dependencies ["build-tests"]
     }
   }
 )

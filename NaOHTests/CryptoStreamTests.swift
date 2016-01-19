@@ -24,3 +24,10 @@ class CryptoStreamTestsTests : XCTestCase {
         XCTAssert(plaintext == [1,2,3])
     }
 }
+extension CryptoStreamTestsTests : XCTestCaseProvider {
+    var allTests : [(String, () -> Void)] {
+        return [
+            ("testChaCha20", testChaCha20)
+        ]
+    }
+}

@@ -12,6 +12,9 @@
 #if ATBUILD
     import CSodium
 #endif
+#if os(Linux)
+import Glibc //⛏567
+#endif
 import Foundation
 
 extension Key {

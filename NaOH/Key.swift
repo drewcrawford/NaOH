@@ -64,7 +64,7 @@ public final class Key {
             }
             var str = ""
             for char in hash {
-                str += NSString(format: "%02X", char) as String
+                str += String(format: "%02X", arguments: [char]) as String
             }
             return str
         }

@@ -13,6 +13,7 @@
 import Foundation
 #if ATBUILD
     import CSodium
+    import AnarchyDispatch
 #endif
 
 func sodium_init_wrap() {
@@ -30,7 +31,7 @@ func sodium_init_wrap() {
 func debugValue(var value: UnsafePointer<UInt8>, size: Int) -> String {
     var str = ""
     for i in 0..<size {
-        str += NSString(format: "%02X", value.memory) as String
+        str += String(format: "%02X", arguments: [value.memory]) as String
         if i != size - 1 { value = value.successor() }
     }
     return str

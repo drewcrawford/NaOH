@@ -58,4 +58,18 @@ class KeyTests : XCTestCase {
         XCTAssert(a == b)
     }
 }
+#if ATBUILD
+    extension KeyTests : XCTestCaseProvider {
+        var allTests : [(String, () -> Void)] {
+            return [
+                ("testKey", testKey),
+                ("testZeroImport", testZeroImport),
+                ("testCrypto", testCrypto),
+                ("testOverwriteKey",testOverwriteKey),
+                ("testCryptoBoxKey",testCryptoBoxKey),
+                ("testHumanReadable",testHumanReadable)
+            ]
+        }
+}
+#endif
 

@@ -42,4 +42,12 @@ class CryptoSecretBoxTests : XCTestCase {
     
 }
 
-import Foundation
+extension CryptoSecretBoxTests : XCTestCaseProvider {
+    var allTests : [(String, () -> Void)] {
+        return [
+        ("testEncrypt", testEncrypt),
+        ("testDecrypt", testDecrypt),
+        ("testBadDecrypt", testBadDecrypt)
+        ]
+    }
+}
