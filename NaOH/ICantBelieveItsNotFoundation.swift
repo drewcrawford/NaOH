@@ -21,4 +21,9 @@ extension String {
 }
 #endif
 
-
+//who defines NSTemporaryDirectory?
+#if os(Linux)
+    func NSTemporaryDirectory() -> String {
+        return "/tmp/"
+    }
+#endif
