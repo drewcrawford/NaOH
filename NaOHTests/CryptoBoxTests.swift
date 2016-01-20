@@ -31,8 +31,8 @@ class CryptoBoxTests :XCTestCase {
         #endif
         
         //fix the permsisions on this key so we don't freak out the security goalie
-        try! NSFileManager.defaultManager().setAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: alicePath)
-        try! NSFileManager.defaultManager().setAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: bobPath)
+        try! NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: alicePath)
+        try! NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: bobPath)
 
         let alice = try! PublicKey(readFromFile: alicePath)
         let bob = try! PublicKey(readFromFile: bobPath)

@@ -27,7 +27,7 @@ class GenericHashTests : XCTestCase {
         XCTAssert(hash1 != ([0,1,2,3] as [UInt8]).genericHash)
     }
 }
-
+#if ATBUILD
 extension GenericHashTests : XCTestCaseProvider {
     var allTests : [(String, () -> Void)] {
         return [
@@ -35,3 +35,4 @@ extension GenericHashTests : XCTestCaseProvider {
         ]
     }
 }
+#endif

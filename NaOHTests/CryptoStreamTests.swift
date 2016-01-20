@@ -24,6 +24,7 @@ class CryptoStreamTestsTests : XCTestCase {
         XCTAssert(plaintext == [1,2,3])
     }
 }
+#if ATBUILD
 extension CryptoStreamTestsTests : XCTestCaseProvider {
     var allTests : [(String, () -> Void)] {
         return [
@@ -31,3 +32,4 @@ extension CryptoStreamTestsTests : XCTestCaseProvider {
         ]
     }
 }
+#endif

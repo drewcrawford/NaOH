@@ -64,7 +64,7 @@ public final class Key {
             }
             var str = ""
             for char in hash {
-                str += String(format: "%02X", arguments: [char]) as String
+                str += NSString(format: "%02X", char).toString
             }
             return str
         }
@@ -103,7 +103,7 @@ extension Key {
     public convenience init(password: String, salt: String, keySize: KeySizes) throws  {
         sodium_init_wrap()
         let saltBytes = salt.cStringUsingEncoding(NSUTF8StringEncoding)!
-        precondition(saltBytes.count == Int(crypto_pwhash_scryptsalsa208sha256_SALTBYTES))
+        precondition(saltBytes.count == Int(crypto_pwhash_scryptsalsa208sha256_SALTBYTES), "\(saltBytes.count) is different than \(crypto_pwhash_scryptsalsa208sha256_SALTBYTES)")
         
         var bytes = password.cStringUsingEncoding(NSUTF8StringEncoding)!
         

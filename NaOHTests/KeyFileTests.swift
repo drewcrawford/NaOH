@@ -35,6 +35,7 @@ class KeyFileTests : XCTestCase {
     }
 }
 
+#if ATBUILD
 extension KeyFileTests : XCTestCaseProvider {
     var allTests : [(String, () -> Void)] {
         return [
@@ -43,3 +44,4 @@ extension KeyFileTests : XCTestCaseProvider {
         ]
     }
 }
+#endif

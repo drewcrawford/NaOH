@@ -30,7 +30,7 @@ extension Key {
         //create a locked down file
         //so that we only write if everything's good
         try NSData().writeToFile(file, options: NSDataWritingOptions())
-        try NSFileManager.defaultManager().setAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: file)
+        try NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: file)
         
         //with that out of the way
         try self.unlock()
