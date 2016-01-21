@@ -6,7 +6,7 @@
 
 import Foundation
 
-//SR-138
+//SR-138 ⛏
 #if os(Linux)
 extension String {
     @warn_unused_result
@@ -20,7 +20,7 @@ extension String {
     }
 }
 #endif
-//SR-138
+//SR-138 ⛏
 extension NSString {
     var toString: String {
         #if os(Linux)
