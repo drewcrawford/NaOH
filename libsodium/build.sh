@@ -1,6 +1,6 @@
 #!/bin/bash
 #install dependencies only if we don't have them
-deps=("make" "sed")
+deps=("make" "sed" "curl")
 install_deps() {
     apt-get update
     apt-get install --no-install-recommends -y ${deps[@]}
