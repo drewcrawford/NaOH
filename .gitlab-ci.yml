@@ -2,6 +2,9 @@ types:
   - test
   - package
 
+before_script: 
+    - git submodule update --init --recursive
+
 variables:
   XCSBOT: "fc03b092ecd597b3488984a34d029eec"
   XCSBOT_IOS: "8398cace692793b0b9d5ab1fe0964301"
@@ -94,10 +97,13 @@ atbuildMac:
     paths:
       - .atllbuild/products/NaOH.a
       - .atllbuild/products/NaOH.swiftmodule
+  except:
+    - CaveJohnsonAuto
 
 linux:
   type: test
   script:
+        - echo $docker_tag "docker_tag"
         - docker build -t $docker_tag .
         - id=$(docker create $docker_tag)
         - mkdir bin
@@ -108,5 +114,9 @@ linux:
   artifacts: 
     paths:
         - bin/
+
+  except:
+    - CaveJohnsonAuto
+
   tags:
   - docker
