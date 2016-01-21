@@ -9,7 +9,7 @@ variables:
   XCSBOT: "fc03b092ecd597b3488984a34d029eec"
   XCSBOT_IOS: "8398cace692793b0b9d5ab1fe0964301"
 
-  docker_tag: "NaOH"
+  docker_tag: "naoh"
   cli_executable: "NaOH"
 
   GITLAB_PROJECT_ID: "9"
