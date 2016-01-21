@@ -111,6 +111,7 @@
 		3AC7C1BF1BC157A20036FABB /* memcmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7C1BE1BC157A20036FABB /* memcmp.swift */; };
 		3AC7C1C11BC1594D0036FABB /* MemCmpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7C1C01BC1594D0036FABB /* MemCmpTests.swift */; };
 		3AD35A341C14E3FB0095BFB4 /* PublicKey+Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD35A331C14E3FB0095BFB4 /* PublicKey+Human.swift */; };
+		3ADBD2CF1C519E1800268AA6 /* ICantBelieveItsNotFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA296431C4D4BC200163C2D /* ICantBelieveItsNotFoundation.swift */; };
 		3AF839C91C22BB28003EDAC1 /* NaOH.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AAAC7AD1B80AB40009431FC /* NaOH.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF839CA1C22BB38003EDAC1 /* SwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F681B80AC130092BA60 /* SwiftAPI.swift */; };
 		3AF839CB1C22BB38003EDAC1 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F691B80AC130092BA60 /* Key.swift */; };
@@ -1071,6 +1072,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ADBD2CF1C519E1800268AA6 /* ICantBelieveItsNotFoundation.swift in Sources */,
 				3AF839D51C22BB3F003EDAC1 /* PublicKey+Human.swift in Sources */,
 				3AF839D71C22BB3F003EDAC1 /* increment.swift in Sources */,
 				3AF839D61C22BB3F003EDAC1 /* GenericHash.swift in Sources */,
