@@ -107,8 +107,8 @@ linux:
         - docker build -t $docker_tag .
         - id=$(docker create $docker_tag)
         - mkdir bin
-        - docker cp $id:$docker_tag/NaOH/.atllbuild/products/${cli_executable}.swiftmodule bin/$cli_executable
-        - docker cp $id:$docker_tag/NaOH.atllbuild/products/${cli_executable}.a bin/$cli_executable
+        - docker cp $id:/NaOH/.atllbuild/products/${cli_executable}.swiftmodule bin/$cli_executable
+        - docker cp $id:/NaOH/.atllbuild/products/${cli_executable}.a bin/$cli_executable
         - docker rm -v $id
         - docker rmi $docker_tag
   artifacts: 
