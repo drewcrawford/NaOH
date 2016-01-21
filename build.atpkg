@@ -48,7 +48,7 @@
       }
     }
 
-    :run-tests {
+    :check {
       :tool "xctestrun"
       :testExecutable ".atllbuild/products/NaOHTests"
       :dependencies ["build-tests"]

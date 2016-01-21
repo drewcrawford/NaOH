@@ -6,6 +6,9 @@ variables:
   XCSBOT: "fc03b092ecd597b3488984a34d029eec"
   XCSBOT_IOS: "8398cace692793b0b9d5ab1fe0964301"
 
+  docker_tag: "NaOH"
+  cli_executable: "NaOH"
+
   GITLAB_PROJECT_ID: "9"
   FRAMEWORK_NAME: "NaOH"
 
@@ -18,8 +21,8 @@ testMac:
     - "echo XCS BUILDNO $XCSBUILDNO"
     - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI waitForIntegration --hostname localhost --botID $XCSBOT --sslPolicy localhost --buildNumber $XCSBUILDNO"
     - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsStatusToShell --hostname localhost --botID $XCSBOT --sslPolicy localhost --buildNumber $XCSBUILDNO"
-  only:
-    - master
+  except:
+    - CaveJohnsonAuto
   tags:
     - xc7
 
@@ -32,8 +35,8 @@ testiOS:
     - "echo XCS BUILDNO $XCSBUILDNO"
     - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI waitForIntegration --hostname localhost --botID $XCSBOT_IOS --sslPolicy localhost --buildNumber $XCSBUILDNO"
     - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsStatusToShell --hostname localhost --botID $XCSBOT_IOS --sslPolicy localhost --buildNumber $XCSBUILDNO"
-  only:
-    - master
+  except:
+    - CaveJohnsonAuto
   tags:
     - xc7
 
@@ -50,8 +53,8 @@ archiveiOS:
       - "rm -rf /tmp/$FRAMEWORK_NAME/"
       - "mkdir -p /tmp/$FRAMEWORK_NAME"
       - "mv $FRAMEWORK_NAME.framework.zip /tmp/$FRAMEWORK_NAME/$ZIPFILE"
-   only:
-    - master
+   except:
+    - CaveJohnsonAuto
 
    artifacts:
       paths:
@@ -70,9 +73,38 @@ archiveMac:
       - "rm -rf /tmp/$FRAMEWORK_NAME/"
       - "mkdir -p /tmp/$FRAMEWORK_NAME"
       - "mv $FRAMEWORK_NAME.framework.zip /tmp/$FRAMEWORK_NAME/$ZIPFILE"
-   only:
-    - master
+   except:
+    - CaveJohnsonAuto
 
    artifacts:
       paths:
       - /tmp/NaOH/
+
+atbuildMac:
+  type: test
+  script:
+    - atbuild check
+
+  tags:
+    - osx
+    - atbuild
+    - openswift
+
+  artifacts:
+    paths:
+      - .atllbuild/products/NaOH.a
+      - .atllbuild/products/NaOH.swiftmodule
+
+linux:
+  type: test
+  script:
+        - docker build -t $docker_tag .
+        - id=$(docker create $docker_tag)
+        - mkdir bin
+        - docker cp $id:$docker_tag/.atllbuild/products/${cli_executable}.swiftmodule bin/$cli_executable
+        - docker cp $id:$docker_tag/.atllbuild/products/${cli_executable}.a bin/$cli_executable
+        - docker rm -v $id
+        - docker rmi $docker_tag
+  artifacts: bin/
+  tags:
+  - docker

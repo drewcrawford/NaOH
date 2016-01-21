@@ -6,4 +6,4 @@ ADD atbuild /usr/local/bin/atbuild
 #RUN tar xf atbuild.tar.xz -C /usr/local
 ADD . /NaOH
 WORKDIR NaOH
-RUN LD_LIBRARY_PATH=AnarchyDispatch/build/lib atbuild run-tests --overlay linux
+RUN LD_LIBRARY_PATH=AnarchyDispatch/build/lib atbuild check --overlay linux
