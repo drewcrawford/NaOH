@@ -105,6 +105,8 @@ linux:
         - docker cp $id:$docker_tag/.atllbuild/products/${cli_executable}.a bin/$cli_executable
         - docker rm -v $id
         - docker rmi $docker_tag
-  artifacts: bin/
+  artifacts: 
+    paths:
+        - bin/
   tags:
   - docker
