@@ -1,6 +1,6 @@
 #!/bin/bash
 #install dependencies only if we don't have them
-deps=("make" "sed" "curl")
+deps=("make" "sed" "curl" "ca-certificates")
 install_deps() {
     apt-get update
     apt-get install --no-install-recommends -y ${deps[@]}
