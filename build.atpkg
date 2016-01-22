@@ -36,7 +36,7 @@
       :xctestify true
       :xctestStrict true
       :compileOptions ["-I" "libsodium/"]
-      :linkOptions ["-Xlinker" "libsodium/libsodium/src/libsodium/.libs/libsodium.a"]
+      :linkOptions ["-Xlinker" "libsodium/libsodium/src/libsodium/.libs/libsodium.a" "-Xlinker" "-ObjC"]
       :linkWithProduct ["NaOH.a"]
       :overlays {
         :osx {
