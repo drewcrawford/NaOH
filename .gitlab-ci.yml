@@ -59,6 +59,9 @@ archiveiOS:
    except:
     - CaveJohnsonAuto
 
+   tags:
+    - xc7
+
    artifacts:
       paths:
       - /tmp/NaOH/
@@ -82,6 +85,9 @@ archiveMac:
    artifacts:
       paths:
       - /tmp/NaOH/
+
+   tags:
+    - xc7
 
 atbuildMac:
   type: test
