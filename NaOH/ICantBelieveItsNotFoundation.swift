@@ -6,20 +6,7 @@
 
 import Foundation
 
-//SR-138 ⛏
-#if os(Linux)
-extension String {
-    @warn_unused_result
-    public func cStringUsingEncoding(encoding: NSStringEncoding) -> [CChar]? {
-        let strNS = self.bridge()
-        let bytes = strNS.cStringUsingEncoding(NSUTF8StringEncoding)
-        let bfrPointer = UnsafeBufferPointer(start: bytes, count: strNS.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)+1)
-        var arr = [CChar](bfrPointer)
-        strNS.description //don't optimize out
-        return arr
-    }
-}
-#endif
+
 //SR-138 ⛏
 extension NSString {
     var toString: String {
