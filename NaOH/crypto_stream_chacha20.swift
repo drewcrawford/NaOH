@@ -23,7 +23,9 @@ public extension Key {
     }
 }
 
-public func crypto_stream_chacha20_xor(var message: [UInt8], var nonce: [UInt8], key: Key) -> [UInt8] {
+public func crypto_stream_chacha20_xor(message: [UInt8], nonce: [UInt8], key: Key) -> [UInt8] {
+    var nonce = nonce
+    var message = message
     precondition(key.size == Int(crypto_stream_chacha20_KEYBYTES))
     precondition(nonce.count==crypto_stream_chacha20_NONCESIZE)
     var xored : [UInt8] = [UInt8](count: message.count, repeatedValue: 0)

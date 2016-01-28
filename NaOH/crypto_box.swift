@@ -31,14 +31,16 @@ public func crypto_box_appendnonce(plaintext: [UInt8], to: PublicKey, from: Key,
 }
 
 /**The companion to crypto_box_appendnonce */
-public func crypto_box_open_appendnonce(var ciphertextAndNonce: [UInt8], to: Key, from: PublicKey) throws -> [UInt8]  {
+public func crypto_box_open_appendnonce(ciphertextAndNonce: [UInt8], to: Key, from: PublicKey) throws -> [UInt8]  {
     let ciphertext = ciphertextAndNonce[0..<ciphertextAndNonce.count - Int(crypto_box_NONCEBYTES)]
     let nonce = Integer192Bit(array: [UInt8](ciphertextAndNonce[ciphertext.count..<ciphertextAndNonce.count]))
     return try crypto_box_open([UInt8](ciphertext), to: to, from: from, nonce: nonce)
 }
 
 
-public func crypto_box(var plaintext: [UInt8], to: PublicKey, from: Key, var nonce: Integer192Bit) throws -> [UInt8] {
+public func crypto_box(plaintext: [UInt8], to: PublicKey, from: Key, nonce: Integer192Bit) throws -> [UInt8] {
+    var plaintext = plaintext
+    var nonce = nonce
     precondition(nonce.byteRepresentation.count == Int(crypto_box_NONCEBYTES),"Invalid nonce size \(nonce.byteRepresentation.count).")
     var ciphertext = [UInt8](count: Int(crypto_box_macbytes()) + plaintext.count, repeatedValue: 0)
     try! from.unlock()
@@ -49,7 +51,9 @@ public func crypto_box(var plaintext: [UInt8], to: PublicKey, from: Key, var non
     return ciphertext
 }
 
-public func crypto_box_open(var ciphertext: [UInt8], to: Key, from: PublicKey, var nonce: Integer192Bit) throws -> [UInt8]  {
+public func crypto_box_open(ciphertext: [UInt8], to: Key, from: PublicKey, nonce: Integer192Bit) throws -> [UInt8]  {
+    var ciphertext = ciphertext
+    var nonce = nonce
     precondition(nonce.byteRepresentation.count == Int(crypto_box_NONCEBYTES))
     var plaintext = [UInt8](count: ciphertext.count - crypto_box_macbytes(), repeatedValue: 0)
     try! to.unlock()

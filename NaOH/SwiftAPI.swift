@@ -28,7 +28,8 @@ func sodium_init_wrap() {
 }
 
 
-func debugValue(var value: UnsafePointer<UInt8>, size: Int) -> String {
+func debugValue(value: UnsafePointer<UInt8>, size: Int) -> String {
+    var value = value
     var str = ""
     for i in 0..<size {
         str += String(format: "%02X", arguments: [value.memory]) as String
