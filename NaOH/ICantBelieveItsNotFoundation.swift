@@ -49,19 +49,6 @@ extension NSFileManager {
             default:
                 fatalError("Attribute type not implemented: \(attribute)")
             }
-            
         }
     }
 }
-
-//missing constructor
-#if os(Linux)
-extension NSString {
-    convenience init(format: String, _ args: CVarArgType...) {
-        let str = withVaList(args) { (listPtr) -> NSString in
-            return NSString(format: format, arguments: listPtr)
-        }
-        self.init(string: str.bridge())
-    }
-}
-#endif
