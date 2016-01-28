@@ -9,7 +9,7 @@
       :script "./libsodium/build.sh"
     }
 
-    :NaOH {
+    :default {
       :tool "atllbuild"
       :source ["NaOH/**.swift"]
       :name "NaOH"
@@ -32,7 +32,7 @@
       :source ["NaOHTests/**.swift"]
       :name "NaOHTests"
       :outputType "executable"
-      :dependencies ["NaOH"]
+      :dependencies ["default"]
       :xctestify true
       :xctestStrict true
       :compileOptions ["-I" "libsodium/"]
