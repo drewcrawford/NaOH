@@ -18,7 +18,7 @@ extension NSString {
     }
 }
 
-//who defines NSTemporaryDirectory?
+//https://github.com/apple/swift-corelibs-foundation/pull/242
 #if os(Linux)
     func NSTemporaryDirectory() -> String {
         return "/tmp/"
