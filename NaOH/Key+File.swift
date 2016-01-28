@@ -14,9 +14,6 @@ import Foundation
 #if ATBUILD
 import CSodium
 #endif
-#if os(Linux)
-import Glibc //⛏567
-#endif
 
 extension Key {
     /**Saves the key to the file indicated.

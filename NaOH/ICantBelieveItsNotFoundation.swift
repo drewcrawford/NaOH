@@ -25,10 +25,6 @@ extension NSString {
     }
 #endif
 
-#if os(Linux)
-    import Glibc //⛏567
-#endif
-
 //setAttributesOfItemAtPath isn't implemented
 //https://github.com/apple/swift-corelibs-foundation/pull/243
 extension NSFileManager {
