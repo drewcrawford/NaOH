@@ -30,6 +30,7 @@ extension NSString {
 #endif
 
 //setAttributesOfItemAtPath isn't implemented
+//https://github.com/apple/swift-corelibs-foundation/pull/243
 extension NSFileManager {
     func setSWIFTBUGAttributes(attributes: [String : AnyObject], ofItemAtPath path: String) throws {
         for attribute in attributes.keys {
