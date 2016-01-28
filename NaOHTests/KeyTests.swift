@@ -60,7 +60,7 @@ class KeyTests : XCTestCase {
 }
 #if ATBUILD
     extension KeyTests : XCTestCaseProvider {
-        var allTests : [(String, () -> Void)] {
+        var allTests : [(String, () throws -> Void)] {
             return [
                 ("testKey", testKey),
                 ("testZeroImport", testZeroImport),

@@ -29,7 +29,7 @@ class GenericHashTests : XCTestCase {
 }
 #if ATBUILD
 extension GenericHashTests : XCTestCaseProvider {
-    var allTests : [(String, () -> Void)] {
+    var allTests : [(String, () throws -> Void)] {
         return [
             ("testGenericHash", testGenericHash)
         ]

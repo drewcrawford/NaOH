@@ -37,7 +37,7 @@ class KeyFileTests : XCTestCase {
 
 #if ATBUILD
 extension KeyFileTests : XCTestCaseProvider {
-    var allTests : [(String, () -> Void)] {
+    var allTests : [(String, () throws -> Void)] {
         return [
             ("testKeyLoadSave", testKeyLoadSave),
             ("testPublicKeyLoadSave",testPublicKeyLoadSave)

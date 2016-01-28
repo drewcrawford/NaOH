@@ -54,7 +54,7 @@ class CryptoBoxTests :XCTestCase {
 }
 #if ATBUILD
 extension CryptoBoxTests : XCTestCaseProvider {
-    var allTests : [(String, () -> Void)] {
+    var allTests : [(String, () throws -> Void)] {
         return [
         ("testCryptoBox", testCryptoBox),
         ("testCryptoBoxOpen", testCryptoBoxOpen)

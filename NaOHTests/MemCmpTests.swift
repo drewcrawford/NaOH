@@ -21,7 +21,7 @@ class MemCmpTests : XCTestCase {
 }
 #if ATBUILD
 extension MemCmpTests : XCTestCaseProvider {
-    var allTests : [(String, () -> Void)] {
+    var allTests : [(String, () throws -> Void)] {
         return [
             ("testMemCmp", testMemCmp)]
     }

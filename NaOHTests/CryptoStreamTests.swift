@@ -26,7 +26,7 @@ class CryptoStreamTestsTests : XCTestCase {
 }
 #if ATBUILD
 extension CryptoStreamTestsTests : XCTestCaseProvider {
-    var allTests : [(String, () -> Void)] {
+    var allTests : [(String, () throws -> Void)] {
         return [
             ("testChaCha20", testChaCha20)
         ]

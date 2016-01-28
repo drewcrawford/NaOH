@@ -36,7 +36,7 @@ class IncrementTestsTests : XCTestCase {
 }
 #if ATBUILD
 extension IncrementTestsTests : XCTestCaseProvider {
-        var allTests : [(String, () -> Void)] {
+        var allTests : [(String, () throws -> Void)] {
             return [
                 ("testInteger192Bit", testInteger192Bit)
             ]
