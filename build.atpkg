@@ -1,7 +1,7 @@
 (package
   :name "NaOH"
 
-  :import ["AnarchyDispatch/build.atpkg"]
+  :import-packages ["AnarchyDispatch/build.atpkg"]
   
   :tasks {
     :libsodium {
@@ -11,46 +11,46 @@
 
     :default {
       :tool "atllbuild"
-      :source ["NaOH/**.swift"]
+      :sources ["NaOH/**.swift"]
       :name "NaOH"
-      :outputType "static-library"
+      :output-type "static-library"
       :dependencies ["libsodium" "AnarchyDispatch.default"]
 
-      :compileOptions ["-I" "libsodium/" "-enable-testing"]
+      :compile-options ["-I" "libsodium/" "-enable-testing"]
       :overlays {
         :osx {
-          :overlay ["AnarchyDispatch.compile-osx"]
+          :use-overlays ["AnarchyDispatch.compile-osx"]
         }
         :linux {
-          :overlay ["AnarchyDispatch.compile-linux"]
+          :use-overlays ["AnarchyDispatch.compile-linux"]
         }
       }
     }
 
     :build-tests {
       :tool "atllbuild"
-      :source ["NaOHTests/**.swift"]
+      :sources ["NaOHTests/**.swift"]
       :name "NaOHTests"
-      :outputType "executable"
+      :output-type "executable"
       :dependencies ["default"]
       :xctestify true
-      :xctestStrict true
-      :compileOptions ["-I" "libsodium/"]
-      :linkOptions ["-Xlinker" "libsodium/libsodium/src/libsodium/.libs/libsodium.a" "-Xlinker" "-ObjC"]
-      :linkWithProduct ["NaOH.a"]
+      :xctest-strict true
+      :compile-options ["-I" "libsodium/"]
+      :link-options ["-Xlinker" "libsodium/libsodium/src/libsodium/.libs/libsodium.a" "-Xlinker" "-ObjC"]
+      :link-with ["NaOH.a"]
       :overlays {
         :osx {
-          :overlay ["AnarchyDispatch.compile-osx"]
+          :use-overlays ["AnarchyDispatch.compile-osx"]
         }
         :linux {
-          :overlay ["AnarchyDispatch.compile-linux"]
+          :use-overlays ["AnarchyDispatch.compile-linux"]
         }
       }
     }
 
     :check {
       :tool "xctestrun"
-      :testExecutable ".atllbuild/products/NaOHTests"
+      :test-executable ".atllbuild/products/NaOHTests"
       :dependencies ["build-tests"]
     }
   }
