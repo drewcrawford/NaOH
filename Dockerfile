@@ -18,4 +18,4 @@ RUN atbuild libsodium
 
 
 ADD . /NaOH
-RUN LD_LIBRARY_PATH=AnarchyDispatch/build/lib atbuild check --overlay linux
+RUN LD_LIBRARY_PATH=AnarchyDispatch/build/lib atbuild check --use-overlay linux

@@ -92,7 +92,7 @@ archiveMac:
 atbuildMac:
   type: test
   script:
-    - atbuild check --overlay osx
+    - atbuild check --use-overlay osx
 
   tags:
     - osx
