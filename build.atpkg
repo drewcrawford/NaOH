@@ -15,6 +15,7 @@
       :name "NaOH"
       :output-type "static-library"
       :dependencies ["libsodium" "AnarchyDispatch.default"]
+      :publish-product true
 
       :compile-options ["-I" "libsodium/" "-enable-testing"]
       :overlays {
@@ -38,6 +39,7 @@
       :compile-options ["-I" "libsodium/"]
       :link-options ["-Xlinker" "libsodium/libsodium/src/libsodium/.libs/libsodium.a" "-Xlinker" "-ObjC"]
       :link-with ["NaOH.a"]
+      :publish-product true
       :overlays {
         :osx {
           :use-overlays ["AnarchyDispatch.compile-osx"]
@@ -50,7 +52,7 @@
 
     :check {
       :tool "xctestrun"
-      :test-executable ".atllbuild/products/NaOHTests"
+      :test-executable "bin/NaOHTests"
       :dependencies ["build-tests"]
     }
   }
