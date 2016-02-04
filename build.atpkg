@@ -55,5 +55,10 @@
       :test-executable "bin/NaOHTests"
       :dependencies ["build-tests"]
     }
+
+    :clean {
+      :tool "shell"
+      :script "rm -rf libsodium/libsodium"
+    }
   }
 )
