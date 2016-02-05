@@ -12,7 +12,6 @@
 
 import Foundation
 #if ATBUILD
-    import CSodium
     import AnarchyDispatch
 #endif
 

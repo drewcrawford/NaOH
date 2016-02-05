@@ -1,6 +1,7 @@
 #!/bin/bash
 #install dependencies only if we don't have them
 deps=("make" "sed" "curl" "ca-certificates")
+ln -s `pwd`/libsodium $ATBUILD_USER_PATH/libsodium
 install_deps() {
     apt-get update
     apt-get install --no-install-recommends -y ${deps[@]}

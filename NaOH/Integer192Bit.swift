@@ -9,9 +9,7 @@
 //  No part of NaOH, including this file, may be copied, modified,
 //  propagated, or distributed except according to the terms contained
 //  in the LICENSE file.
-#if ATBUILD
-    import CSodium
-#endif
+
 import Foundation
 
 public struct Integer192Bit {
