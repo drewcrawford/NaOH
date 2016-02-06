@@ -1,7 +1,7 @@
 FROM drewcrawford/swift:latest
 #install atbuild
 RUN apt-get update && apt-get install --no-install-recommends xz-utils -y
-ADD https://github.com/AnarchyTools/atbuild/releases/download/0.6.0/atbuild-0.6.0-linux.tar.xz /atbuild.tar.xz
+ADD https://github.com/AnarchyTools/atbuild/releases/download/0.7.0/atbuild-0.7.0-linux.tar.xz /atbuild.tar.xz
 RUN tar xf atbuild.tar.xz -C /usr/local
 
 #provide some relief for caching
