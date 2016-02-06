@@ -15,7 +15,7 @@
       :name "NaOH"
       :output-type "static-library"
       :dependencies ["libsodium" "AnarchyDispatch.default"]
-      :umbrella-header "NaOH-atbuild.h"
+      :umbrella-header "NaOH/NaOH-atbuild.h"
       :module-map "synthesized"
       :compile-options ["-enable-testing"]
       :include-with-user ["libsodium/libsodium/src/libsodium/include/"]
@@ -27,6 +27,7 @@
           :use-overlays ["AnarchyDispatch.compile-linux"]
         }
       }
+      :require-overlays [["osx" "linux"]]
     }
 
     :build-tests {
