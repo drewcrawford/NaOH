@@ -18,13 +18,6 @@ extension NSString {
     }
 }
 
-//https://github.com/apple/swift-corelibs-foundation/pull/242
-#if os(Linux)
-    func NSTemporaryDirectory() -> String {
-        return "/tmp/"
-    }
-#endif
-
 //setAttributesOfItemAtPath isn't implemented
 //https://github.com/apple/swift-corelibs-foundation/pull/243
 extension NSFileManager {
