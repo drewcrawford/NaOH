@@ -1,6 +1,12 @@
 (package
   :name "NaOH"
 
+  :overlays {
+    :link {
+      :link-options ["-Xlinker" "user/libsodium/libsodium/src/libsodium/.libs/libsodium.a"]
+    }
+  }
+
   :import-packages ["AnarchyDispatch/build.atpkg"]
   
   :tasks {
@@ -39,8 +45,10 @@
       :xctestify true
       :xctest-strict true
       :compile-options ["-I" "libsodium/"]
-      :link-options ["-Xlinker" "libsodium/libsodium/src/libsodium/.libs/libsodium.a" "-Xlinker" "-ObjC"]
       :link-with ["NaOH.a"]
+      :use-overlays ["link"]
+      :link-options ["-Xlinker" "-ObjC"]
+
       :overlays {
         :osx {
           :use-overlays ["AnarchyDispatch.compile-osx"]
