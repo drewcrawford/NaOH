@@ -64,5 +64,11 @@
       :test-executable ".atllbuild/products/NaOHTests"
       :dependencies ["build-tests"]
     }
+
+    :clean {
+      :tool "shell"
+      :script "rm -rf user/libsodium && rm -rf libsodium/libsodium"
+      :dependencies ["AnarchyDispatch.clean"]
+    }
   }
 )
