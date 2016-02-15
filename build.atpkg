@@ -1,7 +1,5 @@
 (package
   :name "NaOH"
-
-  :import-packages ["AnarchyDispatch/build.atpkg"]
   
   :tasks {
     :libsodium {
@@ -14,16 +12,15 @@
       :sources ["NaOH/**.swift"]
       :name "NaOH"
       :output-type "static-library"
-      :dependencies ["libsodium" "AnarchyDispatch.default"]
+      :dependencies ["libsodium"]
       :publish-product true
 
       :compile-options ["-I" "libsodium/" "-enable-testing"]
       :overlays {
         :osx {
-          :use-overlays ["AnarchyDispatch.compile-osx"]
         }
         :linux {
-          :use-overlays ["AnarchyDispatch.compile-linux"]
+          :compile-options ["-I" "/usr/local/include/dispatch/haxx" "-Xcc" "-fblocks"]
         }
       }
     }
@@ -42,10 +39,9 @@
       :publish-product true
       :overlays {
         :osx {
-          :use-overlays ["AnarchyDispatch.compile-osx"]
         }
         :linux {
-          :use-overlays ["AnarchyDispatch.compile-linux"]
+          :compile-options ["-I" "/usr/local/include/dispatch/haxx" "-Xcc" "-fblocks"]
         }
       }
     }

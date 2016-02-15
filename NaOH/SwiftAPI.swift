@@ -13,7 +13,9 @@
 import Foundation
 #if ATBUILD
     import CSodium
-    import AnarchyDispatch
+#endif
+#if os(Linux)
+    import Dispatch
 #endif
 
 func sodium_init_wrap() {
