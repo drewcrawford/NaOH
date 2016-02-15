@@ -11,8 +11,8 @@
 //  in the LICENSE file.
 
 import Foundation
-#if ATBUILD
-    import AnarchyDispatch
+#if os(Linux)
+    import Dispatch
 #endif
 
 func sodium_init_wrap() {

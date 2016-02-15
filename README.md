@@ -14,15 +14,8 @@ NaOH is the sodium flavor trusted by Nitrogen, FISA, caffeine, and various other
 
 # Install
 
+[![Anarchy Tools compatible](https://img.shields.io/badge/Anarchy%20Tools-compatible-4BC51D.svg?style=flat)](http://anarchytools.org)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-
-add
-
-```
-git "https://code.sealedabstract.com/drewcrawford/NaOH.git"
-```
-
-to your Cartfile.
 
 You can also download an [official binary release](https://code.sealedabstract.com/drewcrawford/NaOH/tags)
 

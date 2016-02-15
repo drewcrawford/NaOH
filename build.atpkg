@@ -7,7 +7,6 @@
     }
   }
 
-  :import-packages ["AnarchyDispatch/build.atpkg"]
   
   :tasks {
     :libsodium {
@@ -20,17 +19,17 @@
       :sources ["NaOH/**.swift"]
       :name "NaOH"
       :output-type "static-library"
-      :dependencies ["libsodium" "AnarchyDispatch.default"]
+      :dependencies ["libsodium"]
       :umbrella-header "NaOH/NaOH-atbuild.h"
+      :publish-product true
       :module-map "synthesized"
       :compile-options ["-enable-testing"]
       :include-with-user ["libsodium/libsodium/src/libsodium/include/"]
       :overlays {
         :osx {
-          :use-overlays ["AnarchyDispatch.compile-osx"]
         }
         :linux {
-          :use-overlays ["AnarchyDispatch.compile-linux"]
+          :compile-options ["-I" "/usr/local/include/dispatch/haxx" "-Xcc" "-fblocks"]
         }
       }
       :require-overlays [["osx" "linux"]]
@@ -49,26 +48,25 @@
       :use-overlays ["link"]
       :link-options ["-Xlinker" "-ObjC"]
 
+      :publish-product true
       :overlays {
         :osx {
-          :use-overlays ["AnarchyDispatch.compile-osx"]
         }
         :linux {
-          :use-overlays ["AnarchyDispatch.compile-linux"]
+          :compile-options ["-I" "/usr/local/include/dispatch/haxx" "-Xcc" "-fblocks"]
         }
       }
     }
 
     :check {
       :tool "xctestrun"
-      :test-executable ".atllbuild/products/NaOHTests"
+      :test-executable "bin/NaOHTests"
       :dependencies ["build-tests"]
     }
 
     :clean {
       :tool "shell"
-      :script "rm -rf user/libsodium && rm -rf libsodium/libsodium"
-      :dependencies ["AnarchyDispatch.clean"]
+      :script "rm -rf libsodium/libsodium"
     }
   }
 )

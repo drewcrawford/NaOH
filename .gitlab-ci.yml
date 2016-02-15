@@ -101,8 +101,8 @@ atbuildMac:
 
   artifacts:
     paths:
-      - .atllbuild/products/NaOH.a
-      - .atllbuild/products/NaOH.swiftmodule
+      - bin/NaOH.a
+      - bin/NaOH.swiftmodule
   except:
     - CaveJohnsonAuto
 
@@ -113,8 +113,8 @@ linux:
         - docker build -t $docker_tag .
         - id=$(docker create $docker_tag)
         - mkdir bin
-        - docker cp $id:/NaOH/.atllbuild/products/${cli_executable}.swiftmodule bin/$cli_executable
-        - docker cp $id:/NaOH/.atllbuild/products/${cli_executable}.a bin/$cli_executable
+        - docker cp $id:/NaOH/bin/${cli_executable}.swiftmodule bin/$cli_executable
+        - docker cp $id:/NaOH/bin/${cli_executable}.a bin/${cli_executable}.a
         - docker rm -v $id
         - docker rmi $docker_tag
   artifacts: 
