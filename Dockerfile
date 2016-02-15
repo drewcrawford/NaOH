@@ -10,8 +10,7 @@ RUN tar xf atbuild.tar.xz -C /usr/local
 WORKDIR NaOH
 # libsodium
 ADD libsodium /NaOH/libsodium
-RUN atbuild libsodium
-
+RUN libsodium/build.sh
 
 ADD . /NaOH
 RUN atbuild check --use-overlay linux
