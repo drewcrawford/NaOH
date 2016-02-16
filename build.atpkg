@@ -32,7 +32,7 @@
           :compile-options ["-I" "/usr/local/include/dispatch/haxx" "-Xcc" "-fblocks"]
         }
       }
-      :require-overlays [["osx" "linux"]]
+      :required-overlays [["osx" "linux"]]
     }
 
     :build-tests {
