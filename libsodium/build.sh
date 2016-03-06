@@ -1,6 +1,7 @@
 #!/bin/bash
 #install dependencies only if we don't have them
 deps=("make" "sed" "curl" "ca-certificates")
+BUILD_ROOT=`pwd`
 ln -s `pwd`/libsodium $ATBUILD_USER_PATH/libsodium
 install_deps() {
     apt-get update
@@ -25,3 +26,4 @@ fi
 if [ ! -f src/libsodium/.libs/libsodium.a ]; then
     make -j8
 fi
+cp src/libsodium/.libs/libsodium.a $BUILD_ROOT/libsodium.a
