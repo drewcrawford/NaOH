@@ -26,7 +26,7 @@ public final class Key {
     let addr : UnsafeMutablePointer<UInt8>
     var addrAsVoid : UnsafeMutablePointer<Void> {
         get {
-            return unsafeBitCast(addr, UnsafeMutablePointer<Void>.self)
+            return unsafeBitCast(addr, to: UnsafeMutablePointer<Void>.self)
         }
     }
     
@@ -58,7 +58,7 @@ public final class Key {
         get {
             try! unlock()
             defer { try! lock() }
-            var hash = [UInt8](count: Int(crypto_generichash_BYTES), repeatedValue: 0)
+            var hash = [UInt8](repeating: 0, count: Int(crypto_generichash_BYTES))
             if crypto_generichash(&hash, hash.count, addr, UInt64(size), UnsafePointer(nil), 0) != 0 {
                 preconditionFailure("Hash error")
             }
@@ -102,15 +102,15 @@ public enum KeySizes {
 extension Key {
     public convenience init(password: String, salt: String, keySize: KeySizes) throws  {
         sodium_init_wrap()
-        let saltBytes = salt.cStringUsingEncoding(NSUTF8StringEncoding)!
+        let saltBytes = salt.cString(usingEncoding: NSUTF8StringEncoding)!
         precondition(saltBytes.count == Int(crypto_pwhash_scryptsalsa208sha256_SALTBYTES), "\(saltBytes.count) is different than \(crypto_pwhash_scryptsalsa208sha256_SALTBYTES)")
         
-        var bytes = password.cStringUsingEncoding(NSUTF8StringEncoding)!
+        var bytes = password.cString(usingEncoding: NSUTF8StringEncoding)!
         
         
         self.init(uninitializedSize: Int(keySize.size))
         let saltPtr = saltBytes.withUnsafeBufferPointer { (saltPtr) -> UnsafePointer<UInt8> in
-            return unsafeBitCast(saltPtr.baseAddress, UnsafePointer<UInt8>.self)
+            return unsafeBitCast(saltPtr.baseAddress, to: UnsafePointer<UInt8>.self)
         }
         
         if crypto_pwhash_scryptsalsa208sha256(addr, UInt64(size), &bytes, UInt64(bytes.count - 1), saltPtr, crypto_pwhash_scryptsalsa208sha256_OPSLIMIT_INTERACTIVE, Int(crypto_pwhash_scryptsalsa208sha256_MEMLIMIT_INTERACTIVE)) != 0 {
@@ -133,7 +133,7 @@ extension Key {
     
     public convenience init(forCryptoBox _: Bool) {
         self.init(uninitializedSize: Int(crypto_box_SECRETKEYBYTES))
-        var publicKeyBytes = [UInt8](count: Int(crypto_box_PUBLICKEYBYTES), repeatedValue: 0)
+        var publicKeyBytes = [UInt8](repeating: 0, count: Int(crypto_box_PUBLICKEYBYTES))
         publicKeyBytes.withUnsafeMutableBufferPointer { (inout ptr: UnsafeMutableBufferPointer<UInt8>) -> () in
             if crypto_box_keypair(ptr.baseAddress, addr) != 0 {
                 preconditionFailure("Can't generate keypair")

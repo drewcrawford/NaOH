@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import NaOH
 
-class IncrementTestsTests : XCTestCase {
+class IncrementTests : XCTestCase {
     func testInteger192Bit() {
         var i = Integer192Bit(zeroed: true)
         XCTAssert(i.byteRepresentation == [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
@@ -35,8 +35,8 @@ class IncrementTestsTests : XCTestCase {
     }
 }
 #if ATBUILD
-extension IncrementTestsTests : XCTestCaseProvider {
-        var allTests : [(String, () throws -> Void)] {
+extension IncrementTests  {
+    static var allTests : [(String, IncrementTests -> () throws -> Void)] {
             return [
                 ("testInteger192Bit", testInteger192Bit)
             ]

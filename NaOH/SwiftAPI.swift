@@ -34,14 +34,14 @@ func debugValue(value: UnsafePointer<UInt8>, size: Int) -> String {
     var value = value
     var str = ""
     for i in 0..<size {
-        str += String(format: "%02X", arguments: [value.memory]) as String
+        str += String(format: "%02X", arguments: [value.pointee]) as String
         if i != size - 1 { value = value.successor() }
     }
     return str
 }
 
 
-public enum NaOHError: ErrorType {
+public enum NaOHError: ErrorProtocol {
     case OOM
     case ProtectionError
     case HashError

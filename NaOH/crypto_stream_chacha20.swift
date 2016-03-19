@@ -28,7 +28,7 @@ public func crypto_stream_chacha20_xor(message: [UInt8], nonce: [UInt8], key: Ke
     var message = message
     precondition(key.size == Int(crypto_stream_chacha20_KEYBYTES))
     precondition(nonce.count==crypto_stream_chacha20_NONCESIZE)
-    var xored : [UInt8] = [UInt8](count: message.count, repeatedValue: 0)
+    var xored : [UInt8] = [UInt8](repeating: 0, count: message.count)
     try! key.unlock()
     defer { try! key.lock() }
     if crypto_stream_chacha20_xor(&xored, &message, UInt64(message.count), &nonce, key.addr) != 0 {

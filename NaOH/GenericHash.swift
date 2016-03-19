@@ -15,7 +15,7 @@ extension Array {
         get {
             precondition(Element.self == UInt8.self, "genericHash is only implemented for type UInt8, not \(Element.self)") //I'm not sure this works for other arrays
             //sadly, we can't extend a particular one until Swift 3
-            var out = [UInt8](count: Int(crypto_generichash_BYTES), repeatedValue: 0)
+            var out = [UInt8](repeating: 0, count: Int(crypto_generichash_BYTES))
             self.withUnsafeBufferPointer { (ptr) -> () in
                 let cast : UnsafePointer<UInt8> = UnsafePointer(ptr.baseAddress)
                 crypto_generichash(&out, out.count, cast, UInt64(ptr.count), nil, 0)

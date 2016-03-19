@@ -20,8 +20,8 @@ class MemCmpTests : XCTestCase {
     }
 }
 #if ATBUILD
-extension MemCmpTests : XCTestCaseProvider {
-    var allTests : [(String, () throws -> Void)] {
+extension MemCmpTests  {
+    static var allTests : [(String, MemCmpTests -> () throws -> Void)] {
         return [
             ("testMemCmp", testMemCmp)]
     }

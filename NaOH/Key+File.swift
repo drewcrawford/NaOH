@@ -21,19 +21,19 @@ extension Key {
 - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
 */
     public func saveToFile(file: String) throws {
-        if NSFileManager.defaultManager().fileExistsAtPath(file) {
+        if NSFileManager.defaultManager().fileExists(atPath: file) {
             throw NaOHError.WontOverwriteKey
         }
         //create a locked down file
         //so that we only write if everything's good
-        try NSData().writeToFile(file, options: NSDataWritingOptions())
+        try NSData().write(toFile: file, options: NSDataWritingOptions())
         try NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: file)
         
         //with that out of the way
         try self.unlock()
         defer { try! self.lock() }
         let data = NSData(bytesNoCopy: self.addrAsVoid, length: size, freeWhenDone: false)
-        try data.writeToFile(file, options: NSDataWritingOptions())
+        try data.write(toFile: file, options: NSDataWritingOptions())
     }
     
 /** Reads the key from the file indicated.
@@ -41,7 +41,7 @@ extension Key {
 - warning: Using the keychain is probably better, but it isn't appropriate for certain applications. */
     public convenience init (readFromFile file: String) throws {
         //check attributes
-        let attributes = try NSFileManager.defaultManager().attributesOfItemAtPath(file)
+        let attributes = try NSFileManager.defaultManager().attributesOfItem(atPath: file)
         guard let num = attributes[NSFilePosixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[NSFilePosixPermissions]) an NSNumber?") }
         if num.shortValue != 0o0600 {
             throw NaOHError.FilePermissionsLookSuspicious

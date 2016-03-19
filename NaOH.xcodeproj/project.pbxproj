@@ -96,6 +96,10 @@
 		3A526FE01B80AD4F0092BA60 /* KeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526FDE1B80AD4F0092BA60 /* KeyTests.swift */; };
 		3A526FE31B80B4E90092BA60 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3A526FE21B80B4E90092BA60 /* LICENSE */; };
 		3A6C74E11C0842700055B55B /* crypto_aead_aes256gcm.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C74E01C0842700055B55B /* crypto_aead_aes256gcm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A704D321C9D2CA500298A9C /* Swift22Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A704D311C9D2CA500298A9C /* Swift22Support.swift */; };
+		3A704D341C9D344B00298A9C /* Swift22Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A704D331C9D344B00298A9C /* Swift22Support.swift */; };
+		3A704D351C9D383A00298A9C /* Swift22Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A704D311C9D2CA500298A9C /* Swift22Support.swift */; };
+		3A704D361C9D384700298A9C /* Swift22Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A704D331C9D344B00298A9C /* Swift22Support.swift */; };
 		3A8ED35C1BB27E6E00164375 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8ED35B1BB27E6E00164375 /* Random.swift */; };
 		3A98E1281C23A2A800B267A0 /* NaOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF839C11C22BAE6003EDAC1 /* NaOH.framework */; };
 		3A98E1291C23A2A800B267A0 /* NaOH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF839C11C22BAE6003EDAC1 /* NaOH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -307,6 +311,8 @@
 		3A526FDE1B80AD4F0092BA60 /* KeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTests.swift; sourceTree = "<group>"; };
 		3A526FE21B80B4E90092BA60 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		3A6C74E01C0842700055B55B /* crypto_aead_aes256gcm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypto_aead_aes256gcm.h; sourceTree = "<group>"; };
+		3A704D311C9D2CA500298A9C /* Swift22Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swift22Support.swift; sourceTree = "<group>"; };
+		3A704D331C9D344B00298A9C /* Swift22Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swift22Support.swift; sourceTree = "<group>"; };
 		3A8ED35B1BB27E6E00164375 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		3AA296431C4D4BC200163C2D /* ICantBelieveItsNotFoundation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICantBelieveItsNotFoundation.swift; sourceTree = "<group>"; };
 		3AAAC7AA1B80AB40009431FC /* NaOH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NaOH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -493,6 +499,7 @@
 				3AB474D41C1D988800651809 /* increment.swift */,
 				3AB474D81C1D9A1D00651809 /* Integer192Bit.swift */,
 				3AA296431C4D4BC200163C2D /* ICantBelieveItsNotFoundation.swift */,
+				3A704D311C9D2CA500298A9C /* Swift22Support.swift */,
 			);
 			path = NaOH;
 			sourceTree = "<group>";
@@ -511,6 +518,7 @@
 				3AC7C1C01BC1594D0036FABB /* MemCmpTests.swift */,
 				3AAC8C7E1C1CFEF500B82F4D /* GenericHashTests.swift */,
 				3AB474D61C1D998A00651809 /* IncrementTests.swift */,
+				3A704D331C9D344B00298A9C /* Swift22Support.swift */,
 			);
 			path = NaOHTests;
 			sourceTree = "<group>";
@@ -1027,6 +1035,7 @@
 				3A410EC61C239C7F00C1C879 /* GenericHashTests.swift in Sources */,
 				3A410EC51C239C7F00C1C879 /* MemCmpTests.swift in Sources */,
 				3A410EB81C239C6000C1C879 /* NaOHiOSTestHostAppTests.swift in Sources */,
+				3A704D361C9D384700298A9C /* Swift22Support.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1036,6 +1045,7 @@
 			files = (
 				3AA296441C4D4BC200163C2D /* ICantBelieveItsNotFoundation.swift in Sources */,
 				3A2AF84C1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift in Sources */,
+				3A704D321C9D2CA500298A9C /* Swift22Support.swift in Sources */,
 				3AB474D51C1D988800651809 /* increment.swift in Sources */,
 				3AAC8C7D1C1CFEEA00B82F4D /* GenericHash.swift in Sources */,
 				3A1922131B811DD50092C6B1 /* Key+Zeroing.swift in Sources */,
@@ -1060,6 +1070,7 @@
 				3AC7C1C11BC1594D0036FABB /* MemCmpTests.swift in Sources */,
 				3AAC8C7F1C1CFEF500B82F4D /* GenericHashTests.swift in Sources */,
 				3A19220A1B8112170092C6B1 /* CryptoBoxTests.swift in Sources */,
+				3A704D341C9D344B00298A9C /* Swift22Support.swift in Sources */,
 				3A526FE01B80AD4F0092BA60 /* KeyTests.swift in Sources */,
 				3A2AF84E1B95B52500A3BEF3 /* CryptoStreamTests.swift in Sources */,
 				3A526FDF1B80AD4F0092BA60 /* CryptoSecretBoxTests.swift in Sources */,
@@ -1074,6 +1085,7 @@
 			files = (
 				3ADBD2CF1C519E1800268AA6 /* ICantBelieveItsNotFoundation.swift in Sources */,
 				3AF839D51C22BB3F003EDAC1 /* PublicKey+Human.swift in Sources */,
+				3A704D351C9D383A00298A9C /* Swift22Support.swift in Sources */,
 				3AF839D71C22BB3F003EDAC1 /* increment.swift in Sources */,
 				3AF839D61C22BB3F003EDAC1 /* GenericHash.swift in Sources */,
 				3AF839D21C22BB3F003EDAC1 /* crypto_stream_chacha20.swift in Sources */,

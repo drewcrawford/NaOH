@@ -15,7 +15,7 @@
 
 import Foundation
 public func sodium_random(size: Int) -> [UInt8] {
-    var buf = [UInt8](count: size, repeatedValue: 0)
+    var buf = [UInt8](repeating: 0, count: size)
     randombytes_buf(&buf, size)
     return buf
 }

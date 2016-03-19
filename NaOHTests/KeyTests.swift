@@ -36,7 +36,7 @@ class KeyTests : XCTestCase {
     }
     
     func testOverwriteKey() {
-        let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().UUIDString)test.key"
+        let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().uuidString)test.key"
         let alice = PublicKey()
         try! alice.saveToFile(temporaryFile)
         do {
@@ -59,8 +59,8 @@ class KeyTests : XCTestCase {
     }
 }
 #if ATBUILD
-    extension KeyTests : XCTestCaseProvider {
-        var allTests : [(String, () throws -> Void)] {
+    extension KeyTests  {
+        static var allTests : [(String, KeyTests -> () throws -> Void)] {
             return [
                 ("testKey", testKey),
                 ("testZeroImport", testZeroImport),

@@ -15,18 +15,18 @@ import Foundation
 import XCTest
 @testable import NaOH
 
-class CryptoStreamTestsTests : XCTestCase {
+class CryptoStreamTests : XCTestCase {
     func testChaCha20() {
         let key = Key(forChaCha20: true)
-        let nonce = [UInt8](count: crypto_stream_chacha20_NONCESIZE, repeatedValue: 0)
+        let nonce = [UInt8](repeating: 0, count: crypto_stream_chacha20_NONCESIZE)
         let ciphertext = crypto_stream_chacha20_xor([1,2,3], nonce: nonce, key: key)
         let plaintext = crypto_stream_chacha20_xor(ciphertext, nonce: nonce, key: key)
         XCTAssert(plaintext == [1,2,3])
     }
 }
 #if ATBUILD
-extension CryptoStreamTestsTests : XCTestCaseProvider {
-    var allTests : [(String, () throws -> Void)] {
+extension CryptoStreamTests  {
+    static var allTests : [(String, CryptoStreamTests -> () throws -> Void)] {
         return [
             ("testChaCha20", testChaCha20)
         ]

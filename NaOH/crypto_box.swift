@@ -26,7 +26,7 @@ public func crypto_box_appendnonce(plaintext: [UInt8], to: PublicKey, from: Key,
     precondition(nonce.byteRepresentation.count == Int(crypto_box_NONCEBYTES),"Invalid nonce size \(nonce.byteRepresentation.count).")
 
     var ciphertext = try crypto_box(plaintext, to: to, from: from, nonce: nonce)
-    ciphertext.appendContentsOf(nonce.byteRepresentation)
+    ciphertext.append(contentsOf: nonce.byteRepresentation)
     return ciphertext
 }
 
@@ -42,7 +42,7 @@ public func crypto_box(plaintext: [UInt8], to: PublicKey, from: Key, nonce: Inte
     var plaintext = plaintext
     var nonce = nonce
     precondition(nonce.byteRepresentation.count == Int(crypto_box_NONCEBYTES),"Invalid nonce size \(nonce.byteRepresentation.count).")
-    var ciphertext = [UInt8](count: Int(crypto_box_macbytes()) + plaintext.count, repeatedValue: 0)
+    var ciphertext = [UInt8](repeating: 0, count: Int(crypto_box_macbytes()) + plaintext.count)
     try! from.unlock()
     defer { try! from.lock() }
     if crypto_box_easy(&ciphertext, &plaintext, UInt64(plaintext.count), &nonce.byteRepresentation, to.bytes, from.addr) != 0 {
@@ -55,7 +55,7 @@ public func crypto_box_open(ciphertext: [UInt8], to: Key, from: PublicKey, nonce
     var ciphertext = ciphertext
     var nonce = nonce
     precondition(nonce.byteRepresentation.count == Int(crypto_box_NONCEBYTES))
-    var plaintext = [UInt8](count: ciphertext.count - crypto_box_macbytes(), repeatedValue: 0)
+    var plaintext = [UInt8](repeating: 0, count: ciphertext.count - crypto_box_macbytes())
     try! to.unlock()
     defer { try! to.lock() }
     if crypto_box_open_easy(&plaintext, &ciphertext, UInt64(ciphertext.count), &nonce.byteRepresentation, from.bytes, to.addr) != 0 {

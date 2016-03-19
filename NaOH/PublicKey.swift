@@ -19,7 +19,7 @@ public final class PublicKey {
     
     /**Generates a random key */
     public init() {
-        var pk = [UInt8](count: Int(crypto_box_PUBLICKEYBYTES), repeatedValue: 0)
+        var pk = [UInt8](repeating: 0, count: Int(crypto_box_PUBLICKEYBYTES))
         secretKey = Key(uninitializedSize: Int(crypto_box_SECRETKEYBYTES))
         
         if crypto_box_keypair(&pk, secretKey!.addr) != 0 {
@@ -34,7 +34,7 @@ public final class PublicKey {
         try! secretKey.unlock()
         defer { try! secretKey.lock() }
         
-        var pk = [UInt8](count: Int(crypto_box_PUBLICKEYBYTES), repeatedValue: 0)
+        var pk = [UInt8](repeating: 0, count:  Int(crypto_box_PUBLICKEYBYTES))
         if crypto_scalarmult_base(&pk, secretKey.addr) != 0 {
             preconditionFailure("Can't generate keypair")
         }

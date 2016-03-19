@@ -16,7 +16,7 @@ import XCTest
 
 class KeyFileTests : XCTestCase {
     func testKeyLoadSave() {
-        let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().UUIDString)test.key"
+        let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().uuidString)test.key"
         let k = Key(randomSize: 32)
         try! k.saveToFile(temporaryFile)
     
@@ -26,7 +26,7 @@ class KeyFileTests : XCTestCase {
     
     func testPublicKeyLoadSave() {
         let pk = PublicKey()
-        let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().UUIDString)test.key"
+        let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().uuidString)test.key"
         try! pk.saveToFile(temporaryFile)
         
         let pk2 = try! PublicKey(readFromFile: temporaryFile)
@@ -36,8 +36,8 @@ class KeyFileTests : XCTestCase {
 }
 
 #if ATBUILD
-extension KeyFileTests : XCTestCaseProvider {
-    var allTests : [(String, () throws -> Void)] {
+extension KeyFileTests  {
+    static var allTests : [(String, KeyFileTests -> () throws -> Void)] {
         return [
             ("testKeyLoadSave", testKeyLoadSave),
             ("testPublicKeyLoadSave",testPublicKeyLoadSave)

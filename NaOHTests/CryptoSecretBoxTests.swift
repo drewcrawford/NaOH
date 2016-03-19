@@ -42,8 +42,8 @@ class CryptoSecretBoxTests : XCTestCase {
     
 }
 #if ATBUILD
-extension CryptoSecretBoxTests : XCTestCaseProvider {
-    var allTests : [(String, () throws -> Void)] {
+extension CryptoSecretBoxTests {
+    static var allTests : [(String, CryptoSecretBoxTests -> () throws -> Void)] {
         return [
         ("testEncrypt", testEncrypt),
         ("testDecrypt", testDecrypt),

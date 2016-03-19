@@ -22,7 +22,7 @@ public let crypto_secretbox_NONCESIZE = Int(crypto_secretbox_NONCEBYTES)
 - note: The idea is that you don't have to send the nonce separately.*/
 public func crypto_secretbox_appendnonce(message: [UInt8], key: Key, nonce: Integer192Bit = Integer192Bit(random: true)) throws -> [UInt8] {
     var ciphertext = try crypto_secretbox(message, key: key, nonce: nonce)
-    ciphertext.appendContentsOf(nonce.byteRepresentation)
+    ciphertext.append(contentsOf: nonce.byteRepresentation)
     return ciphertext
 }
 
@@ -37,7 +37,7 @@ public func crypto_secretbox(message: [UInt8], key: Key, nonce: Integer192Bit) t
     var message = message
     var nonce = nonce
     precondition(nonce.byteRepresentation.count == Int(crypto_secretbox_NONCEBYTES))
-    var c = [UInt8](count: crypto_secretbox_macbytes() + message.count, repeatedValue: 0)
+    var c = [UInt8](repeating: 0, count: crypto_secretbox_macbytes() + message.count)
     try! key.unlock()
     defer { try! key.lock() }
     if crypto_secretbox_easy(&c, &message, UInt64(message.count), &nonce.byteRepresentation, key.addr) != 0 {
@@ -49,7 +49,7 @@ public func crypto_secretbox(message: [UInt8], key: Key, nonce: Integer192Bit) t
 public func crypto_secretbox_open(ciphertext: [UInt8], key: Key, nonce: Integer192Bit) throws -> [UInt8] {
     var ciphertext = ciphertext
     var nonce = nonce
-    var plaintext = [UInt8](count: ciphertext.count - crypto_secretbox_macbytes(), repeatedValue: 0)
+    var plaintext = [UInt8](repeating: 0, count: ciphertext.count - crypto_secretbox_macbytes())
     try! key.unlock()
     defer { try! key.lock() }
     

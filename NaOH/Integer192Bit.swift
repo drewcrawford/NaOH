@@ -20,7 +20,7 @@ public struct Integer192Bit {
     public init(zeroed: Bool) {
         precondition(24 == crypto_box_NONCEBYTES)
         precondition(24 == crypto_secretbox_NONCEBYTES)
-        byteRepresentation = [UInt8](count: 24, repeatedValue: 0)
+        byteRepresentation = [UInt8](repeating: 0, count: 24)
     }
     
     public init(random: Bool) {
