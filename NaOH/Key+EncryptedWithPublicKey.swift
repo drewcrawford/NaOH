@@ -11,9 +11,7 @@
 //  in the LICENSE file.
 
 import Foundation
-#if ATBUILD
-    import CSodium
-#endif
+
 extension Key {
     
     /**Encrypts the receiver to another public key, from another secret key.

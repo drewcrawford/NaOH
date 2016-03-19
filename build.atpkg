@@ -1,5 +1,12 @@
 (package
   :name "NaOH"
+
+  :overlays {
+    :link {
+      :link-options ["-Xlinker" "user/libsodium/libsodium/src/libsodium/.libs/libsodium.a"]
+    }
+  }
+
   
   :tasks {
     :libsodium {
@@ -13,9 +20,11 @@
       :name "NaOH"
       :output-type "static-library"
       :dependencies ["libsodium"]
+      :umbrella-header "NaOH/NaOH-atbuild.h"
       :publish-product true
-
-      :compile-options ["-I" "libsodium/" "-enable-testing"]
+      :module-map "synthesized"
+      :compile-options ["-enable-testing"]
+      :include-with-user ["libsodium/libsodium/src/libsodium/include/"]
       :overlays {
         :osx {
         }
@@ -23,6 +32,7 @@
           :compile-options ["-I" "/usr/local/include/dispatch/haxx" "-Xcc" "-fblocks"]
         }
       }
+      :required-overlays [["osx" "linux"]]
     }
 
     :build-tests {
@@ -34,8 +44,10 @@
       :xctestify true
       :xctest-strict true
       :compile-options ["-I" "libsodium/"]
-      :link-options ["-Xlinker" "libsodium/libsodium/src/libsodium/.libs/libsodium.a" "-Xlinker" "-ObjC"]
       :link-with ["NaOH.a"]
+      :use-overlays ["link"]
+      :link-options ["-Xlinker" "-ObjC"]
+
       :publish-product true
       :overlays {
         :osx {

@@ -11,9 +11,6 @@
 //  in the LICENSE file.
 
 import Foundation
-#if ATBUILD
-    import CSodium
-#endif
 #if os(Linux)
     import Dispatch
 #endif
