@@ -23,8 +23,8 @@ class CryptoBoxTests :XCTestCase {
     
     func aliceBob() -> (PublicKey, PublicKey) {
         #if ATBUILD
-            let alicePath = "NaOHTests/alice.key"
-            let bobPath = "NaOHTests/bob.key"
+            var alicePath = "NaOHTests/alice.key"
+            var bobPath = "NaOHTests/bob.key"
         #else
         var alicePath = NSBundle(forClass: CryptoBoxTests.self).pathForResource("alice", ofType: "key")!
         var bobPath = NSBundle(forClass: CryptoBoxTests.self).pathForResource("bob", ofType: "key")!
