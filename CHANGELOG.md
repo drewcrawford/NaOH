@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
+# 1.1 - 2016-03-22
+
+* We're changing our versioning scheme, to use [my standard versioning](http://faq.sealedabstract.com/why_not_semver/).  Major for major changes, minor for minor changes, patch for patches.  We no longer track upstream versions in our versioning.
+* Xcode 7.3 / iOS 9 / Swift 2.2 support.
+* We now support Linux when built through [atbuild](http://anarchytools.org).  Linux binary builds are not yet officially released.
+
 # 1.0.7.1 - 2015-12-18
 
 * iOS support

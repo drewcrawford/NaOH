@@ -19,14 +19,9 @@ NaOH is the sodium flavor trusted by Nitrogen, FISA, caffeine, and various other
 
 You can also download an [official binary release](https://code.sealedabstract.com/drewcrawford/NaOH/tags)
 
-# Releasing
+# Versioning
 
-We use libsodium's numbers, with a 4th section tracking changes only this project makes.  e.g.
-
-        1.0.3.0
-    sodium--^ ^---us
-
-Note that our API is incomplete and is subject to change.  In particular, we don't follow semver.
+We don't follow semver.  [Here's why](http://faq.sealedabstract.com/why_not_semver/).
 
 # Mailing list
 
