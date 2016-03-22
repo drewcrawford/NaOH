@@ -45,6 +45,14 @@ import Foundation
         func fileExists(atPath path: String) -> Bool {
             return self.fileExistsAtPath(path)
         }
+        @nonobjc
+        func removeItem(atPath path: String) throws {
+            return try self.removeItemAtPath(path)
+        }
+        @nonobjc
+        func copyItem(atPath srcPath: String, toPath dstPath: String) throws {
+            return try self.copyItemAtPath(srcPath, toPath: dstPath)
+        }
         //this function in particular returns [String: Any] on Linux
         #if os(Linux)
         @nonobjc
