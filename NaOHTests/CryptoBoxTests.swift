@@ -26,11 +26,24 @@ class CryptoBoxTests :XCTestCase {
             let alicePath = "NaOHTests/alice.key"
             let bobPath = "NaOHTests/bob.key"
         #else
-        let alicePath = NSBundle(forClass: CryptoBoxTests.self).pathForResource("alice", ofType: "key")!
-        let bobPath = NSBundle(forClass: CryptoBoxTests.self).pathForResource("bob", ofType: "key")!
+        var alicePath = NSBundle(forClass: CryptoBoxTests.self).pathForResource("alice", ofType: "key")!
+        var bobPath = NSBundle(forClass: CryptoBoxTests.self).pathForResource("bob", ofType: "key")!
+        #endif
+        //fix the permsisions on this key so we don't freak out the security goalie
+        //on iOS 9.3+, we can't edit the permissions of a file in our app bundle.  Therefore, we have to copy them to a temporary path so the permissions are valid.
+        
+        #if !os(Linux)
+        //copy item at path is unimplimented on Linux, but this feature isn't technically required there.
+        let newAlicePath = NSTemporaryDirectory() + "/alice.key"
+        let _ = try? NSFileManager.defaultManager().removeItemAtPath(newAlicePath)
+        try! NSFileManager.defaultManager().copyItemAtPath(alicePath, toPath: newAlicePath)
+        alicePath = newAlicePath
+        let newBobPath = NSTemporaryDirectory() + "/bob.key"
+        let _ = try? NSFileManager.defaultManager().removeItemAtPath(newBobPath)
+        try! NSFileManager.defaultManager().copyItemAtPath(bobPath, toPath: newBobPath)
+        bobPath = newBobPath
         #endif
         
-        //fix the permsisions on this key so we don't freak out the security goalie
         try! NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: alicePath)
         try! NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: bobPath)
 
