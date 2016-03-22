@@ -35,12 +35,12 @@ class CryptoBoxTests :XCTestCase {
         #if !os(Linux)
         //copy item at path is unimplimented on Linux, but this feature isn't technically required there.
         let newAlicePath = NSTemporaryDirectory() + "/alice.key"
-        let _ = try? NSFileManager.defaultManager().removeItemAtPath(newAlicePath)
-        try! NSFileManager.defaultManager().copyItemAtPath(alicePath, toPath: newAlicePath)
+            let _ = try? NSFileManager.defaultManager().removeItem(atPath: newAlicePath)
+            try! NSFileManager.defaultManager().copyItem(atPath: alicePath, toPath: newAlicePath)
         alicePath = newAlicePath
         let newBobPath = NSTemporaryDirectory() + "/bob.key"
-        let _ = try? NSFileManager.defaultManager().removeItemAtPath(newBobPath)
-        try! NSFileManager.defaultManager().copyItemAtPath(bobPath, toPath: newBobPath)
+            let _ = try? NSFileManager.defaultManager().removeItem(atPath: newBobPath)
+            try! NSFileManager.defaultManager().copyItem(atPath: bobPath, toPath: newBobPath)
         bobPath = newBobPath
         #endif
         
