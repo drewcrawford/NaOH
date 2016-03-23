@@ -15,15 +15,15 @@ import Foundation
     import Dispatch
 #endif
 
+private let initialized: Bool = {
+    if sodium_init() != 0 {
+        preconditionFailure("Initialization failure")
+    }
+    return true
+}()
+
 func sodium_init_wrap() {
-    struct Static {
-        static var onceToken : dispatch_once_t = 0
-    }
-    dispatch_once(&Static.onceToken) {
-        if sodium_init() != 0 {
-            preconditionFailure("Initialization failure")
-        }
-    }
+    let _ = initialized
 }
 
 
