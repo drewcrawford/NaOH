@@ -21,7 +21,7 @@ class CryptoBoxTests :XCTestCase {
     
     private let knownCiphertext : [UInt8] = [211, 170, 214, 228, 186, 238, 171, 198, 216, 148, 136, 65, 140, 6, 22, 100, 5, 32, 23]
     
-    func aliceBob() -> (PublicKey, PublicKey) {
+    func aliceBob() -> (CryptoBoxSecretKey, CryptoBoxSecretKey) {
         #if ATBUILD
             var alicePath = "NaOHTests/alice.key"
             var bobPath = "NaOHTests/bob.key"
@@ -47,21 +47,21 @@ class CryptoBoxTests :XCTestCase {
         try! NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: alicePath)
         try! NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: bobPath)
 
-        let alice = try! PublicKey(readFromFile: alicePath)
-        let bob = try! PublicKey(readFromFile: bobPath)
+        let alice = try! CryptoBoxSecretKey(readFromFile: alicePath)
+        let bob = try! CryptoBoxSecretKey(readFromFile: bobPath)
         return (alice, bob)
     }
     
     func testCryptoBox() {
         let (alice, bob) = aliceBob()
-        let cipher = try! crypto_box(knownPlaintext, to: alice, from: bob.secretKey!, nonce: notVeryNonce)
+        let cipher = try! crypto_box(knownPlaintext, to: alice.publicKey, from: bob, nonce: notVeryNonce)
         print("\(cipher)")
         XCTAssert(cipher == knownCiphertext)
     }
     
     func testCryptoBoxOpen() {
         let (alice, bob) = aliceBob()
-        let plain = try! crypto_box_open(knownCiphertext, to: alice.secretKey!, from: bob, nonce: notVeryNonce)
+        let plain = try! crypto_box_open(knownCiphertext, to: alice, from: bob.publicKey, nonce: notVeryNonce)
         XCTAssert(plain == knownPlaintext)
     }
 }

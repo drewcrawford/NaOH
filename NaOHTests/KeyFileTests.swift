@@ -17,19 +17,19 @@ import XCTest
 class KeyFileTests : XCTestCase {
     func testKeyLoadSave() {
         let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().uuidString)test.key"
-        let k = Key(randomSize: 32)
+        let k = CryptoBoxSecretKey()
         try! k.saveToFile(temporaryFile)
     
-        let j = try! Key(readFromFile: temporaryFile)
-        XCTAssert(k.hash == j.hash)
+        let j = try! CryptoBoxSecretKey(readFromFile: temporaryFile)
+        XCTAssert(k.keyImpl__.hash == j.keyImpl__.hash)
     }
     
     func testPublicKeyLoadSave() {
-        let pk = PublicKey()
+        let pk = CryptoBoxSecretKey().publicKey
         let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().uuidString)test.key"
         try! pk.saveToFile(temporaryFile)
         
-        let pk2 = try! PublicKey(readFromFile: temporaryFile)
+        let pk2 = try! CryptoBoxPublicKey(readFromFile: temporaryFile)
         
         XCTAssert(pk.bytes == pk2.bytes)
     }

@@ -10,21 +10,10 @@
 
 import Foundation
 
-extension PublicKey: CustomStringConvertible {
+extension PublicKey  {
     public var humanReadable: String {
         get {
             return NSData(bytes: bytes, length: bytes.count).base64EncodedString(NSDataBase64EncodingOptions())
         }
-    }
-    
-    public var description: String {
-        return "<PublicKey: '\(humanReadable)'>"
-    }
-    
-    public convenience init(humanReadableString: String) {
-        let data = NSData(base64EncodedString: humanReadableString, options: NSDataBase64DecodingOptions())!
-        var array = [UInt8](repeating: 0, count: data.length)
-        data.getBytes(&array,length:data.length)
-        self.init(publicKeyBytes: array)
     }
 }

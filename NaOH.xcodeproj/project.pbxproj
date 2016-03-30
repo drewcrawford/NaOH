@@ -18,6 +18,10 @@
 		3A19221B1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A19221A1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift */; };
 		3A2AF84C1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */; };
 		3A2AF84E1B95B52500A3BEF3 /* CryptoStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */; };
+		3A30E53E1CABB11100E08FB4 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E53D1CABB11100E08FB4 /* Key.swift */; };
+		3A30E53F1CABC52E00E08FB4 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E53D1CABB11100E08FB4 /* Key.swift */; };
+		3A30E5411CABC7B200E08FB4 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E5401CABC7B200E08FB4 /* SecretKey.swift */; };
+		3A30E5421CABC93300E08FB4 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E5401CABC7B200E08FB4 /* SecretKey.swift */; };
 		3A410EA31C239C6000C1C879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A410EA21C239C6000C1C879 /* AppDelegate.swift */; };
 		3A410EA51C239C6000C1C879 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A410EA41C239C6000C1C879 /* ViewController.swift */; };
 		3A410EA81C239C6000C1C879 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A410EA61C239C6000C1C879 /* Main.storyboard */; };
@@ -35,7 +39,7 @@
 		3A410EC81C239CA900C1C879 /* bob.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A19220D1B8118140092C6B1 /* bob.key */; };
 		3A410EC91C239CA900C1C879 /* alice.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A19220B1B8112A30092C6B1 /* alice.key */; };
 		3A526F6B1B80AC130092BA60 /* SwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F681B80AC130092BA60 /* SwiftAPI.swift */; };
-		3A526F6C1B80AC130092BA60 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F691B80AC130092BA60 /* Key.swift */; };
+		3A526F6C1B80AC130092BA60 /* KeyImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F691B80AC130092BA60 /* KeyImpl.swift */; };
 		3A526F6D1B80AC130092BA60 /* crypto_secretbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */; };
 		3A526FA51B80ACCE0092BA60 /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A526F6F1B80ACCE0092BA60 /* core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A526FA61B80ACCE0092BA60 /* crypto_aead_chacha20poly1305.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A526F701B80ACCE0092BA60 /* crypto_aead_chacha20poly1305.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -118,7 +122,7 @@
 		3ADBD2CF1C519E1800268AA6 /* ICantBelieveItsNotFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA296431C4D4BC200163C2D /* ICantBelieveItsNotFoundation.swift */; };
 		3AF839C91C22BB28003EDAC1 /* NaOH.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AAAC7AD1B80AB40009431FC /* NaOH.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AF839CA1C22BB38003EDAC1 /* SwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F681B80AC130092BA60 /* SwiftAPI.swift */; };
-		3AF839CB1C22BB38003EDAC1 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F691B80AC130092BA60 /* Key.swift */; };
+		3AF839CB1C22BB38003EDAC1 /* KeyImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F691B80AC130092BA60 /* KeyImpl.swift */; };
 		3AF839CC1C22BB38003EDAC1 /* crypto_secretbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */; };
 		3AF839CD1C22BB3F003EDAC1 /* Key+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922011B8107330092C6B1 /* Key+File.swift */; };
 		3AF839CE1C22BB3F003EDAC1 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922051B810D390092C6B1 /* PublicKey.swift */; };
@@ -239,6 +243,8 @@
 		3A19221A1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Key+EncryptedWithPublicKey.swift"; sourceTree = "<group>"; };
 		3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_stream_chacha20.swift; sourceTree = "<group>"; };
 		3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoStreamTests.swift; sourceTree = "<group>"; };
+		3A30E53D1CABB11100E08FB4 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		3A30E5401CABC7B200E08FB4 /* SecretKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
 		3A410EA01C239C6000C1C879 /* NaOHiOSTestHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaOHiOSTestHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A410EA21C239C6000C1C879 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A410EA41C239C6000C1C879 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -250,7 +256,7 @@
 		3A410EB71C239C6000C1C879 /* NaOHiOSTestHostAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaOHiOSTestHostAppTests.swift; sourceTree = "<group>"; };
 		3A410EB91C239C6000C1C879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A526F681B80AC130092BA60 /* SwiftAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAPI.swift; sourceTree = "<group>"; };
-		3A526F691B80AC130092BA60 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		3A526F691B80AC130092BA60 /* KeyImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyImpl.swift; sourceTree = "<group>"; };
 		3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_secretbox.swift; sourceTree = "<group>"; };
 		3A526F6F1B80ACCE0092BA60 /* core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = core.h; sourceTree = "<group>"; };
 		3A526F701B80ACCE0092BA60 /* crypto_aead_chacha20poly1305.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypto_aead_chacha20poly1305.h; sourceTree = "<group>"; };
@@ -481,7 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				3A526F681B80AC130092BA60 /* SwiftAPI.swift */,
-				3A526F691B80AC130092BA60 /* Key.swift */,
+				3A526F691B80AC130092BA60 /* KeyImpl.swift */,
 				3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */,
 				3AAAC7C41B80AB98009431FC /* libsodium */,
 				3AAAC7AD1B80AB40009431FC /* NaOH.h */,
@@ -500,6 +506,8 @@
 				3AB474D81C1D9A1D00651809 /* Integer192Bit.swift */,
 				3AA296431C4D4BC200163C2D /* ICantBelieveItsNotFoundation.swift */,
 				3A704D311C9D2CA500298A9C /* Swift22Support.swift */,
+				3A30E53D1CABB11100E08FB4 /* Key.swift */,
+				3A30E5401CABC7B200E08FB4 /* SecretKey.swift */,
 			);
 			path = NaOH;
 			sourceTree = "<group>";
@@ -1052,13 +1060,15 @@
 				3A8ED35C1BB27E6E00164375 /* Random.swift in Sources */,
 				3A1922061B810D390092C6B1 /* PublicKey.swift in Sources */,
 				3A19221B1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift in Sources */,
+				3A30E5411CABC7B200E08FB4 /* SecretKey.swift in Sources */,
 				3A526F6D1B80AC130092BA60 /* crypto_secretbox.swift in Sources */,
 				3A1922081B8110660092C6B1 /* crypto_box.swift in Sources */,
+				3A30E53E1CABB11100E08FB4 /* Key.swift in Sources */,
 				3AD35A341C14E3FB0095BFB4 /* PublicKey+Human.swift in Sources */,
 				3A1922021B8107330092C6B1 /* Key+File.swift in Sources */,
 				3AC7C1BF1BC157A20036FABB /* memcmp.swift in Sources */,
 				3A526F6B1B80AC130092BA60 /* SwiftAPI.swift in Sources */,
-				3A526F6C1B80AC130092BA60 /* Key.swift in Sources */,
+				3A526F6C1B80AC130092BA60 /* KeyImpl.swift in Sources */,
 				3AB474D91C1D9A1D00651809 /* Integer192Bit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1092,13 +1102,15 @@
 				3AF839D01C22BB3F003EDAC1 /* Key+Zeroing.swift in Sources */,
 				3AF839D31C22BB3F003EDAC1 /* Random.swift in Sources */,
 				3AF839CE1C22BB3F003EDAC1 /* PublicKey.swift in Sources */,
+				3A30E5421CABC93300E08FB4 /* SecretKey.swift in Sources */,
 				3AF839D11C22BB3F003EDAC1 /* Key+EncryptedWithPublicKey.swift in Sources */,
 				3AF839CC1C22BB38003EDAC1 /* crypto_secretbox.swift in Sources */,
+				3A30E53F1CABC52E00E08FB4 /* Key.swift in Sources */,
 				3AF839CF1C22BB3F003EDAC1 /* crypto_box.swift in Sources */,
 				3AF839CD1C22BB3F003EDAC1 /* Key+File.swift in Sources */,
 				3AF839D41C22BB3F003EDAC1 /* memcmp.swift in Sources */,
 				3AF839CA1C22BB38003EDAC1 /* SwiftAPI.swift in Sources */,
-				3AF839CB1C22BB38003EDAC1 /* Key.swift in Sources */,
+				3AF839CB1C22BB38003EDAC1 /* KeyImpl.swift in Sources */,
 				3AF839D81C22BB3F003EDAC1 /* Integer192Bit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

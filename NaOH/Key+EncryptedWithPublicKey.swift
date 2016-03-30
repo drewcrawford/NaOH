@@ -12,15 +12,15 @@
 
 import Foundation
 
-extension Key {
+extension CryptoSecretBoxSecretKey {
     
     /**Encrypts the receiver to another public key, from another secret key.
 This operation is often useful in public/private crypto to deliver a secret key. */
-    public func encrypted(toPublicKey publicKey: PublicKey, fromKey: Key, appendNonce: Bool) throws -> [UInt8] {
+    public func encrypted(toPublicKey publicKey: CryptoBoxPublicKey, fromKey: CryptoBoxSecretKey, appendNonce: Bool) throws -> [UInt8] {
         precondition(appendNonce, "Not implemented")
-        try! self.unlock()
-        defer { try! self.lock() }
-        let keyData = UnsafeMutableBufferPointer(start: self.addr, count: size)
+        try! self.keyImpl__.unlock()
+        defer { try! self.keyImpl__.lock() }
+        let keyData = UnsafeMutableBufferPointer(start: self.keyImpl__.addr, count: self.keyImpl__.size)
         var key = [UInt8](keyData)
         defer {
             key.withUnsafeMutableBufferPointer({ (inout ptr: UnsafeMutableBufferPointer<UInt8>) -> () in
@@ -32,8 +32,8 @@ This operation is often useful in public/private crypto to deliver a secret key.
     }
     
     /**The companion initializer to key.encrypted(...) */
-    public convenience init(decrypt:[UInt8], secretKey: Key, fromKey: PublicKey) throws {
+    public init(decrypt:[UInt8], secretKey: CryptoBoxSecretKey, fromKey: CryptoBoxPublicKey) throws {
         var keyData = try crypto_box_open_appendnonce(decrypt, to: secretKey, from: fromKey)
-        self.init(zeroingMemory:&keyData)
+        keyImpl_ = KeyImpl(zeroingMemory: &keyData)
     }
 }

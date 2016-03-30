@@ -12,13 +12,14 @@
 
 import Foundation
 
-extension Key {
+extension KeyImpl {
     /**Creates a key from the existing memory, importing it into the NaOH memory system and zeroing out the source */
-    public convenience init (inout zeroingMemory: [UInt8]) {
+    convenience init (inout zeroingMemory: [UInt8]) {
         self.init(uninitializedSize: zeroingMemory.count)
         zeroingMemory.withUnsafeMutableBufferPointer { (inout ptr: UnsafeMutableBufferPointer<UInt8>) -> () in
             memcpy(addrAsVoid, ptr.baseAddress, ptr.count)
             sodium_memzero(ptr.baseAddress, ptr.count)
         }
+        try! self.lock()
     }
 }

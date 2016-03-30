@@ -17,7 +17,7 @@ import XCTest
 
 class CryptoStreamTests : XCTestCase {
     func testChaCha20() {
-        let key = Key(forChaCha20: true)
+        let key = ChaCha20SecretKey()
         let nonce = [UInt8](repeating: 0, count: crypto_stream_chacha20_NONCESIZE)
         let ciphertext = crypto_stream_chacha20_xor([1,2,3], nonce: nonce, key: key)
         let plaintext = crypto_stream_chacha20_xor(ciphertext, nonce: nonce, key: key)

@@ -11,41 +11,39 @@
 //  in the LICENSE file.
 
 import Foundation
-public final class PublicKey {
-    public let bytes : [UInt8]
-    public let secretKey : Key?
+public protocol PublicKey : CustomStringConvertible {
+    var bytes : [UInt8] { get }
     
-    /**Generates a random key */
-    public init() {
-        var pk = [UInt8](repeating: 0, count: Int(crypto_box_PUBLICKEYBYTES))
-        secretKey = Key(uninitializedSize: Int(crypto_box_SECRETKEYBYTES))
-        
-        if crypto_box_keypair(&pk, secretKey!.addr) != 0 {
-            preconditionFailure("Can't generate keypair")
-        }
-        try! secretKey!.lock()
-        bytes = pk
+}
+extension PublicKey {
+    public var description: String {
+        return "<PublicKey: '\(humanReadable)'>"
     }
-    
-    public init(secretKey: Key) {
-        self.secretKey = secretKey
-        try! secretKey.unlock()
-        defer { try! secretKey.lock() }
-        
-        var pk = [UInt8](repeating: 0, count:  Int(crypto_box_PUBLICKEYBYTES))
-        if crypto_scalarmult_base(&pk, secretKey.addr) != 0 {
-            preconditionFailure("Can't generate keypair")
+}
+
+extension PublicKey {
+    public func saveToFile(file: String) throws {
+        if NSFileManager.defaultManager().fileExists(atPath: file) {
+            throw NaOHError.WontOverwriteKey
         }
-        bytes = pk
-    }
-    
-    /**Creates a public key without a corresponding secret key. */
-    public init(publicKeyBytes: [UInt8]) {
-        self.bytes = publicKeyBytes
-        self.secretKey = nil
+        
+        let data = bytes.withUnsafeBufferPointer { (ptr) -> NSData in
+            return NSData(bytes: ptr.baseAddress, length: ptr.count)
+        }
+        try data.write(toFile: file)
     }
 }
 
 func == (a: PublicKey, b: PublicKey) -> Bool {
     return a.bytes == b.bytes
+}
+
+/** Reads the key from the file indicated. */
+internal func publicKeyReadFromFile(file: String) throws -> [UInt8] {
+    let mutableData = try NSMutableData(contentsOfFile: file, options: NSDataReadingOptions())
+    var bytes = [UInt8](repeating: 0, count: mutableData.length)
+    bytes.withUnsafeMutableBufferPointer { (ptr) -> () in
+        mutableData.getBytes(ptr.baseAddress, length: ptr.count)
+    }
+    return bytes
 }
