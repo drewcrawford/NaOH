@@ -128,6 +128,15 @@ extension KeyImpl {
      - note: This function ensures that the key is read from a file only readable by the user.
      - warning: Using the keychain is probably better, but it isn't appropriate for certain applications. */
     convenience init (readFromFile file: String) throws {
+        var data : [UInt8] = []
+        try self.init(readFromFile: file, userDataBytes: 0,  userData: &data)
+    }
+    
+    /** Reads the key from the file indicated.
+     - note: This function ensures that the key is read from a file only readable by the user.
+     - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
+     - parameter userDataBytes: Extra user data stored in this file that we don't consider part of the key.  This is returned in the userData parameter.*/
+    convenience init (readFromFile file: String, userDataBytes: Int, inout userData: [UInt8]) throws {
         //check attributes
         let attributes = try NSFileManager.defaultManager().attributesOfItem(atPath: file)
         guard let num = attributes[NSFilePosixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[NSFilePosixPermissions]) an NSNumber?") }
@@ -135,8 +144,15 @@ extension KeyImpl {
             throw NaOHError.FilePermissionsLookSuspicious
         }
         let mutableData = try NSMutableData(contentsOfFile: file, options: NSDataReadingOptions())
-        self.init(uninitializedSize: mutableData.length)
-        memcpy(addrAsVoid, mutableData.bytes, mutableData.length)
+        let keySize = mutableData.length - userDataBytes
+        self.init(uninitializedSize: keySize)
+        memcpy(addrAsVoid, mutableData.bytes, keySize)
+        
+        var localUserData = [UInt8](repeating: 0, count: userDataBytes)
+        localUserData.withUnsafeMutableBufferPointer { (ptr) -> () in
+            mutableData.getBytes(ptr.baseAddress, range: NSRange(location: keySize, length: userDataBytes))
+        }
+        userData = localUserData
         //zero out the data
         sodium_memzero(mutableData.mutableBytes, mutableData.length)
         try! self.lock()

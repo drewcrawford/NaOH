@@ -20,6 +20,9 @@ internal extension SecretKey {
 public protocol SecretKey : CustomStringConvertible {
     /**- warning: This is a private API.  If you find yourself setting it from outside NaOH, think again. */
     var keyImpl_: KeyImplProtocol_ { get }
+    
+    ///A default implementation of this is provided, but can be overridden for custom behavior
+    func saveToFile(file: String) throws
 }
 extension SecretKey {
     public var description: String { return keyImpl__.description }

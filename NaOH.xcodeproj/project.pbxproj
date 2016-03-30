@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A07A6E21CABDB0800B3FB82 /* NaOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF839C11C22BAE6003EDAC1 /* NaOH.framework */; };
+		3A07A6E31CABDB0800B3FB82 /* NaOH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF839C11C22BAE6003EDAC1 /* NaOH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A07A6E71CABDB1800B3FB82 /* CryptoSignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E5371CABAC1000E08FB4 /* CryptoSignTests.swift */; };
+		3A07A6E81CABDB2600B3FB82 /* crypto_sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E5351CABA6FA00E08FB4 /* crypto_sign.swift */; };
 		3A1922021B8107330092C6B1 /* Key+File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922011B8107330092C6B1 /* Key+File.swift */; };
 		3A1922041B810A7B0092C6B1 /* KeyFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922031B810A7B0092C6B1 /* KeyFileTests.swift */; };
 		3A1922061B810D390092C6B1 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922051B810D390092C6B1 /* PublicKey.swift */; };
@@ -18,10 +22,12 @@
 		3A19221B1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A19221A1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift */; };
 		3A2AF84C1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */; };
 		3A2AF84E1B95B52500A3BEF3 /* CryptoStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */; };
-		3A30E53E1CABB11100E08FB4 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E53D1CABB11100E08FB4 /* Key.swift */; };
-		3A30E53F1CABC52E00E08FB4 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E53D1CABB11100E08FB4 /* Key.swift */; };
-		3A30E5411CABC7B200E08FB4 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E5401CABC7B200E08FB4 /* SecretKey.swift */; };
-		3A30E5421CABC93300E08FB4 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E5401CABC7B200E08FB4 /* SecretKey.swift */; };
+		3A30E5361CABA6FA00E08FB4 /* crypto_sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E5351CABA6FA00E08FB4 /* crypto_sign.swift */; };
+		3A30E5381CABAC1000E08FB4 /* CryptoSignTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E5371CABAC1000E08FB4 /* CryptoSignTests.swift */; };
+		3A30E53A1CABAC6900E08FB4 /* signing.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A30E5391CABAC6900E08FB4 /* signing.key */; };
+		3A30E53B1CABAC6900E08FB4 /* signing.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A30E5391CABAC6900E08FB4 /* signing.key */; };
+		3A30E5431CABCE7E00E08FB4 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E5401CABC7B200E08FB4 /* SecretKey.swift */; };
+		3A30E5441CABCE7F00E08FB4 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E5401CABC7B200E08FB4 /* SecretKey.swift */; };
 		3A410EA31C239C6000C1C879 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A410EA21C239C6000C1C879 /* AppDelegate.swift */; };
 		3A410EA51C239C6000C1C879 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A410EA41C239C6000C1C879 /* ViewController.swift */; };
 		3A410EA81C239C6000C1C879 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A410EA61C239C6000C1C879 /* Main.storyboard */; };
@@ -105,8 +111,6 @@
 		3A704D351C9D383A00298A9C /* Swift22Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A704D311C9D2CA500298A9C /* Swift22Support.swift */; };
 		3A704D361C9D384700298A9C /* Swift22Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A704D331C9D344B00298A9C /* Swift22Support.swift */; };
 		3A8ED35C1BB27E6E00164375 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8ED35B1BB27E6E00164375 /* Random.swift */; };
-		3A98E1281C23A2A800B267A0 /* NaOH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF839C11C22BAE6003EDAC1 /* NaOH.framework */; };
-		3A98E1291C23A2A800B267A0 /* NaOH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF839C11C22BAE6003EDAC1 /* NaOH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A98E1F31C240F2800B267A0 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3A526FE21B80B4E90092BA60 /* LICENSE */; };
 		3AA296441C4D4BC200163C2D /* ICantBelieveItsNotFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA296431C4D4BC200163C2D /* ICantBelieveItsNotFoundation.swift */; };
 		3AAAC7AE1B80AB40009431FC /* NaOH.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AAAC7AD1B80AB40009431FC /* NaOH.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -194,19 +198,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3A07A6E41CABDB0800B3FB82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AAAC7A11B80AB40009431FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AF839C01C22BAE6003EDAC1;
+			remoteInfo = "NaOH-iOS";
+		};
 		3A410EB41C239C6000C1C879 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3AAAC7A11B80AB40009431FC /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3A410E9F1C239C6000C1C879;
 			remoteInfo = NaOHiOSTestHostApp;
-		};
-		3A98E12A1C23A2A800B267A0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3AAAC7A11B80AB40009431FC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3AF839C01C22BAE6003EDAC1;
-			remoteInfo = "NaOH-iOS";
 		};
 		3AAAC7B61B80AB40009431FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -218,13 +222,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3A98E12C1C23A2A800B267A0 /* Embed Frameworks */ = {
+		3A07A6E61CABDB0800B3FB82 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3A98E1291C23A2A800B267A0 /* NaOH.framework in Embed Frameworks */,
+				3A07A6E31CABDB0800B3FB82 /* NaOH.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +247,9 @@
 		3A19221A1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Key+EncryptedWithPublicKey.swift"; sourceTree = "<group>"; };
 		3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_stream_chacha20.swift; sourceTree = "<group>"; };
 		3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoStreamTests.swift; sourceTree = "<group>"; };
+		3A30E5351CABA6FA00E08FB4 /* crypto_sign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_sign.swift; sourceTree = "<group>"; };
+		3A30E5371CABAC1000E08FB4 /* CryptoSignTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoSignTests.swift; sourceTree = "<group>"; };
+		3A30E5391CABAC6900E08FB4 /* signing.key */ = {isa = PBXFileReference; lastKnownFileType = text; path = signing.key; sourceTree = "<group>"; };
 		3A30E53D1CABB11100E08FB4 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		3A30E5401CABC7B200E08FB4 /* SecretKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
 		3A410EA01C239C6000C1C879 /* NaOHiOSTestHostApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaOHiOSTestHostApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -398,7 +405,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A98E1281C23A2A800B267A0 /* NaOH.framework in Frameworks */,
+				3A07A6E21CABDB0800B3FB82 /* NaOH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +515,7 @@
 				3A704D311C9D2CA500298A9C /* Swift22Support.swift */,
 				3A30E53D1CABB11100E08FB4 /* Key.swift */,
 				3A30E5401CABC7B200E08FB4 /* SecretKey.swift */,
+				3A30E5351CABA6FA00E08FB4 /* crypto_sign.swift */,
 			);
 			path = NaOH;
 			sourceTree = "<group>";
@@ -515,6 +523,7 @@
 		3AAAC7B81B80AB40009431FC /* NaOHTests */ = {
 			isa = PBXGroup;
 			children = (
+				3A30E5391CABAC6900E08FB4 /* signing.key */,
 				3A19220D1B8118140092C6B1 /* bob.key */,
 				3A19220B1B8112A30092C6B1 /* alice.key */,
 				3A526FDD1B80AD4F0092BA60 /* CryptoSecretBoxTests.swift */,
@@ -527,6 +536,7 @@
 				3AAC8C7E1C1CFEF500B82F4D /* GenericHashTests.swift */,
 				3AB474D61C1D998A00651809 /* IncrementTests.swift */,
 				3A704D331C9D344B00298A9C /* Swift22Support.swift */,
+				3A30E5371CABAC1000E08FB4 /* CryptoSignTests.swift */,
 			);
 			path = NaOHTests;
 			sourceTree = "<group>";
@@ -819,12 +829,12 @@
 				3A410E9C1C239C6000C1C879 /* Sources */,
 				3A410E9D1C239C6000C1C879 /* Frameworks */,
 				3A410E9E1C239C6000C1C879 /* Resources */,
-				3A98E12C1C23A2A800B267A0 /* Embed Frameworks */,
+				3A07A6E61CABDB0800B3FB82 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3A98E12B1C23A2A800B267A0 /* PBXTargetDependency */,
+				3A07A6E51CABDB0800B3FB82 /* PBXTargetDependency */,
 			);
 			name = NaOHiOSTestHostApp;
 			productName = NaOHiOSTestHostApp;
@@ -971,6 +981,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A30E53B1CABAC6900E08FB4 /* signing.key in Resources */,
 				3A410EC91C239CA900C1C879 /* alice.key in Resources */,
 				3A410EC81C239CA900C1C879 /* bob.key in Resources */,
 			);
@@ -989,6 +1000,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A30E53A1CABAC6900E08FB4 /* signing.key in Resources */,
 				3A19220C1B8112A30092C6B1 /* alice.key in Resources */,
 				3A19220E1B8118140092C6B1 /* bob.key in Resources */,
 			);
@@ -1040,6 +1052,7 @@
 				3A410EC01C239C7B00C1C879 /* CryptoSecretBoxTests.swift in Sources */,
 				3A410EC71C239C7F00C1C879 /* IncrementTests.swift in Sources */,
 				3A410EC31C239C7F00C1C879 /* CryptoBoxTests.swift in Sources */,
+				3A07A6E71CABDB1800B3FB82 /* CryptoSignTests.swift in Sources */,
 				3A410EC61C239C7F00C1C879 /* GenericHashTests.swift in Sources */,
 				3A410EC51C239C7F00C1C879 /* MemCmpTests.swift in Sources */,
 				3A410EB81C239C6000C1C879 /* NaOHiOSTestHostAppTests.swift in Sources */,
@@ -1060,16 +1073,16 @@
 				3A8ED35C1BB27E6E00164375 /* Random.swift in Sources */,
 				3A1922061B810D390092C6B1 /* PublicKey.swift in Sources */,
 				3A19221B1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift in Sources */,
-				3A30E5411CABC7B200E08FB4 /* SecretKey.swift in Sources */,
+				3A30E5431CABCE7E00E08FB4 /* SecretKey.swift in Sources */,
 				3A526F6D1B80AC130092BA60 /* crypto_secretbox.swift in Sources */,
 				3A1922081B8110660092C6B1 /* crypto_box.swift in Sources */,
-				3A30E53E1CABB11100E08FB4 /* Key.swift in Sources */,
 				3AD35A341C14E3FB0095BFB4 /* PublicKey+Human.swift in Sources */,
 				3A1922021B8107330092C6B1 /* Key+File.swift in Sources */,
 				3AC7C1BF1BC157A20036FABB /* memcmp.swift in Sources */,
 				3A526F6B1B80AC130092BA60 /* SwiftAPI.swift in Sources */,
 				3A526F6C1B80AC130092BA60 /* KeyImpl.swift in Sources */,
 				3AB474D91C1D9A1D00651809 /* Integer192Bit.swift in Sources */,
+				3A30E5361CABA6FA00E08FB4 /* crypto_sign.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1082,6 +1095,7 @@
 				3A19220A1B8112170092C6B1 /* CryptoBoxTests.swift in Sources */,
 				3A704D341C9D344B00298A9C /* Swift22Support.swift in Sources */,
 				3A526FE01B80AD4F0092BA60 /* KeyTests.swift in Sources */,
+				3A30E5381CABAC1000E08FB4 /* CryptoSignTests.swift in Sources */,
 				3A2AF84E1B95B52500A3BEF3 /* CryptoStreamTests.swift in Sources */,
 				3A526FDF1B80AD4F0092BA60 /* CryptoSecretBoxTests.swift in Sources */,
 				3A1922041B810A7B0092C6B1 /* KeyFileTests.swift in Sources */,
@@ -1102,13 +1116,13 @@
 				3AF839D01C22BB3F003EDAC1 /* Key+Zeroing.swift in Sources */,
 				3AF839D31C22BB3F003EDAC1 /* Random.swift in Sources */,
 				3AF839CE1C22BB3F003EDAC1 /* PublicKey.swift in Sources */,
-				3A30E5421CABC93300E08FB4 /* SecretKey.swift in Sources */,
 				3AF839D11C22BB3F003EDAC1 /* Key+EncryptedWithPublicKey.swift in Sources */,
 				3AF839CC1C22BB38003EDAC1 /* crypto_secretbox.swift in Sources */,
-				3A30E53F1CABC52E00E08FB4 /* Key.swift in Sources */,
 				3AF839CF1C22BB3F003EDAC1 /* crypto_box.swift in Sources */,
 				3AF839CD1C22BB3F003EDAC1 /* Key+File.swift in Sources */,
+				3A30E5441CABCE7F00E08FB4 /* SecretKey.swift in Sources */,
 				3AF839D41C22BB3F003EDAC1 /* memcmp.swift in Sources */,
+				3A07A6E81CABDB2600B3FB82 /* crypto_sign.swift in Sources */,
 				3AF839CA1C22BB38003EDAC1 /* SwiftAPI.swift in Sources */,
 				3AF839CB1C22BB38003EDAC1 /* KeyImpl.swift in Sources */,
 				3AF839D81C22BB3F003EDAC1 /* Integer192Bit.swift in Sources */,
@@ -1118,15 +1132,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3A07A6E51CABDB0800B3FB82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3AF839C01C22BAE6003EDAC1 /* NaOH-iOS */;
+			targetProxy = 3A07A6E41CABDB0800B3FB82 /* PBXContainerItemProxy */;
+		};
 		3A410EB51C239C6000C1C879 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3A410E9F1C239C6000C1C879 /* NaOHiOSTestHostApp */;
 			targetProxy = 3A410EB41C239C6000C1C879 /* PBXContainerItemProxy */;
-		};
-		3A98E12B1C23A2A800B267A0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3AF839C01C22BAE6003EDAC1 /* NaOH-iOS */;
-			targetProxy = 3A98E12A1C23A2A800B267A0 /* PBXContainerItemProxy */;
 		};
 		3AAAC7B71B80AB40009431FC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

@@ -14,11 +14,17 @@ import Foundation
 
 
 extension SecretKey {
+    
     /**Saves the key to the file indicated.
-- note: This function ensures that the key is saved to a file only readable by the user.
-- warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
-*/
+     - note: This function ensures that the key is saved to a file only readable by the user.
+     - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
+     */
     public func saveToFile(file: String) throws {
+        try self._saveToFile(file, userData: [])
+    }
+    
+    /**This internal variant allows a custom key to serialize its own data.*/
+    func _saveToFile(file: String, userData: [UInt8]) throws {
         if NSFileManager.defaultManager().fileExists(atPath: file) {
             throw NaOHError.WontOverwriteKey
         }
@@ -30,8 +36,15 @@ extension SecretKey {
         //with that out of the way
         try self.keyImpl__.unlock()
         defer { try! self.keyImpl__.lock() }
-        let data = NSData(bytesNoCopy: self.keyImpl__.addrAsVoid, length: keyImpl__.size, freeWhenDone: false)
+        
+        let data = NSMutableData(bytes: self.keyImpl__.addr, length: self.keyImpl__.size)
+        let userNSData = userData.withUnsafeBufferPointer { (ptr) -> NSData in
+            return NSData(bytes: ptr.baseAddress, length: ptr.count)
+        }
+        data.appendData(userNSData)
         try data.write(toFile: file, options: NSDataWritingOptions())
+        //scrub the data
+        sodium_memzero(data.mutableBytes, data.length)
     }
     
 }

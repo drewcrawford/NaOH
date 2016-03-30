@@ -46,5 +46,6 @@ public enum NaOHError: ErrorProtocol {
     case FilePermissionsLookSuspicious
     case CryptoBoxError
     case WontOverwriteKey
+    case CryptoSignError
 }
 
