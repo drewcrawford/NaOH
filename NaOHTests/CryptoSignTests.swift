@@ -32,10 +32,11 @@ class CryptoSignTests : XCTestCase {
     }
     
     func testGenerateKey() {
-        let _  = try? NSFileManager.defaultManager().removeItem(atPath: "/tmp/signing.key")
+        let tempPath = NSTemporaryDirectory() + "signing.key"
+        let _  = try? NSFileManager.defaultManager().removeItem(atPath: tempPath)
         let key = CryptoSigningSecretKey()
-        try! key.saveToFile("/tmp/signing.key")
-        let key2 = try! CryptoSigningSecretKey(readFromFile: "/tmp/signing.key")
+        try! key.saveToFile(tempPath)
+        let key2 = try! CryptoSigningSecretKey(readFromFile: tempPath)
         XCTAssert(key.keyImpl__.hash == key2.keyImpl__.hash)
         XCTAssert(key.publicKey.bytes == key2.publicKey.bytes)
     }
