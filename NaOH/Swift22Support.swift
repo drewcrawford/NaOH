@@ -76,4 +76,10 @@ import Foundation
             return self.base64EncodedStringWithOptions(options)
         }
     }
+    extension NSMutableData {
+        @nonobjc
+        func append(other: NSData) {
+            self.appendData(other)
+        }
+    }
 #endif

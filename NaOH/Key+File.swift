@@ -41,7 +41,7 @@ extension SecretKey {
         let userNSData = userData.withUnsafeBufferPointer { (ptr) -> NSData in
             return NSData(bytes: ptr.baseAddress, length: ptr.count)
         }
-        data.appendData(userNSData)
+        data.append(userNSData)
         try data.write(toFile: file, options: NSDataWritingOptions())
         //scrub the data
         sodium_memzero(data.mutableBytes, data.length)
