@@ -35,6 +35,15 @@ public struct CryptoSigningSecretKey: SecretKey  {
 
 public struct CryptoSigningPublicKey: PublicKey {
     public let bytes: [UInt8]
+    public init(humanReadableString: String) {
+        let data = NSData(base64EncodedString: humanReadableString, options: NSDataBase64DecodingOptions())!
+        var array = [UInt8](repeating: 0, count: data.length)
+        data.getBytes(&array,length:data.length)
+        self.init(bytes: array)
+    }
+    public init(bytes: [UInt8]) {
+        self.bytes = bytes
+    }
 }
 
 public func crypto_sign_detached(message: [UInt8], key: CryptoSigningSecretKey) -> [UInt8] {
