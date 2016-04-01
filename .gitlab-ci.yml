@@ -47,7 +47,7 @@ iosDeviceTest:
 archiveiOS:
    type: package
    script:
-      - "$CARTHAGE build --no-skip-current --platform ios"
+      - carthage build --no-skip-current --platform ios
       - mkdir binaries
       - cp -R Carthage/Build/iOS/* binaries/
       - strip -S -x binaries/NaOH.framework/NaOH
