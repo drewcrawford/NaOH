@@ -3,6 +3,24 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
+# 1.2 - 2016-04-01
+
+This build has important breaking changes, but the API is now more secure and you should upgrade.
+
+* `Key` is now unavailable
+* Use a specific key type [CryptoBoxSecretKey, CryptoSecretBoxSecretKey, ChaCha20SecretKey] instead.  Function parameters take a particular key type, so look at the functions you call for guidance.
+* If no specific key type is appropriate, try `SecretKey`, which is a generic protocol
+* Support for application-specific custom key types was removed.
+
+The intent of these changes is to make it easier to write safe, clear code that is easy to reason about.
+
+Other changes in this release:
+
+* Implemented `crypto_sign_detached` and `crypto_sign_verify_detached`
+* Resolved a rare race condition
+* Improved mitigation of side-channel attacks
+* `savetoFile` now works as expected for public keys
+
 # 1.1 - 2016-03-22
 
 * We're changing our versioning scheme, to use [my standard versioning](http://faq.sealedabstract.com/why_not_semver/).  Major for major changes, minor for minor changes, patch for patches.  We no longer track upstream versions in our versioning.

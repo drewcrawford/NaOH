@@ -73,7 +73,7 @@ archiveMac:
    artifacts:
       paths:
       - binaries
-      name: "NaOH-OSX-TS-${CI_BUILD_REF_NAME}-${CI_BUILD_ID}"
+      name: "NaOH-OSX-${CI_BUILD_REF_NAME}-${CI_BUILD_ID}"
 
    tags:
     - xc7
