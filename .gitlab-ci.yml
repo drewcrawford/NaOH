@@ -18,73 +18,62 @@ variables:
 testMac:
   type: test
   script:
-    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI forceGitLabBranch --branchName CaveJohnsonAuto --hostname code.sealedabstract.com --projectID $GITLAB_PROJECT_ID"
-    - "sleep 1" 
-    - "XCSBUILDNO=`/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsIntegrateNow --botID $XCSBOT --hostname localhost --sslPolicy localhost`"
-    - "echo XCS BUILDNO $XCSBUILDNO"
-    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI waitForIntegration --hostname localhost --botID $XCSBOT --sslPolicy localhost --buildNumber $XCSBUILDNO"
-    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsStatusToShell --hostname localhost --botID $XCSBOT --sslPolicy localhost --buildNumber $XCSBUILDNO"
-  except:
-    - CaveJohnsonAuto
+    - xcodebuild -scheme NaOH clean test
   tags:
     - xc7
 
-testiOS:
+testiOSSim64:
   type: test
   script:
-    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI forceGitLabBranch --branchName CaveJohnsonAuto --hostname code.sealedabstract.com --projectID $GITLAB_PROJECT_ID"
-    - "sleep 1" 
-    - "XCSBUILDNO=`/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsIntegrateNow --botID $XCSBOT_IOS --hostname localhost --sslPolicy localhost`"
-    - "echo XCS BUILDNO $XCSBUILDNO"
-    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI waitForIntegration --hostname localhost --botID $XCSBOT_IOS --sslPolicy localhost --buildNumber $XCSBUILDNO"
-    - "/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI xcsStatusToShell --hostname localhost --botID $XCSBOT_IOS --sslPolicy localhost --buildNumber $XCSBUILDNO"
-  except:
-    - CaveJohnsonAuto
+    - xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 6" clean test
   tags:
     - xc7
+
+testiOSSim64:
+  type: test
+  script:
+    - xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 4s" clean test
+  tags:
+    - xc7
+
+iosDeviceTest:
+  type: test
+  script:
+    - xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS,name=Dca's iPod touch" clean test
+  tags:
+    - xc7
+    - iosDevice
 
 archiveiOS:
    type: package
    script:
-      - "CJ=/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI"
-      - "CARTHAGE=/usr/local/bin/carthage"
-      - "$CJ setVersion --infoPlistPath ${FRAMEWORK_NAME}-iOS/Info.plist --version ${CI_BUILD_ID}"
       - "$CARTHAGE build --no-skip-current --platform ios"
-      - "$CARTHAGE archive $FRAMEWORK_NAME"
-
-      - "ZIPFILE=$($CJ getNameVersionString --infoPlistPath $FRAMEWORK_NAME/Info.plist --productName $FRAMEWORK_NAME)-dev-${CI_BUILD_ID}.zip"
-      - "rm -rf /tmp/$FRAMEWORK_NAME/"
-      - "mkdir -p /tmp/$FRAMEWORK_NAME"
-      - "mv $FRAMEWORK_NAME.framework.zip /tmp/$FRAMEWORK_NAME/$ZIPFILE"
-   except:
-    - CaveJohnsonAuto
-
+      - mkdir binaries
+      - cp -R Carthage/Build/iOS/* binaries/
+      - strip -S -x binaries/NaOH.framework/NaOH
+      - plutil -replace CFBundleVersion -string "$CI_BUILD_ID" binaries/NaOH.framework/Info.plist
    tags:
     - xc7
 
    artifacts:
       paths:
-      - /tmp/NaOH/
+      - binaries/
+      name: "NaOH-iOS-${CI_BUILD_REF_NAME}-${CI_BUILD_ID}"
+
 
 archiveMac:
    type: package
    script:
-      - "CJ=/Applications/CaveJohnson.app/Contents/MacOS/CaveJohnsonCLI"
-      - "CARTHAGE=/usr/local/bin/carthage"
-      - "$CJ setVersion --infoPlistPath $FRAMEWORK_NAME/Info.plist --version ${CI_BUILD_ID}"
-      - "$CARTHAGE build --no-skip-current"
-      - "$CARTHAGE archive $FRAMEWORK_NAME --platform osx"
-
-      - "ZIPFILE=$($CJ getNameVersionString --infoPlistPath $FRAMEWORK_NAME/Info.plist --productName $FRAMEWORK_NAME)-dev-${CI_BUILD_ID}.zip"
-      - "rm -rf /tmp/$FRAMEWORK_NAME/"
-      - "mkdir -p /tmp/$FRAMEWORK_NAME"
-      - "mv $FRAMEWORK_NAME.framework.zip /tmp/$FRAMEWORK_NAME/$ZIPFILE"
-   except:
-    - CaveJohnsonAuto
+      - "carthage build --no-skip-current --platform osx"
+      - mkdir binaries
+      - cp -R Carthage/Build/Mac/* binaries/
+      - strip -S -x binaries/NaOH.framework/NaOH 
+      - plutil -replace CFBundleVersion -string "$CI_BUILD_ID" binaries/NaOH.framework/Versions/A/Resources/Info.plist
 
    artifacts:
       paths:
-      - /tmp/NaOH/
+      - binaries
+      name: "NaOH-OSX-TS-${CI_BUILD_REF_NAME}-${CI_BUILD_ID}"
 
    tags:
     - xc7
@@ -103,8 +92,6 @@ atbuildMac:
     paths:
       - bin/NaOH.a
       - bin/NaOH.swiftmodule
-  except:
-    - CaveJohnsonAuto
 
 linux:
   type: test
@@ -120,9 +107,6 @@ linux:
   artifacts: 
     paths:
         - bin/
-
-  except:
-    - CaveJohnsonAuto
 
   tags:
   - docker
