@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
+# 1.2.1 2016-04-04
+
+Add a missing constructor
+
 # 1.2 - 2016-04-01
 
 This build has important breaking changes, but the API is now more secure and you should upgrade.
