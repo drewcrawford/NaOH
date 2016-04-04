@@ -33,7 +33,7 @@ public struct CryptoBoxSecretKey : SecretKey {
         try! (keyImpl_ as! KeyImpl).lock()
         publicKey = CryptoBoxPublicKey(bytes: pk)
     }
-    init(readFromFile: String) throws {
+    public init(readFromFile: String) throws {
         self.keyImpl_ = try KeyImpl(readFromFile: readFromFile)
         self.publicKey = CryptoBoxPublicKey(secretKeyImpl: self.keyImpl_ as! KeyImpl)
     }
