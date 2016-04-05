@@ -19,6 +19,7 @@ You should use this because:
 3.  It zeroes the memory upon delete
 4.  It can only be read or written to when unlocked by SwiftSodium, not for other purposes.
 */
+@available(iOS 9.3, *)
 final class KeyImpl {
     let addr : UnsafeMutablePointer<UInt8>
     var addrAsVoid : UnsafeMutablePointer<Void> {
@@ -68,7 +69,7 @@ final class KeyImpl {
     }
 }
 
-
+@available(iOS 9.3, *)
 extension KeyImpl: CustomStringConvertible {
     var description: String {
         get {
@@ -77,6 +78,7 @@ extension KeyImpl: CustomStringConvertible {
     }
 }
 
+@available(iOS 9.3, *, *)
 public enum KeySizes {
     case crypto_box_seed
     case crypto_stream_chacha20
@@ -95,7 +97,7 @@ public enum KeySizes {
         }
     }
 }
-
+@available(iOS 9.3, *)
 extension KeyImpl {
     convenience init(password: String, salt: String, keySize: Int) throws  {
         sodium_init_wrap()

@@ -11,16 +11,20 @@
 //  in the LICENSE file.
 
 import Foundation
+
+@available(iOS 9.3, *, *)
 public protocol PublicKey : CustomStringConvertible {
     var bytes : [UInt8] { get }
     
 }
+@available(iOS 9.3, *, *)
 extension PublicKey {
     public var description: String {
         return "<PublicKey: '\(humanReadable)'>"
     }
 }
 
+@available(iOS 9.3, *, *)
 extension PublicKey {
     public func saveToFile(file: String) throws {
         if NSFileManager.defaultManager().fileExists(atPath: file) {
@@ -34,6 +38,7 @@ extension PublicKey {
     }
 }
 
+@available(iOS 9.3, *, *)
 func == (a: PublicKey, b: PublicKey) -> Bool {
     return a.bytes == b.bytes
 }

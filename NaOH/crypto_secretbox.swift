@@ -12,8 +12,10 @@
 
 import Foundation
 
+@available(iOS 9.3, *, *)
 public let crypto_secretbox_NONCESIZE = Int(crypto_secretbox_NONCEBYTES)
 
+@available(iOS 9.3, *, *)
 public struct CryptoSecretBoxSecretKey : SecretKey {
     public let keyImpl_: KeyImplProtocol_
     init() {
@@ -27,6 +29,7 @@ public struct CryptoSecretBoxSecretKey : SecretKey {
 
 /**This is like crypto_secretbox, but it appends the nonce to the end of the ciphertext
 - note: The idea is that you don't have to send the nonce separately.*/
+@available(iOS 9.3, *, *)
 public func crypto_secretbox_appendnonce(message: [UInt8], key: CryptoSecretBoxSecretKey, nonce: Integer192Bit = Integer192Bit(random: true)) throws -> [UInt8] {
     var ciphertext = try crypto_secretbox(message, key: key, nonce: nonce)
     ciphertext.append(contentsOf: nonce.byteRepresentation)
@@ -34,12 +37,14 @@ public func crypto_secretbox_appendnonce(message: [UInt8], key: CryptoSecretBoxS
 }
 
 /**The companion to crypto_secretbox_appendnonce */
+@available(iOS 9.3, *, *)
 public func crypto_secretbox_open_appendnonce(ciphertextAndNonce: [UInt8], key: CryptoSecretBoxSecretKey) throws -> [UInt8] {
     let ciphertext = ciphertextAndNonce[0..<ciphertextAndNonce.count - Int(crypto_secretbox_NONCEBYTES)]
     let nonce = Integer192Bit(array: [UInt8](ciphertextAndNonce[ciphertext.count..<ciphertextAndNonce.count]))
     return try crypto_secretbox_open([UInt8](ciphertext), key: key, nonce: nonce)
 }
 
+@available(iOS 9.3, *, *)
 public func crypto_secretbox(message: [UInt8], key: CryptoSecretBoxSecretKey, nonce: Integer192Bit) throws -> [UInt8] {
     var message = message
     var nonce = nonce
@@ -53,6 +58,7 @@ public func crypto_secretbox(message: [UInt8], key: CryptoSecretBoxSecretKey, no
     return c
 }
 
+@available(iOS 9.3, *, *)
 public func crypto_secretbox_open(ciphertext: [UInt8], key: CryptoSecretBoxSecretKey, nonce: Integer192Bit) throws -> [UInt8] {
     var ciphertext = ciphertext
     var nonce = nonce

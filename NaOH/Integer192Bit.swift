@@ -12,6 +12,7 @@
 
 import Foundation
 
+@available(iOS 9.3, *, *)
 public struct Integer192Bit {
     public var byteRepresentation: [UInt8]
     

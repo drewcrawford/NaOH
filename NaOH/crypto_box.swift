@@ -12,10 +12,12 @@
 
 import Foundation
 
+@available(iOS 9.3, *, *)
 public func crypto_box_nonce() -> Integer192Bit {
     return Integer192Bit(random: true)
 }
 
+@available(iOS 9.3, *, *)
 public struct CryptoBoxSecretKey : SecretKey {
     public let keyImpl_ : KeyImplProtocol_
     public var description: String { return keyImpl__.description }
@@ -38,6 +40,7 @@ public struct CryptoBoxSecretKey : SecretKey {
         self.publicKey = CryptoBoxPublicKey(secretKeyImpl: self.keyImpl_ as! KeyImpl)
     }
 }
+@available(iOS 9.3, *, *)
 public struct CryptoBoxPublicKey: PublicKey {
     public var bytes: [UInt8]
     
@@ -71,6 +74,7 @@ public struct CryptoBoxPublicKey: PublicKey {
 /**This is like crypto_secretbox, but it appends the nonce to the end of the ciphertext
 - note: The idea is that you don't have to send the nonce separately.
 */
+@available(iOS 9.3, *, *)
 public func crypto_box_appendnonce(plaintext: [UInt8], to: CryptoBoxPublicKey, from: CryptoBoxSecretKey, nonce: Integer192Bit = crypto_box_nonce()) throws -> [UInt8] {
     precondition(nonce.byteRepresentation.count == Int(crypto_box_NONCEBYTES),"Invalid nonce size \(nonce.byteRepresentation.count).")
 
@@ -80,13 +84,14 @@ public func crypto_box_appendnonce(plaintext: [UInt8], to: CryptoBoxPublicKey, f
 }
 
 /**The companion to crypto_box_appendnonce */
+@available(iOS 9.3, *, *)
 public func crypto_box_open_appendnonce(ciphertextAndNonce: [UInt8], to: CryptoBoxSecretKey, from: CryptoBoxPublicKey) throws -> [UInt8]  {
     let ciphertext = ciphertextAndNonce[0..<ciphertextAndNonce.count - Int(crypto_box_NONCEBYTES)]
     let nonce = Integer192Bit(array: [UInt8](ciphertextAndNonce[ciphertext.count..<ciphertextAndNonce.count]))
     return try crypto_box_open([UInt8](ciphertext), to: to, from: from, nonce: nonce)
 }
 
-
+@available(iOS 9.3, *, *)
 public func crypto_box(plaintext: [UInt8], to: CryptoBoxPublicKey, from: CryptoBoxSecretKey, nonce: Integer192Bit) throws -> [UInt8] {
     var plaintext = plaintext
     var nonce = nonce
@@ -100,6 +105,7 @@ public func crypto_box(plaintext: [UInt8], to: CryptoBoxPublicKey, from: CryptoB
     return ciphertext
 }
 
+@available(iOS 9.3, *, *)
 public func crypto_box_open(ciphertext: [UInt8], to: CryptoBoxSecretKey, from: CryptoBoxPublicKey, nonce: Integer192Bit) throws -> [UInt8]  {
     var ciphertext = ciphertext
     var nonce = nonce

@@ -11,8 +11,11 @@
 //  in the LICENSE file.
 
 import Foundation
+
+@available(iOS 9.3, *, *)
 public let crypto_stream_chacha20_NONCESIZE = Int(crypto_stream_chacha20_NONCEBYTES)
 
+@available(iOS 9.3, *, *)
 public struct ChaCha20SecretKey : SecretKey {
     public let keyImpl_ : KeyImplProtocol_
     public var description: String { return keyImpl__.description }
@@ -25,6 +28,7 @@ public struct ChaCha20SecretKey : SecretKey {
     }
 }
 
+@available(iOS 9.3, *, *)
 public func crypto_stream_chacha20_xor(message: [UInt8], nonce: [UInt8], key: ChaCha20SecretKey) -> [UInt8] {
     var nonce = nonce
     var message = message

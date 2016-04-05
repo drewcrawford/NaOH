@@ -11,7 +11,7 @@
 //  inthe LICENSE file.
 
 import Foundation
-
+@available(iOS 9.3, *)
 extension KeyImpl {
     /**Creates a key from the existing memory, importing it into the NaOH memory system and zeroing out the source */
     convenience init (inout zeroingMemory: [UInt8]) {

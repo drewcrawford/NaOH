@@ -10,6 +10,7 @@
 
 import Foundation
 
+@available(iOS 9.3, *, *)
 extension PublicKey  {
     public var humanReadable: String {
         get {

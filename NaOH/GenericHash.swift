@@ -8,6 +8,7 @@
 
 import Foundation
 
+@available(iOS 9.3, *, *)
 extension Array {
     public var genericHash: [UInt8] {
         get {

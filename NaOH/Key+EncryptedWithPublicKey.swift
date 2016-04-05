@@ -12,6 +12,7 @@
 
 import Foundation
 
+@available(iOS 9.3, *, *)
 extension CryptoSecretBoxSecretKey {
     
     /**Encrypts the receiver to another public key, from another secret key.

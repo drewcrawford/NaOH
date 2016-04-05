@@ -37,7 +37,7 @@ func debugValue(value: UnsafePointer<UInt8>, size: Int) -> String {
     return str
 }
 
-
+@available(iOS 9.3, *)
 public enum NaOHError: ErrorProtocol {
     case OOM
     case ProtectionError

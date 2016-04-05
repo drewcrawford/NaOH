@@ -12,7 +12,7 @@
 
 import Foundation
 
-
+@available(iOS 9.3, *, *)
 extension SecretKey {
     
     /**Saves the key to the file indicated.
