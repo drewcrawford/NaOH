@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
+# 1.2.2 2016-04-06
+
+* Deployment target is now iOS 8
+* However, APIs are only supported on iOS 9.3.  For more information, see https://lists.swift.org/pipermail/swift-evolution/Week-of-Mon-20160404/014171.html
+
 # 1.2.1 2016-04-04
 
 Add a missing constructor
