@@ -16,7 +16,11 @@ extension Array {
             //sadly, we can't extend a particular one until Swift 3
             var out = [UInt8](repeating: 0, count: Int(crypto_generichash_BYTES))
             self.withUnsafeBufferPointer { (ptr) -> () in
+                #if swift(>=3.0)
+                let cast : UnsafePointer<UInt8> = UnsafePointer(ptr.baseAddress)!
+                #else
                 let cast : UnsafePointer<UInt8> = UnsafePointer(ptr.baseAddress)
+                #endif
                 crypto_generichash(&out, out.count, cast, UInt64(ptr.count), nil, 0)
             }
             return out

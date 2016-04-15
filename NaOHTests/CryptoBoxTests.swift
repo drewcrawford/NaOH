@@ -44,8 +44,8 @@ class CryptoBoxTests :XCTestCase {
         bobPath = newBobPath
         #endif
         
-        try! NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: alicePath)
-        try! NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: bobPath)
+        try! NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: alicePath)
+        try! NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: bobPath)
 
         let alice = try! CryptoBoxSecretKey(readFromFile: alicePath)
         let bob = try! CryptoBoxSecretKey(readFromFile: bobPath)

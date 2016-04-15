@@ -19,19 +19,19 @@ extension SecretKey {
      - note: This function ensures that the key is saved to a file only readable by the user.
      - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
      */
-    public func saveToFile(file: String) throws {
+    public func saveToFile(_ file: String) throws {
         try self._saveToFile(file, userData: [])
     }
     
     /**This internal variant allows a custom key to serialize its own data.*/
-    func _saveToFile(file: String, userData: [UInt8]) throws {
+    func _saveToFile(_ file: String, userData: [UInt8]) throws {
         if NSFileManager.defaultManager().fileExists(atPath: file) {
             throw NaOHError.WontOverwriteKey
         }
         //create a locked down file
         //so that we only write if everything's good
         try NSData().write(toFile: file, options: NSDataWritingOptions())
-        try NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: file)
+        try NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: file)
         
         //with that out of the way
         try self.keyImpl__.unlock()

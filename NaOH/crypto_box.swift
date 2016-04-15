@@ -61,7 +61,7 @@ public struct CryptoBoxPublicKey: PublicKey {
         self.init(secretKeyImpl: secretKey.keyImpl__)
     }
     public init(humanReadableString: String) {
-        let data = NSData(base64EncodedString: humanReadableString, options: NSDataBase64DecodingOptions())!
+        let data = NSData(base64Encoded: humanReadableString, options: NSDataBase64DecodingOptions())!
         var array = [UInt8](repeating: 0, count: data.length)
         data.getBytes(&array,length:data.length)
         self.init(bytes: array)
@@ -75,7 +75,7 @@ public struct CryptoBoxPublicKey: PublicKey {
 - note: The idea is that you don't have to send the nonce separately.
 */
 @available(iOS 9.3, *, *)
-public func crypto_box_appendnonce(plaintext: [UInt8], to: CryptoBoxPublicKey, from: CryptoBoxSecretKey, nonce: Integer192Bit = crypto_box_nonce()) throws -> [UInt8] {
+public func crypto_box_appendnonce(_ plaintext: [UInt8], to: CryptoBoxPublicKey, from: CryptoBoxSecretKey, nonce: Integer192Bit = crypto_box_nonce()) throws -> [UInt8] {
     precondition(nonce.byteRepresentation.count == Int(crypto_box_NONCEBYTES),"Invalid nonce size \(nonce.byteRepresentation.count).")
 
     var ciphertext = try crypto_box(plaintext, to: to, from: from, nonce: nonce)
@@ -85,14 +85,14 @@ public func crypto_box_appendnonce(plaintext: [UInt8], to: CryptoBoxPublicKey, f
 
 /**The companion to crypto_box_appendnonce */
 @available(iOS 9.3, *, *)
-public func crypto_box_open_appendnonce(ciphertextAndNonce: [UInt8], to: CryptoBoxSecretKey, from: CryptoBoxPublicKey) throws -> [UInt8]  {
+public func crypto_box_open_appendnonce(_ ciphertextAndNonce: [UInt8], to: CryptoBoxSecretKey, from: CryptoBoxPublicKey) throws -> [UInt8]  {
     let ciphertext = ciphertextAndNonce[0..<ciphertextAndNonce.count - Int(crypto_box_NONCEBYTES)]
     let nonce = Integer192Bit(array: [UInt8](ciphertextAndNonce[ciphertext.count..<ciphertextAndNonce.count]))
     return try crypto_box_open([UInt8](ciphertext), to: to, from: from, nonce: nonce)
 }
 
 @available(iOS 9.3, *, *)
-public func crypto_box(plaintext: [UInt8], to: CryptoBoxPublicKey, from: CryptoBoxSecretKey, nonce: Integer192Bit) throws -> [UInt8] {
+public func crypto_box(_ plaintext: [UInt8], to: CryptoBoxPublicKey, from: CryptoBoxSecretKey, nonce: Integer192Bit) throws -> [UInt8] {
     var plaintext = plaintext
     var nonce = nonce
     precondition(nonce.byteRepresentation.count == Int(crypto_box_NONCEBYTES),"Invalid nonce size \(nonce.byteRepresentation.count).")
@@ -106,7 +106,7 @@ public func crypto_box(plaintext: [UInt8], to: CryptoBoxPublicKey, from: CryptoB
 }
 
 @available(iOS 9.3, *, *)
-public func crypto_box_open(ciphertext: [UInt8], to: CryptoBoxSecretKey, from: CryptoBoxPublicKey, nonce: Integer192Bit) throws -> [UInt8]  {
+public func crypto_box_open(_ ciphertext: [UInt8], to: CryptoBoxSecretKey, from: CryptoBoxPublicKey, nonce: Integer192Bit) throws -> [UInt8]  {
     var ciphertext = ciphertext
     var nonce = nonce
     precondition(nonce.byteRepresentation.count == Int(crypto_box_NONCEBYTES))

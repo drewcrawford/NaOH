@@ -27,7 +27,7 @@ class CryptoSignTests : XCTestCase {
             try! NSFileManager.defaultManager().copyItem(atPath: signingPath, toPath: newAlicePath)
             signingPath = newAlicePath
         #endif
-         try! NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(short: 0o0600)], ofItemAtPath: signingPath)
+         try! NSFileManager.defaultManager().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: signingPath)
         return try! CryptoSigningSecretKey(readFromFile: signingPath)
     }
     

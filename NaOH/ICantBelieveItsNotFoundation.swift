@@ -21,7 +21,7 @@ extension NSString {
 //setAttributesOfItemAtPath isn't implemented
 //https://github.com/apple/swift-corelibs-foundation/pull/243
 extension NSFileManager {
-    func setSWIFTBUGAttributes(attributes: [String : AnyObject], ofItemAtPath path: String) throws {
+    func setSWIFTBUGAttributes(_ attributes: [String : AnyObject], ofItemAtPath path: String) throws {
         for attribute in attributes.keys {
             switch attribute {
             case NSFilePosixPermissions:
@@ -29,7 +29,11 @@ extension NSFileManager {
                     fatalError("Can't set file permissions to \(attributes[attribute])")
                 }
                 #if os(OSX) || os(iOS)
-                    let modeT = number.unsignedShortValue
+                    #if swift(>=3.0)
+                        let modeT = number.uint16Value
+                    #else
+                        let modeT = number.unsignedShortValue
+                    #endif
                 #elseif os(Linux)
                     let modeT = number.unsignedIntValue
                 #endif
@@ -42,3 +46,26 @@ extension NSFileManager {
         }
     }
 }
+
+#if os(Linux)
+extension NSFileManager {
+    func enumerator(atPath path: String) -> NSDirectoryEnumerator? {
+        return self.enumeratorAtPath(path)
+    }
+    func createSymbolicLink(atPath path: String, withDestinationPath destPath: String) throws {
+        return try self.createSymbolicLinkAtPath(path, withDestinationPath: destPath)
+    }
+    func createDirectory(atPath path: String, withIntermediateDirectories createIntermediates: Bool,  attributes: [String : AnyObject]? = [:]) throws {
+        return try self.createDirectoryAtPath(path, withIntermediateDirectories: createIntermediates, attributes: attributes)
+    }
+    func attributesOfItem(atPath path: String) throws -> [String : Any] {
+        return try self.attributesOfItemAtPath(path)
+    }
+    func removeItem(atPath path: String) throws {
+        return try self.removeItemAtPath(path)
+    }
+    func fileExists(atPath path: String) -> Bool {
+        return self.fileExistsAtPath(path)
+    }
+}
+#endif

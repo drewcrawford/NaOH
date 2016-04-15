@@ -24,7 +24,7 @@ public protocol SecretKey : CustomStringConvertible {
     var keyImpl_: KeyImplProtocol_ { get }
     
     ///A default implementation of this is provided, but can be overridden for custom behavior
-    func saveToFile(file: String) throws
+    func saveToFile(_ file: String) throws
 }
 @available(iOS 9.3, *)
 extension SecretKey {

@@ -101,10 +101,10 @@ public enum KeySizes {
 extension KeyImpl {
     convenience init(password: String, salt: String, keySize: Int) throws  {
         sodium_init_wrap()
-        let saltBytes = salt.cString(usingEncoding: NSUTF8StringEncoding)!
+        let saltBytes = salt.cString(using: NSUTF8StringEncoding)!
         precondition(saltBytes.count == Int(crypto_pwhash_scryptsalsa208sha256_SALTBYTES), "\(saltBytes.count) is different than \(crypto_pwhash_scryptsalsa208sha256_SALTBYTES)")
         
-        var bytes = password.cString(usingEncoding: NSUTF8StringEncoding)!
+        var bytes = password.cString(using: NSUTF8StringEncoding)!
         
         
         self.init(uninitializedSize: keySize)
@@ -134,6 +134,37 @@ extension KeyImpl {
         try self.init(readFromFile: file, userDataBytes: 0,  userData: &data)
     }
     
+    #if swift(>=3.0)
+    /** Reads the key from the file indicated.
+     - note: This function ensures that the key is read from a file only readable by the user.
+     - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
+     - parameter userDataBytes: Extra user data stored in this file that we don't consider part of the key.  This is returned in the userData parameter.*/
+    convenience init (readFromFile file: String, userDataBytes: Int, userData: inout [UInt8]) throws {
+        //check attributes
+        let attributes = try NSFileManager.defaultManager().attributesOfItem(atPath: file)
+        guard let num = attributes[NSFilePosixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[NSFilePosixPermissions]) an NSNumber?") }
+        if num.uint16Value != 0o0600 {
+            throw NaOHError.FilePermissionsLookSuspicious
+        }
+        let mutableData = try NSMutableData(contentsOfFile: file, options: NSDataReadingOptions())
+        let keySize = mutableData.length - userDataBytes
+        self.init(uninitializedSize: keySize)
+        memcpy(addrAsVoid, mutableData.bytes, keySize)
+        
+        var localUserData = [UInt8](repeating: 0, count: userDataBytes)
+        localUserData.withUnsafeMutableBufferPointer { (ptr) -> () in
+    #if swift(>=3.0)
+            mutableData.getBytes(ptr.baseAddress!, range: NSRange(location: keySize, length: userDataBytes))
+    #else
+        mutableData.getBytes(ptr.baseAddress, range: NSRange(location: keySize, length: userDataBytes))
+    #endif
+        }
+        userData = localUserData
+        //zero out the data
+        sodium_memzero(mutableData.mutableBytes, mutableData.length)
+        try! self.lock()
+    }
+    #else
     /** Reads the key from the file indicated.
      - note: This function ensures that the key is read from a file only readable by the user.
      - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
@@ -159,4 +190,5 @@ extension KeyImpl {
         sodium_memzero(mutableData.mutableBytes, mutableData.length)
         try! self.lock()
     }
+    #endif
 }

@@ -11,8 +11,8 @@
 //  in the LICENSE file.
 import Foundation
 
-//note that we can't use #if swift(<=3.0) here because this project has to compile back to Swift 2.1
-#if !ATBUILD //all atbuild platforms have the stdlib Swift 3 syntax
+#if swift(>=3.0)
+#else
     extension Array {
         mutating func append<S : SequenceType where S.Generator.Element == Element>  (contentsOf newElements: S)  {
             self.appendContentsOf(newElements)
@@ -30,7 +30,8 @@ import Foundation
         var pointee: Memory { return self.memory }
     }
 #endif
-#if !ATBUILD || os(Linux)
+
+#if !swift(>=3.0)
 //we must define Foundation fallbacks
     
     //oddly enough, this is a "foundation" fallback
@@ -66,20 +67,56 @@ import Foundation
         }
         #endif
     }
-    extension NSData {
-        @nonobjc
-        func write(toFile path: String, options writeOptionsMask: NSDataWritingOptions = []) throws {
-            try self.writeToFile(path, options: writeOptionsMask)
-        }
-        @nonobjc
-        func base64EncodedString(options: NSDataBase64EncodingOptions = []) -> String {
-            return self.base64EncodedStringWithOptions(options)
-        }
+
+#endif
+
+#if os(Linux) || !swift(>=3.0)
+extension NSData {
+    convenience init?(base64Encoded base64String: String, options: NSDataBase64DecodingOptions) {
+        self.init(base64EncodedString: base64String, options: options)
     }
-    extension NSMutableData {
-        @nonobjc
-        func append(other: NSData) {
-            self.appendData(other)
-        }
+}
+extension NSNumber {
+    @nonobjc
+    convenience init(value: Int16) {
+        self.init(short: value)
     }
+    @nonobjc
+    convenience init(value: UInt16) {
+        self.init(unsignedShort: value)
+    }
+    var uint16Value: UInt16 { return self.unsignedShortValue }
+}
+extension NSData {
+    @nonobjc
+    func write(toFile path: String, options writeOptionsMask: NSDataWritingOptions = []) throws {
+        try self.writeToFile(path, options: writeOptionsMask)
+    }
+    @nonobjc
+    func base64EncodedString(_ options: NSDataBase64EncodingOptions = []) -> String {
+        return self.base64EncodedStringWithOptions(options)
+    }
+}
+extension NSMutableData {
+    @nonobjc
+    func append(_ other: NSData) {
+        self.appendData(other)
+    }
+}
+#endif
+
+#if os(Linux)
+extension String {
+    func cString(using using: NSStringEncoding) -> [CChar]? {
+        return self.cStringUsingEncoding(using)
+    }
+}
+#endif
+
+#if !swift(>=3.0)
+extension String {
+    func cString(using using: NSStringEncoding) -> [CChar]? {
+        return self.cString(usingEncoding: using)
+    }
+}
 #endif

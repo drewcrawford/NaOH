@@ -29,7 +29,7 @@ public struct ChaCha20SecretKey : SecretKey {
 }
 
 @available(iOS 9.3, *, *)
-public func crypto_stream_chacha20_xor(message: [UInt8], nonce: [UInt8], key: ChaCha20SecretKey) -> [UInt8] {
+public func crypto_stream_chacha20_xor(_ message: [UInt8], nonce: [UInt8], key: ChaCha20SecretKey) -> [UInt8] {
     var nonce = nonce
     var message = message
     precondition(key.keyImpl__.size == Int(crypto_stream_chacha20_KEYBYTES))

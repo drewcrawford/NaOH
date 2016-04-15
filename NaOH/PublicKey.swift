@@ -26,7 +26,7 @@ extension PublicKey {
 
 @available(iOS 9.3, *, *)
 extension PublicKey {
-    public func saveToFile(file: String) throws {
+    public func saveToFile(_ file: String) throws {
         if NSFileManager.defaultManager().fileExists(atPath: file) {
             throw NaOHError.WontOverwriteKey
         }
@@ -44,11 +44,15 @@ func == (a: PublicKey, b: PublicKey) -> Bool {
 }
 
 /** Reads the key from the file indicated. */
-internal func publicKeyReadFromFile(file: String) throws -> [UInt8] {
+internal func publicKeyReadFromFile(_ file: String) throws -> [UInt8] {
     let mutableData = try NSMutableData(contentsOfFile: file, options: NSDataReadingOptions())
     var bytes = [UInt8](repeating: 0, count: mutableData.length)
     bytes.withUnsafeMutableBufferPointer { (ptr) -> () in
-        mutableData.getBytes(ptr.baseAddress, length: ptr.count)
+        #if swift(>=3.0)
+            mutableData.getBytes(ptr.baseAddress!, length: ptr.count)
+        #else
+            mutableData.getBytes(ptr.baseAddress, length: ptr.count)
+        #endif
     }
     return bytes
 }

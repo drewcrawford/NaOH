@@ -24,9 +24,18 @@ This operation is often useful in public/private crypto to deliver a secret key.
         let keyData = UnsafeMutableBufferPointer(start: self.keyImpl__.addr, count: self.keyImpl__.size)
         var key = [UInt8](keyData)
         defer {
-            key.withUnsafeMutableBufferPointer({ (inout ptr: UnsafeMutableBufferPointer<UInt8>) -> () in
-                sodium_memzero(ptr.baseAddress, ptr.count)
-            })
+            #if swift(>=3.0)
+                key.withUnsafeMutableBufferPointer({ (ptr: inout UnsafeMutableBufferPointer<UInt8>) -> () in
+                    sodium_memzero(ptr.baseAddress, ptr.count)
+                })
+
+            #else
+                key.withUnsafeMutableBufferPointer({ (inout ptr: UnsafeMutableBufferPointer<UInt8>) -> () in
+                    sodium_memzero(ptr.baseAddress, ptr.count)
+                })
+            #endif
+
+
         }
         let cipher = try crypto_box_appendnonce(key, to: publicKey, from: fromKey)
         return cipher

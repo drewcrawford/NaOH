@@ -18,7 +18,11 @@ extension Array {
         //fix this in Swift 3?
         precondition(Element.self == UInt8.self, "Unexpected element \(Element.self); only implemented for UInt8")
         withUnsafeMutableBufferPointer { (ptr) -> () in
+            #if swift(>=3.0)
+                let convertedPtr: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer(ptr.baseAddress)!
+            #else
             let convertedPtr: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer(ptr.baseAddress)
+            #endif
             sodium_increment(convertedPtr, ptr.count)
         }
     }

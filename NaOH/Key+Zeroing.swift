@@ -14,12 +14,37 @@ import Foundation
 @available(iOS 9.3, *)
 extension KeyImpl {
     /**Creates a key from the existing memory, importing it into the NaOH memory system and zeroing out the source */
-    convenience init (inout zeroingMemory: [UInt8]) {
+    #if swift(>=3.0)
+    convenience init (zeroingMemory: inout [UInt8]) {
         self.init(uninitializedSize: zeroingMemory.count)
+        #if swift(>=3.0)
+        zeroingMemory.withUnsafeMutableBufferPointer { (ptr:inout UnsafeMutableBufferPointer<UInt8>) -> () in
+            memcpy(addrAsVoid, ptr.baseAddress!, ptr.count)
+            sodium_memzero(ptr.baseAddress!, ptr.count)
+        }
+        #else
         zeroingMemory.withUnsafeMutableBufferPointer { (inout ptr: UnsafeMutableBufferPointer<UInt8>) -> () in
             memcpy(addrAsVoid, ptr.baseAddress, ptr.count)
             sodium_memzero(ptr.baseAddress, ptr.count)
         }
+        #endif
         try! self.lock()
     }
+    #else
+    convenience init (inout zeroingMemory: [UInt8]) {
+        self.init(uninitializedSize: zeroingMemory.count)
+        #if swift(>=3.0)
+            zeroingMemory.withUnsafeMutableBufferPointer { (ptr:inout UnsafeMutableBufferPointer<UInt8>) -> () in
+            memcpy(addrAsVoid, ptr.baseAddress, ptr.count)
+            sodium_memzero(ptr.baseAddress, ptr.count)
+            }
+        #else
+            zeroingMemory.withUnsafeMutableBufferPointer { (inout ptr: UnsafeMutableBufferPointer<UInt8>) -> () in
+                memcpy(addrAsVoid, ptr.baseAddress, ptr.count)
+                sodium_memzero(ptr.baseAddress, ptr.count)
+            }
+        #endif
+        try! self.lock()
+    }
+    #endif
 }

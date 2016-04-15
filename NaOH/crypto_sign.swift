@@ -15,14 +15,24 @@ public struct CryptoSigningSecretKey: SecretKey  {
         defer { try! localKeyImpl.lock() }
         self.keyImpl_ = localKeyImpl
         var publicKeyBytes = [UInt8](repeating: 0, count: Int(crypto_sign_publickeybytes()))
-        publicKeyBytes.withUnsafeMutableBufferPointer { (inout ptr: UnsafeMutableBufferPointer<UInt8>) -> () in
+        
+        #if swift(>=3.0)
+        publicKeyBytes.withUnsafeMutableBufferPointer { (ptr: inout UnsafeMutableBufferPointer<UInt8>) -> () in
             if crypto_sign_keypair(ptr.baseAddress, localKeyImpl.addr) != 0 {
                 preconditionFailure("Can't generate keypair")
             }
         }
+        #else
+        publicKeyBytes.withUnsafeMutableBufferPointer { (inout ptr:  UnsafeMutableBufferPointer<UInt8>) -> () in
+            if crypto_sign_keypair(ptr.baseAddress, localKeyImpl.addr) != 0 {
+                preconditionFailure("Can't generate keypair")
+            }
+        }
+        #endif
+        
         self.publicKey = CryptoSigningPublicKey(bytes: publicKeyBytes)
     }
-    public func saveToFile(file: String) throws {
+    public func saveToFile(_ file: String) throws {
         try self._saveToFile(file, userData: publicKey.bytes)
     }
     public init(readFromFile file: String) throws {
@@ -38,7 +48,7 @@ public struct CryptoSigningSecretKey: SecretKey  {
 public struct CryptoSigningPublicKey: PublicKey {
     public let bytes: [UInt8]
     public init(humanReadableString: String) {
-        let data = NSData(base64EncodedString: humanReadableString, options: NSDataBase64DecodingOptions())!
+        let data = NSData(base64Encoded: humanReadableString, options: NSDataBase64DecodingOptions())!
         var array = [UInt8](repeating: 0, count: data.length)
         data.getBytes(&array,length:data.length)
         self.init(bytes: array)
@@ -49,7 +59,7 @@ public struct CryptoSigningPublicKey: PublicKey {
 }
 
 @available(iOS 9.3, *, *)
-public func crypto_sign_detached(message: [UInt8], key: CryptoSigningSecretKey) -> [UInt8] {
+public func crypto_sign_detached(_ message: [UInt8], key: CryptoSigningSecretKey) -> [UInt8] {
     var sig = [UInt8](repeating: 0, count: Int(crypto_sign_bytes()))
     try! key.keyImpl__.unlock()
     defer { try! key.keyImpl__.lock() }
