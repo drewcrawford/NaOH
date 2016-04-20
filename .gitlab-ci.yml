@@ -3,6 +3,7 @@ types:
   - package
 
 before_script: 
+    - if ! which git; then apt-get update && apt-get install git --no-install-recommends -y; fi
     - git submodule update --init --recursive
 
 variables:
@@ -96,17 +97,11 @@ atbuildMac:
 linux:
   type: test
   script:
-        - echo $docker_tag "docker_tag"
-        - docker build -t $docker_tag .
-        - id=$(docker create $docker_tag)
-        - mkdir bin
-        - docker cp $id:/NaOH/bin/${cli_executable}.swiftmodule bin/$cli_executable
-        - docker cp $id:/NaOH/bin/${cli_executable}.a bin/${cli_executable}.a
-        - docker rm -v $id
-        - docker rmi $docker_tag
-  artifacts: 
-    paths:
-        - bin/
+        - apt-get install --no-install-recommends xz-utils curl git ca-certificates -y
+        - curl -L https://github.com/AnarchyTools/atbuild/releases/download/0.9.0/atbuild-0.9.0-linux.tar.xz | tar xJ -C /usr/local
+        - atbuild check --use-overlay linux
+        
+  image: drewcrawford/swift:latest
 
   tags:
-  - docker
+  - autoscale-linux
