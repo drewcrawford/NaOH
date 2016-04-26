@@ -8,7 +8,7 @@
 
 import Foundation
 
-@available(*, unavailable, message="Use a more specific type, like [CryptoBoxSecretKey, CryptoSecretBoxSecretKey, ChaCha20SecretKey].  Or, to avoid specifying a type, use SecretKey.")
+@available(*, unavailable, message:"Use a more specific type, like [CryptoBoxSecretKey, CryptoSecretBoxSecretKey, ChaCha20SecretKey].  Or, to avoid specifying a type, use SecretKey.")
 public final class Key {
     
 }
