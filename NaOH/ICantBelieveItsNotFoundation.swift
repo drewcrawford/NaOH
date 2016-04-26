@@ -47,25 +47,3 @@ extension NSFileManager {
     }
 }
 
-#if os(Linux)
-extension NSFileManager {
-    func enumerator(atPath path: String) -> NSDirectoryEnumerator? {
-        return self.enumeratorAtPath(path)
-    }
-    func createSymbolicLink(atPath path: String, withDestinationPath destPath: String) throws {
-        return try self.createSymbolicLinkAtPath(path, withDestinationPath: destPath)
-    }
-    func createDirectory(atPath path: String, withIntermediateDirectories createIntermediates: Bool,  attributes: [String : AnyObject]? = [:]) throws {
-        return try self.createDirectoryAtPath(path, withIntermediateDirectories: createIntermediates, attributes: attributes)
-    }
-    func attributesOfItem(atPath path: String) throws -> [String : Any] {
-        return try self.attributesOfItemAtPath(path)
-    }
-    func removeItem(atPath path: String) throws {
-        return try self.removeItemAtPath(path)
-    }
-    func fileExists(atPath path: String) -> Bool {
-        return self.fileExistsAtPath(path)
-    }
-}
-#endif

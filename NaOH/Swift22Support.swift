@@ -70,12 +70,7 @@ import Foundation
 
 #endif
 
-#if os(Linux) || !swift(>=3.0)
-extension NSData {
-    convenience init?(base64Encoded base64String: String, options: NSDataBase64DecodingOptions) {
-        self.init(base64EncodedString: base64String, options: options)
-    }
-}
+#if !swift(>=3.0) || os(Linux)
 extension NSNumber {
     @nonobjc
     convenience init(value: Int16) {
@@ -86,6 +81,14 @@ extension NSNumber {
         self.init(unsignedShort: value)
     }
     var uint16Value: UInt16 { return self.unsignedShortValue }
+    }
+#endif
+
+#if !swift(>=3.0)
+extension NSData {
+    convenience init?(base64Encoded base64String: String, options: NSDataBase64DecodingOptions) {
+        self.init(base64EncodedString: base64String, options: options)
+    }
 }
 extension NSData {
     @nonobjc
