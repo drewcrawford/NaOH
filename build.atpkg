@@ -26,13 +26,12 @@
       :compile-options ["-enable-testing"]
       :include-with-user ["libsodium/libsodium/src/libsodium/include/"]
       :overlays {
-        :osx {
+        :atbuild.platform.osx {
         }
-        :linux {
+        :atbuild.platform.linux {
           :compile-options ["-I" "/usr/local/include/dispatch/haxx" "-Xcc" "-fblocks"]
         }
       }
-      :required-overlays [["osx" "linux"]]
     }
 
     :build-tests {
@@ -50,9 +49,7 @@
 
       :publish-product true
       :overlays {
-        :osx {
-        }
-        :linux {
+        :atbuild.platform.linux {
           :compile-options ["-I" "/usr/local/include/dispatch/haxx" "-Xcc" "-fblocks"]
         }
       }

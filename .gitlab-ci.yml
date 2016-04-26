@@ -82,7 +82,7 @@ archiveMac:
 atbuildMac:
   type: test
   script:
-    - atbuild check --use-overlay osx
+    - atbuild check
 
   tags:
     - osx
@@ -98,8 +98,9 @@ linux:
   type: test
   script:
         - apt-get install --no-install-recommends xz-utils curl git ca-certificates -y
-        - curl -L https://github.com/AnarchyTools/atbuild/releases/download/0.9.0/atbuild-0.9.0-linux.tar.xz | tar xJ -C /usr/local
-        - atbuild check --use-overlay linux
+        - curl -L https://github.com/AnarchyTools/atbuild/releases/download/0.10.0/atbuild-0.10.0-linux.tar.xz | tar xJ
+        - cp atbuild-*/atbuild /usr/local/bin/atbuild
+        - atbuild check
         
   image: drewcrawford/swift:latest
 
