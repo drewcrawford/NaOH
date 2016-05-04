@@ -81,7 +81,13 @@ extension NSNumber {
         self.init(unsignedShort: value)
     }
     var uint16Value: UInt16 { return self.unsignedShortValue }
-    }
+}
+extension NSFileManager {
+        @nonobjc
+        class func `default`() -> NSFileManager {
+            return self.defaultManager()
+        }
+}
 #endif
 
 #if !swift(>=3.0)
@@ -104,14 +110,6 @@ extension NSMutableData {
     @nonobjc
     func append(_ other: NSData) {
         self.appendData(other)
-    }
-}
-#endif
-
-#if os(Linux)
-extension String {
-    func cString(using using: NSStringEncoding) -> [CChar]? {
-        return self.cStringUsingEncoding(using)
     }
 }
 #endif

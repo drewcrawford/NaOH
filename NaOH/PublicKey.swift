@@ -27,7 +27,7 @@ extension PublicKey {
 @available(iOS 9.3, *, *)
 extension PublicKey {
     public func saveToFile(_ file: String) throws {
-        if NSFileManager.defaultManager().fileExists(atPath: file) {
+        if NSFileManager.`default`().fileExists(atPath: file) {
             throw NaOHError.WontOverwriteKey
         }
         

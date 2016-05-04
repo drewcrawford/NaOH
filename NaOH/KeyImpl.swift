@@ -141,7 +141,7 @@ extension KeyImpl {
      - parameter userDataBytes: Extra user data stored in this file that we don't consider part of the key.  This is returned in the userData parameter.*/
     convenience init (readFromFile file: String, userDataBytes: Int, userData: inout [UInt8]) throws {
         //check attributes
-        let attributes = try NSFileManager.defaultManager().attributesOfItem(atPath: file)
+        let attributes = try NSFileManager.`default`().attributesOfItem(atPath: file)
         guard let num = attributes[NSFilePosixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[NSFilePosixPermissions]) an NSNumber?") }
         if num.uint16Value != 0o0600 {
             throw NaOHError.FilePermissionsLookSuspicious
@@ -171,7 +171,7 @@ extension KeyImpl {
      - parameter userDataBytes: Extra user data stored in this file that we don't consider part of the key.  This is returned in the userData parameter.*/
     convenience init (readFromFile file: String, userDataBytes: Int, inout userData: [UInt8]) throws {
         //check attributes
-        let attributes = try NSFileManager.defaultManager().attributesOfItem(atPath: file)
+        let attributes = try NSFileManager.`default`().attributesOfItem(atPath: file)
         guard let num = attributes[NSFilePosixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[NSFilePosixPermissions]) an NSNumber?") }
         if num.shortValue != 0o0600 {
             throw NaOHError.FilePermissionsLookSuspicious
