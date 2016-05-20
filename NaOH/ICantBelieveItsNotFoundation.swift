@@ -35,7 +35,7 @@ extension NSFileManager {
                         let modeT = number.unsignedShortValue
                     #endif
                 #elseif os(Linux)
-                    let modeT = number.unsignedIntValue
+                    let modeT = number.uint32Value
                 #endif
                 if chmod(path, modeT) != 0 {
                     fatalError("errno \(errno)")

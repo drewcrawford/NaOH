@@ -70,7 +70,7 @@ import Foundation
 
 #endif
 
-#if !swift(>=3.0) || os(Linux)
+#if !swift(>=3.0)
 extension NSNumber {
     @nonobjc
     convenience init(value: Int16) {
@@ -82,11 +82,14 @@ extension NSNumber {
     }
     var uint16Value: UInt16 { return self.unsignedShortValue }
 }
+#endif
+
+#if !swift(>=3.0)  || os(Linux)
 extension NSFileManager {
-        @nonobjc
-        class func `default`() -> NSFileManager {
-            return self.defaultManager()
-        }
+    @nonobjc
+    class func `default`() -> NSFileManager {
+        return self.defaultManager()
+    }
 }
 #endif
 
