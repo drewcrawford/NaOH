@@ -10,20 +10,13 @@
 
 import Foundation
 
-import XCTest
+import CarolineCore
 @testable import NaOH
 
-class MemCmpTests : XCTestCase {
-    func testMemCmp() {
-        XCTAssert(sodium_memcmp([1,2,3], [1,2,3]))
-        XCTAssert(!sodium_memcmp([1,2,3], [1,3,3]))
+class MemCmpTest: CarolineTest {
+    func test() {
+        self.assert(sodium_memcmp([1,2,3],[1,2,3]))
+        self.assert(!sodium_memcmp([1,2,3], [1,3,3]))
+
     }
 }
-#if ATBUILD
-extension MemCmpTests  {
-    static var allTests : [(String, MemCmpTests -> () throws -> Void)] {
-        return [
-            ("testMemCmp", testMemCmp)]
-    }
-}
-#endif

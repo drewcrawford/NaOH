@@ -11,37 +11,27 @@
 //  inthe LICENSE file.
 
 import Foundation
-import XCTest
+import CarolineCore
 @testable import NaOH
 
-class KeyFileTests : XCTestCase {
-    func testKeyLoadSave() {
+class KeyLoadSave: CarolineTest {
+    func test() {
         let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().uuidString)test.key"
         let k = CryptoBoxSecretKey()
         try! k.saveToFile(temporaryFile)
-    
+        
         let j = try! CryptoBoxSecretKey(readFromFile: temporaryFile)
-        XCTAssert(k.keyImpl__.hash == j.keyImpl__.hash)
+        self.assert(k.keyImpl__.hash, equals: j.keyImpl__.hash)
     }
-    
-    func testPublicKeyLoadSave() {
+}
+
+class PublicKeyLoadSave: CarolineTest {
+    func test() {
         let pk = CryptoBoxSecretKey().publicKey
         let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().uuidString)test.key"
         try! pk.saveToFile(temporaryFile)
         
         let pk2 = try! CryptoBoxPublicKey(readFromFile: temporaryFile)
-        
-        XCTAssert(pk.bytes == pk2.bytes)
+        self.assert(pk.bytes, equals: pk2.bytes)
     }
 }
-
-#if ATBUILD
-extension KeyFileTests  {
-    static var allTests : [(String, KeyFileTests -> () throws -> Void)] {
-        return [
-            ("testKeyLoadSave", testKeyLoadSave),
-            ("testPublicKeyLoadSave",testPublicKeyLoadSave)
-        ]
-    }
-}
-#endif

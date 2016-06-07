@@ -11,65 +11,61 @@
 //  inthe LICENSE file.
 
 import Foundation
-import XCTest
+import CarolineCore
 @testable import NaOH
 
-class KeyTests : XCTestCase {
-    func testKey() {
+class KeyTest: CarolineTest {
+    func test() {
         let k = try! CryptoSecretBoxSecretKey(password: "My password", salt: "My salt is 32 characters   sjej", keySize: KeySizes.crypto_box_seed)
-        XCTAssert(k.keyImpl__.hash == "C2D877E295C0070384F1486F18CE136C72B050EFAB71D2830260F2A062B9E2AC", "k.hash isn't the right value: \(k.keyImpl__.hash)")
+        self.assert(k.keyImpl__.hash, equals: "C2D877E295C0070384F1486F18CE136C72B050EFAB71D2830260F2A062B9E2AC", "k.hash isn't the right value: \(k.keyImpl__.hash)")
     }
-    
-    func testZeroImport() {
+}
+
+class ZeroImport: CarolineTest {
+    func test() {
         var k : [UInt8] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32]
         let _ = KeyImpl(zeroingMemory: &k)
-        XCTAssert(k == [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        self.assert(k, equals: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
     }
-    
-    func testCrypto() {
+}
+
+class Crypto: CarolineTest {
+    func test() {
         let alice = CryptoBoxSecretKey()
         let bob = CryptoBoxSecretKey()
         let jeff = CryptoSecretBoxSecretKey()
         let keyData = try! jeff.encrypted(toPublicKey: alice.publicKey, fromKey: bob, appendNonce:true)
         let key2 = try! CryptoSecretBoxSecretKey(decrypt: keyData, secretKey: alice, fromKey: bob.publicKey)
-        XCTAssert(key2.keyImpl__.hash==jeff.keyImpl__.hash)
+        self.assert(key2.keyImpl__.hash, equals: jeff.keyImpl__.hash)
     }
-    
-    func testOverwriteKey() {
+}
+
+class OverwriteKey: CarolineTest {
+    func test() {
         let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().uuidString)test.key"
         let alice = CryptoBoxSecretKey()
         try! alice.saveToFile(temporaryFile)
         do {
             try alice.saveToFile(temporaryFile)
-            XCTFail("Overwrote existing key")
+            self.fail("Overwrote existing key")
         }
         catch NaOHError.WontOverwriteKey { /* */ }
-        catch { XCTFail("\(error)") }
+        catch { self.fail("\(error)") }
     }
-    
-    func testCryptoBoxKey() {
+}
+
+class CryptoBoxKey: CarolineTest {
+    func test() {
         let _ = CryptoBoxSecretKey()
     }
-    
-    func testHumanReadable() {
+}
+
+class HumanReadable : CarolineTest {
+    func test() {
         let a = CryptoBoxSecretKey().publicKey
         let str = a.humanReadable
         let b = CryptoBoxPublicKey(humanReadableString: str)
-        XCTAssert(a == b)
+        self.assert(a, equals: b)
     }
 }
-#if ATBUILD
-    extension KeyTests  {
-        static var allTests : [(String, KeyTests -> () throws -> Void)] {
-            return [
-                ("testKey", testKey),
-                ("testZeroImport", testZeroImport),
-                ("testCrypto", testCrypto),
-                ("testOverwriteKey",testOverwriteKey),
-                ("testCryptoBoxKey",testCryptoBoxKey),
-                ("testHumanReadable",testHumanReadable)
-            ]
-        }
-}
-#endif
 

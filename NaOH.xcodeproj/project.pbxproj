@@ -120,6 +120,9 @@
 		3AB474D51C1D988800651809 /* increment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB474D41C1D988800651809 /* increment.swift */; };
 		3AB474D71C1D998A00651809 /* IncrementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB474D61C1D998A00651809 /* IncrementTests.swift */; };
 		3AB474D91C1D9A1D00651809 /* Integer192Bit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB474D81C1D9A1D00651809 /* Integer192Bit.swift */; };
+		3AB909521CF1FE1100D5169B /* CarolineCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB9094F1CF1FE0C00D5169B /* CarolineCore.framework */; };
+		3AB909551CF2044900D5169B /* CarolineXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB909541CF2044900D5169B /* CarolineXCTest.swift */; };
+		3AB909571CF205B200D5169B /* CarolineCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AB9094F1CF1FE0C00D5169B /* CarolineCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3AC7C1BF1BC157A20036FABB /* memcmp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7C1BE1BC157A20036FABB /* memcmp.swift */; };
 		3AC7C1C11BC1594D0036FABB /* MemCmpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7C1C01BC1594D0036FABB /* MemCmpTests.swift */; };
 		3AD35A341C14E3FB0095BFB4 /* PublicKey+Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD35A331C14E3FB0095BFB4 /* PublicKey+Human.swift */; };
@@ -233,6 +236,16 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3AB909561CF205AB00D5169B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3AB909571CF205B200D5169B /* CarolineCore.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -338,6 +351,8 @@
 		3AB474D41C1D988800651809 /* increment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = increment.swift; sourceTree = "<group>"; };
 		3AB474D61C1D998A00651809 /* IncrementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementTests.swift; sourceTree = "<group>"; };
 		3AB474D81C1D9A1D00651809 /* Integer192Bit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integer192Bit.swift; sourceTree = "<group>"; };
+		3AB9094F1CF1FE0C00D5169B /* CarolineCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CarolineCore.framework; sourceTree = "<group>"; };
+		3AB909541CF2044900D5169B /* CarolineXCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarolineXCTest.swift; sourceTree = "<group>"; };
 		3AC7C1BE1BC157A20036FABB /* memcmp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memcmp.swift; sourceTree = "<group>"; };
 		3AC7C1C01BC1594D0036FABB /* MemCmpTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemCmpTests.swift; sourceTree = "<group>"; };
 		3AD35A331C14E3FB0095BFB4 /* PublicKey+Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PublicKey+Human.swift"; sourceTree = "<group>"; };
@@ -428,6 +443,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AB909521CF1FE1100D5169B /* CarolineCore.framework in Frameworks */,
 				3AAAC7B51B80AB40009431FC /* NaOH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,6 +484,7 @@
 		3AAAC7A01B80AB40009431FC = {
 			isa = PBXGroup;
 			children = (
+				3AB9094F1CF1FE0C00D5169B /* CarolineCore.framework */,
 				3A526FE21B80B4E90092BA60 /* LICENSE */,
 				3AAAC7AC1B80AB40009431FC /* NaOH */,
 				3AAAC7B81B80AB40009431FC /* NaOHTests */,
@@ -526,6 +543,7 @@
 				3A30E5391CABAC6900E08FB4 /* signing.key */,
 				3A19220D1B8118140092C6B1 /* bob.key */,
 				3A19220B1B8112A30092C6B1 /* alice.key */,
+				3AB909541CF2044900D5169B /* CarolineXCTest.swift */,
 				3A526FDD1B80AD4F0092BA60 /* CryptoSecretBoxTests.swift */,
 				3A526FDE1B80AD4F0092BA60 /* KeyTests.swift */,
 				3AAAC7BB1B80AB40009431FC /* Info.plist */,
@@ -882,9 +900,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AAAC7C11B80AB40009431FC /* Build configuration list for PBXNativeTarget "NaOHTests" */;
 			buildPhases = (
+				3AB909531CF2042600D5169B /* ShellScript */,
 				3AAAC7B01B80AB40009431FC /* Sources */,
 				3AAAC7B11B80AB40009431FC /* Frameworks */,
 				3AAAC7B21B80AB40009431FC /* Resources */,
+				3AB909561CF205AB00D5169B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1030,6 +1050,19 @@
 			shellPath = /usr/bin/python;
 			shellScript = "# -*- coding: utf-8 -*-\n#Remove all headers but the listed ones from the Framework header\n# work around 📡22299400\n\nframeworkHeader = \"NaOH.h\"\nkeep = [frameworkHeader,frameworkHeader[:-2]+\"-Swift.h\"]\nimport sys\nimport os\nimport subprocess\nimport re\nimport os.path\nargs = []\nfor arg in keep:\n    args += [\"-not\", \"-name\", arg]\n\nfind = [\"find\",os.environ[\"BUILT_PRODUCTS_DIR\"]+\"/\"+os.environ[\"PUBLIC_HEADERS_FOLDER_PATH\"], \"-type\",\"f\",\"-name\",\"*.h\"] + args\nprint(\"find is\",find)\nfiles = subprocess.check_output(find).split(\"\\n\")\n\nfor file in files:\n    if file.strip() == \"\": continue\n    print(\"removing\",file)\n    os.remove(file)\n\n# strip from master header\nframeworkHeaderPath = os.environ[\"BUILT_PRODUCTS_DIR\"] + \"/\" +  os.environ[\"PUBLIC_HEADERS_FOLDER_PATH\"] + \"/\" + frameworkHeader\nframeworkHeaderContents = \"\"\nwith open(frameworkHeaderPath) as f:\n    frameworkHeaderContents = f.read()\n\nnewHeader = \"\"\nfor line in frameworkHeaderContents.split(\"\\n\"):\n\n    def includeLine():\n        for file in files:\n            file = os.path.basename(file)\n            if file.strip() == \"\": continue\n            search = '#import \"{FILE}\"'.format(FILE=file)\n            if search in line: return False\n        return True\n\nnewHeader += line + \"\\n\" if includeLine() else \"\\n\"\nwith open(frameworkHeaderPath,\"w\") as f:\n    f.write(newHeader)\n\n";
 		};
+		3AB909531CF2042600D5169B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = /Users/drew/Code/Caroline/bin/caroline_static_tool;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1090,6 +1123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AB909551CF2044900D5169B /* CarolineXCTest.swift in Sources */,
 				3AC7C1C11BC1594D0036FABB /* MemCmpTests.swift in Sources */,
 				3AAC8C7F1C1CFEF500B82F4D /* GenericHashTests.swift in Sources */,
 				3A19220A1B8112170092C6B1 /* CryptoBoxTests.swift in Sources */,
@@ -1326,6 +1360,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = NaOH/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1350,6 +1388,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = NaOH/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1369,6 +1411,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = NaOHTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHTests;
@@ -1380,6 +1426,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = NaOHTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHTests;
@@ -1396,6 +1446,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "NaOH-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1422,6 +1476,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "NaOH-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

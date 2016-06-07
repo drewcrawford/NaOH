@@ -7,39 +7,29 @@
 //
 
 import Foundation
-import XCTest
+import CarolineCore
 @testable import NaOH
 
-class IncrementTests : XCTestCase {
-    func testInteger192Bit() {
+class Integer192BitTests: CarolineTest {
+    func test() {
         var i = Integer192Bit(zeroed: true)
-        XCTAssert(i.byteRepresentation == [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        self.assert(i.byteRepresentation,equals: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
         i.increment()
-        XCTAssert(i.byteRepresentation == [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        self.assert(i.byteRepresentation, equals: [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
         
         for _ in 0..<254 {
             i.increment()
         }
-        XCTAssert(i.byteRepresentation == [255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        self.assert(i.byteRepresentation, equals: [255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
         
         i.increment()
-        XCTAssert(i.byteRepresentation == [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        self.assert(i.byteRepresentation, equals: [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
         for _ in 0..<255 {
             i.increment()
         }
-        XCTAssert(i.byteRepresentation == [255,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+        self.assert(i.byteRepresentation, equals: [255,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
         
         i.increment()
-        XCTAssert(i.byteRepresentation == [0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
-        
+        self.assert(i.byteRepresentation, equals: [0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
     }
 }
-#if ATBUILD
-extension IncrementTests  {
-    static var allTests : [(String, IncrementTests -> () throws -> Void)] {
-            return [
-                ("testInteger192Bit", testInteger192Bit)
-            ]
-        }
-}
-#endif

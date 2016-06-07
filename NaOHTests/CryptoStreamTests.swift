@@ -12,24 +12,15 @@
 
 import Foundation
 
-import XCTest
+import CarolineCore
 @testable import NaOH
 
-class CryptoStreamTests : XCTestCase {
-    func testChaCha20() {
+class ChaCha20: CarolineTest {
+    func test() {
         let key = ChaCha20SecretKey()
         let nonce = [UInt8](repeating: 0, count: crypto_stream_chacha20_NONCESIZE)
         let ciphertext = crypto_stream_chacha20_xor([1,2,3], nonce: nonce, key: key)
         let plaintext = crypto_stream_chacha20_xor(ciphertext, nonce: nonce, key: key)
-        XCTAssert(plaintext == [1,2,3])
+        self.assert(plaintext, equals: [1,2,3])
     }
 }
-#if ATBUILD
-extension CryptoStreamTests  {
-    static var allTests : [(String, CryptoStreamTests -> () throws -> Void)] {
-        return [
-            ("testChaCha20", testChaCha20)
-        ]
-    }
-}
-#endif

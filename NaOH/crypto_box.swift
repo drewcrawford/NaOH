@@ -71,6 +71,12 @@ public struct CryptoBoxPublicKey: PublicKey {
     }
 }
 
+extension CryptoBoxPublicKey: Equatable { }
+
+public func == (a: CryptoBoxPublicKey, b: CryptoBoxPublicKey) -> Bool {
+    return a.bytes == b.bytes
+}
+
 /**This is like crypto_secretbox, but it appends the nonce to the end of the ciphertext
 - note: The idea is that you don't have to send the nonce separately.
 */
