@@ -1,6 +1,15 @@
 (package
   :name "NaOH"
 
+  :external-packages [
+    {
+      :url "git@code.sealedabstract.com:drewcrawford/Caroline.git"
+      :branch "master"
+    }
+  ]
+
+  :import-packages ["external/Caroline/build.atpkg"]
+
   :overlays {
     :link {
       :link-options ["-Xlinker" "user/libsodium/libsodium/src/libsodium/.libs/libsodium.a"]
@@ -34,18 +43,22 @@
       }
     }
 
+    :gen-tests {
+        :tool "shell"
+        :script "/Users/drew/Code/Caroline/bin/caroline_static_tool --core ${collect_sources:build-tests} > NaOHTests/main.swift"
+    }
+
     :build-tests {
       :tool "atllbuild"
       :sources ["NaOHTests/**.swift"]
       :name "NaOHTests"
       :output-type "executable"
       :dependencies ["default"]
-      :xctestify true
-      :xctest-strict true
       :compile-options ["-I" "libsodium/"]
-      :link-with ["NaOH.a"]
+      :link-with ["NaOH.a" "CarolineCore.a"]
       :use-overlays ["link"]
       :link-options ["-Xlinker" "-ObjC"]
+      :dependencies ["Caroline.core" "gen-tests" "default"]
 
       :publish-product true
       :overlays {
@@ -56,8 +69,8 @@
     }
 
     :check {
-      :tool "xctestrun"
-      :test-executable "bin/NaOHTests"
+      :tool "shell"
+      :script "bin/NaOHTests"
       :dependencies ["build-tests"]
     }
 
