@@ -47,6 +47,7 @@
 		3A4471701D3321F200D40353 /* CarolineCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A569C0D1D327A0A009BC0BA /* CarolineCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A4471741D3325C400D40353 /* CarolineCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4471731D3325C400D40353 /* CarolineCore.framework */; };
 		3A4471761D33264300D40353 /* CarolineCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A4471731D3325C400D40353 /* CarolineCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A4471781D33695400D40353 /* CarolineXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4471771D33695400D40353 /* CarolineXCTest.swift */; };
 		3A526F6B1B80AC130092BA60 /* SwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F681B80AC130092BA60 /* SwiftAPI.swift */; };
 		3A526F6C1B80AC130092BA60 /* KeyImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F691B80AC130092BA60 /* KeyImpl.swift */; };
 		3A526F6D1B80AC130092BA60 /* crypto_secretbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */; };
@@ -109,7 +110,6 @@
 		3A526FE01B80AD4F0092BA60 /* KeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526FDE1B80AD4F0092BA60 /* KeyTests.swift */; };
 		3A526FE31B80B4E90092BA60 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3A526FE21B80B4E90092BA60 /* LICENSE */; };
 		3A569C0E1D327A0A009BC0BA /* CarolineCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A569C0D1D327A0A009BC0BA /* CarolineCore.framework */; };
-		3A569C121D33216F009BC0BA /* CarolineXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB909541CF2044900D5169B /* CarolineXCTest.swift */; };
 		3A569C141D332194009BC0BA /* CarolineXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A569C131D332194009BC0BA /* CarolineXCTest.swift */; };
 		3A6C74E11C0842700055B55B /* crypto_aead_aes256gcm.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C74E01C0842700055B55B /* crypto_aead_aes256gcm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A704D321C9D2CA500298A9C /* Swift22Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A704D311C9D2CA500298A9C /* Swift22Support.swift */; };
@@ -280,6 +280,7 @@
 		3A410EB71C239C6000C1C879 /* NaOHiOSTestHostAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaOHiOSTestHostAppTests.swift; sourceTree = "<group>"; };
 		3A410EB91C239C6000C1C879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A4471731D3325C400D40353 /* CarolineCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarolineCore.framework; path = "external/Caroline/channels/core-osx-swift-2.2/bin/CarolineCore.framework"; sourceTree = "<group>"; };
+		3A4471771D33695400D40353 /* CarolineXCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarolineXCTest.swift; sourceTree = "<group>"; };
 		3A526F681B80AC130092BA60 /* SwiftAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAPI.swift; sourceTree = "<group>"; };
 		3A526F691B80AC130092BA60 /* KeyImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyImpl.swift; sourceTree = "<group>"; };
 		3A526F6A1B80AC130092BA60 /* crypto_secretbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_secretbox.swift; sourceTree = "<group>"; };
@@ -358,7 +359,6 @@
 		3AB474D41C1D988800651809 /* increment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = increment.swift; sourceTree = "<group>"; };
 		3AB474D61C1D998A00651809 /* IncrementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncrementTests.swift; sourceTree = "<group>"; };
 		3AB474D81C1D9A1D00651809 /* Integer192Bit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integer192Bit.swift; sourceTree = "<group>"; };
-		3AB909541CF2044900D5169B /* CarolineXCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarolineXCTest.swift; sourceTree = "<group>"; };
 		3AC7C1BE1BC157A20036FABB /* memcmp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = memcmp.swift; sourceTree = "<group>"; };
 		3AC7C1C01BC1594D0036FABB /* MemCmpTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemCmpTests.swift; sourceTree = "<group>"; };
 		3AD35A331C14E3FB0095BFB4 /* PublicKey+Human.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PublicKey+Human.swift"; sourceTree = "<group>"; };
@@ -549,10 +549,10 @@
 		3AAAC7B81B80AB40009431FC /* NaOHTests */ = {
 			isa = PBXGroup;
 			children = (
+				3A4471771D33695400D40353 /* CarolineXCTest.swift */,
 				3A30E5391CABAC6900E08FB4 /* signing.key */,
 				3A19220D1B8118140092C6B1 /* bob.key */,
 				3A19220B1B8112A30092C6B1 /* alice.key */,
-				3AB909541CF2044900D5169B /* CarolineXCTest.swift */,
 				3A526FDD1B80AD4F0092BA60 /* CryptoSecretBoxTests.swift */,
 				3A526FDE1B80AD4F0092BA60 /* KeyTests.swift */,
 				3AAAC7BB1B80AB40009431FC /* Info.plist */,
@@ -1147,7 +1147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A569C121D33216F009BC0BA /* CarolineXCTest.swift in Sources */,
+				3A4471781D33695400D40353 /* CarolineXCTest.swift in Sources */,
 				3AC7C1C11BC1594D0036FABB /* MemCmpTests.swift in Sources */,
 				3AAC8C7F1C1CFEF500B82F4D /* GenericHashTests.swift in Sources */,
 				3A19220A1B8112170092C6B1 /* CryptoBoxTests.swift in Sources */,
