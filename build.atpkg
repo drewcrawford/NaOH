@@ -3,12 +3,15 @@
 
   :external-packages [
     {
-      :url "git@code.sealedabstract.com:drewcrawford/Caroline.git"
-      :branch "master"
+      :url "https://code.sealedabstract.com/drewcrawford/Caroline.git"
+      :version [">=0.1"]
+    }
+    {
+      :version [">=0.1"]
+      :channels ["core-osx-swift-2.2" "core-ios-swift-2.2"]
+      :url "https://code.sealedabstract.com/drewcrawford/Caroline/raw/master/manifest.atpkg"
     }
   ]
-
-  :import-packages ["external/Caroline/build.atpkg"]
 
   :overlays {
     :link {
@@ -45,7 +48,7 @@
 
     :gen-tests {
         :tool "shell"
-        :script "/Users/drew/Code/Caroline/bin/caroline_static_tool --core ${collect_sources:build-tests} > NaOHTests/main.swift"
+        :script "caroline-static-tool --core ${collect_sources:build-tests} > NaOHTests/main.swift"
     }
 
     :build-tests {
@@ -55,7 +58,7 @@
       :output-type "executable"
       :dependencies ["default"]
       :compile-options ["-I" "libsodium/"]
-      :link-with ["NaOH.a" "CarolineCore.a"]
+      :link-with-product ["NaOH.a" "CarolineCore.a"]
       :use-overlays ["link"]
       :link-options ["-Xlinker" "-ObjC"]
       :dependencies ["Caroline.core" "gen-tests" "default"]

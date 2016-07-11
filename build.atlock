@@ -1,0 +1,43 @@
+;; Anarchy Tools Package Manager lock file
+;;
+;; If you want to pin a package to a git commit add a ':pin'
+;; line to that package definition. This will override all version
+;; information the build files specify.
+;;
+;; You may override the repository URL for a package by specifying
+;; it in an ':override-url' line. This is very handy if you develop
+;; the dependency in parallel to the package that uses it
+
+(lock-file
+  :packages [
+    {
+      :url "https://code.sealedabstract.com/drewcrawford/Caroline.git"
+      :payloads [
+    {
+      :key "git"
+      :used-commit "563b3f590527c8e2bf47116bb6beb68878600f74"
+      :pin false
+    }
+      ]
+    }
+    {
+      :url "https://code.sealedabstract.com/drewcrawford/Caroline/raw/master/manifest.atpkg"
+      :payloads [
+    {
+      :key "core-osx-swift-2.2"
+      :pin false
+      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/7838c42eef7efd10d8844c39545edc5f/CarolineCore-0.1-dev-osx.tar.xz"
+      :used-version "0.1-dev"
+      :sha-sum "d490c780d81bb06d60937ca291968b7fdf2e5b6bfd5a94fdf4ee308ca3a76076"
+    }
+    {
+      :key "core-ios-swift-2.2"
+      :pin false
+      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/4991c30a2fc4e942a0c6fdb87676d297/CarolineCore-0.1-ios.tar.xz"
+      :used-version "0.1-dev"
+      :sha-sum "d12055ca2f21f93660a74d7319514e0a282a31ab62c3ccc6b2ceb8278c611282"
+    }
+      ]
+    }
+  ]
+)

@@ -14,33 +14,33 @@
 
 import XCTest
 import CarolineCore
-@testable import NaOHTests
+@testable import NaOHiOSTestHostAppTests
 
 class CarolineEngineTests: XCTestCase {
     func testAllCarolineTests() {
         let allTests: [CarolineTest] = [
-            MemCmpTest(),
-            GenericHash(),
-            CryptoBox(),
-            CryptoBoxOpen(),
+            ChaCha20(),
             KeyTest(),
             ZeroImport(),
             Crypto(),
             OverwriteKey(),
             CryptoBoxKey(),
             HumanReadable(),
+            KeyLoadSave(),
+            PublicKeyLoadSave(),
+            EncryptTest(),
+            DecryptTest(),
+            BadDecrypt(),
+            Integer192BitTests(),
+            CryptoBox(),
+            CryptoBoxOpen(),
             GenerateKey(),
             DeriveKey(),
             TestSign(),
             TestVerify(),
             TestBadVerify(),
-            ChaCha20(),
-            EncryptTest(),
-            DecryptTest(),
-            BadDecrypt(),
-            KeyLoadSave(),
-            PublicKeyLoadSave(),
-            Integer192BitTests()
+            GenericHash(),
+            MemCmpTest()
         ]
         let engine = CarolineCoreEngine()
         if !engine.testAll(allTests) {

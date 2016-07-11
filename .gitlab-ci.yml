@@ -7,43 +7,43 @@ before_script:
     - git submodule update --init --recursive
 
 variables:
-  XCSBOT: "fc03b092ecd597b3488984a34d029eec"
-  XCSBOT_IOS: "8398cace692793b0b9d5ab1fe0964301"
-
-  docker_tag: "naoh"
-  cli_executable: "NaOH"
-
-  GITLAB_PROJECT_ID: "9"
-  FRAMEWORK_NAME: "NaOH"
 
 testMac:
   type: test
   script:
+    - atpm fetch
     - xcodebuild -scheme NaOH clean test
   tags:
     - xc7
+    - atpm
 
 testiOSSim64:
   type: test
   script:
+    - atpm fetch
     - xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 6" clean test
   tags:
     - xc7
+    - atpm
 
 testiOSSim64:
   type: test
   script:
+    - atpm fetch
     - xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 4s" clean test
   tags:
     - xc7
+    - atpm
 
 iosDeviceTest:
   type: test
   script:
+    - atpm fetch
     - xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS,name=Dca's iPod touch" clean test
   tags:
     - xc7
     - iosDevice
+    - atpm
 
 archiveiOS:
    type: package
@@ -82,12 +82,14 @@ archiveMac:
 atbuildMac:
   type: test
   script:
+    - atpm fetch
     - atbuild check
 
   tags:
     - osx
     - atbuild
     - openswift
+    - atpm
 
   artifacts:
     paths:
@@ -97,12 +99,11 @@ atbuildMac:
 linux:
   type: test
   script:
-        - apt-get install --no-install-recommends xz-utils curl git ca-certificates -y
-        - curl -L https://github.com/AnarchyTools/atbuild/releases/download/0.10.0/atbuild-0.10.0-linux.tar.xz | tar xJ
-        - cp atbuild-*/atbuild /usr/local/bin/atbuild
+        - apt-get update && apt-get install --no-install-recommends xz-utils curl git ca-certificates atpm atbuild caroline-static-tool -y
+        - atpm fetch
         - atbuild check
         
-  image: drewcrawford/swift:latest
+  image: drewcrawford/buildbase:latest
 
   tags:
   - autoscale-linux
