@@ -12,27 +12,16 @@
 
 import Foundation
 
-import XCTest
+import CarolineCore
 @testable import NaOH
 
-class GenericHashTests : XCTestCase {
-    func testGenericHash() {
+class GenericHash: CarolineTest {
+    func test() {
         let a: [UInt8] = [0,1,2]
         let hash1 = a.genericHash
         let hash2 = a.genericHash
-        XCTAssert(hash1 == hash2)
-        
-        XCTAssert(hash1 != ([0,1,3] as [UInt8]).genericHash)
-        
-        XCTAssert(hash1 != ([0,1,2,3] as [UInt8]).genericHash)
+        self.assert(hash1, equals: hash2)
+        self.assert(hash1, notEqual: ([0,1,3] as [UInt8]).genericHash)
+        self.assert(hash1, notEqual: ([0,1,2,3] as [UInt8]).genericHash)
     }
 }
-#if ATBUILD
-extension GenericHashTests  {
-    static var allTests : [(String, GenericHashTests -> () throws -> Void)] {
-        return [
-            ("testGenericHash", testGenericHash)
-        ]
-    }
-}
-#endif

@@ -14,3 +14,5 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+external
+NaOHTests/CarolineXCTest.swift
