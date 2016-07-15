@@ -26,16 +26,16 @@
     {
       :key "core-osx-swift-2.2"
       :pin false
-      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/7838c42eef7efd10d8844c39545edc5f/CarolineCore-0.1-dev-osx.tar.xz"
-      :used-version "0.1-dev"
-      :sha-sum "d490c780d81bb06d60937ca291968b7fdf2e5b6bfd5a94fdf4ee308ca3a76076"
+      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/a14e283bc683886c7a83d2419c0cdf4b/CarolineCore-0.1-osx.tar.xz"
+      :used-version "0.1"
+      :sha-sum "a5ca5d882813ac6b4c565a44765db8af469fbfc6cc69414b26d7ec83b3813c9a"
     }
     {
       :key "core-ios-swift-2.2"
       :pin false
-      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/4991c30a2fc4e942a0c6fdb87676d297/CarolineCore-0.1-ios.tar.xz"
+      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/79fe493f843582d1ea374935cd8df988/CarolineCore-0.1-ios.tar.xz"
       :used-version "0.1-dev"
-      :sha-sum "d12055ca2f21f93660a74d7319514e0a282a31ab62c3ccc6b2ceb8278c611282"
+      :sha-sum "af6c48076c4fee335126c1a6b47b09d803cb20c593434facdae8fd66e8ed1ad1"
     }
       ]
     }
