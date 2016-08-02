@@ -48,7 +48,12 @@ public struct CryptoSigningSecretKey: SecretKey  {
 public struct CryptoSigningPublicKey: PublicKey {
     public let bytes: [UInt8]
     public init(humanReadableString: String) {
-        let data = NSData(base64Encoded: humanReadableString, options: NSDataBase64DecodingOptions())!
+        #if swift(>=3.0)
+            let options = NSData.Base64DecodingOptions()
+        #else
+            let options = NSDataBase64DecodingOptions()
+        #endif
+        let data = NSData(base64Encoded: humanReadableString, options: options)!
         var array = [UInt8](repeating: 0, count: data.length)
         data.getBytes(&array,length:data.length)
         self.init(bytes: array)

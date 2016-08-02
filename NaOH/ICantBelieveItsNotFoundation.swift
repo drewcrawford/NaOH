@@ -20,11 +20,11 @@ extension NSString {
 
 //setAttributesOfItemAtPath isn't implemented
 //https://github.com/apple/swift-corelibs-foundation/pull/243
-extension NSFileManager {
+extension FileManager {
     func setSWIFTBUGAttributes(_ attributes: [String : AnyObject], ofItemAtPath path: String) throws {
         for attribute in attributes.keys {
             switch attribute {
-            case NSFilePosixPermissions:
+            case FileAttributeKey.posixPermissions.rawValue:
                 guard let number = attributes[attribute] as? NSNumber else {
                     fatalError("Can't set file permissions to \(attributes[attribute])")
                 }

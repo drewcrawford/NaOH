@@ -51,17 +51,17 @@ func aliceBob() -> (CryptoBoxSecretKey, CryptoBoxSecretKey) {
     #if !os(Linux)
         //copy item at path is unimplimented on Linux, but this feature isn't technically required there.
         let newAlicePath = NSTemporaryDirectory() + "/alice.key"
-        let _ = try? NSFileManager.`default`().removeItem(atPath: newAlicePath)
-        try! NSFileManager.`default`().copyItem(atPath: alicePath, toPath: newAlicePath)
+        let _ = try? FileManager.`default`.removeItem(atPath: newAlicePath)
+        try! FileManager.`default`.copyItem(atPath: alicePath, toPath: newAlicePath)
         alicePath = newAlicePath
         let newBobPath = NSTemporaryDirectory() + "/bob.key"
-        let _ = try? NSFileManager.`default`().removeItem(atPath: newBobPath)
-        try! NSFileManager.`default`().copyItem(atPath: bobPath, toPath: newBobPath)
+        let _ = try? FileManager.`default`.removeItem(atPath: newBobPath)
+        try! FileManager.`default`.copyItem(atPath: bobPath, toPath: newBobPath)
         bobPath = newBobPath
     #endif
     
-    try! NSFileManager.`default`().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: alicePath)
-    try! NSFileManager.`default`().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: bobPath)
+    try! FileManager.`default`.setSWIFTBUGAttributes([FileAttributeKey.posixPermissions.rawValue: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: alicePath)
+    try! FileManager.`default`.setSWIFTBUGAttributes([FileAttributeKey.posixPermissions.rawValue: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: bobPath)
     
     let alice = try! CryptoBoxSecretKey(readFromFile: alicePath)
     let bob = try! CryptoBoxSecretKey(readFromFile: bobPath)

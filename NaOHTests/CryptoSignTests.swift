@@ -21,18 +21,18 @@ private func signingKey() -> CryptoSigningSecretKey {
     #if !os(Linux)
         //copy item at path is unimplimented on Linux, but this feature isn't technically required there.
         let newAlicePath = NSTemporaryDirectory() + "/signing.key"
-        let _ = try? NSFileManager.`default`().removeItem(atPath: newAlicePath)
-        try! NSFileManager.`default`().copyItem(atPath: signingPath, toPath: newAlicePath)
+        let _ = try? FileManager.`default`.removeItem(atPath: newAlicePath)
+        try! FileManager.`default`.copyItem(atPath: signingPath, toPath: newAlicePath)
         signingPath = newAlicePath
     #endif
-    try! NSFileManager.`default`().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: signingPath)
+    try! FileManager.`default`.setSWIFTBUGAttributes([FileAttributeKey.posixPermissions.rawValue: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: signingPath)
     return try! CryptoSigningSecretKey(readFromFile: signingPath)
 }
 
 class GenerateKey: CarolineTest {
     func test() {
         let tempPath = NSTemporaryDirectory() + "signing.key"
-        let _  = try? NSFileManager.`default`().removeItem(atPath: tempPath)
+        let _  = try? FileManager.`default`.removeItem(atPath: tempPath)
         let key = CryptoSigningSecretKey()
         try! key.saveToFile(tempPath)
         let key2 = try! CryptoSigningSecretKey(readFromFile: tempPath)

@@ -101,10 +101,10 @@ public enum KeySizes {
 extension KeyImpl {
     convenience init(password: String, salt: String, keySize: Int) throws  {
         sodium_init_wrap()
-        let saltBytes = salt.cString(using: NSUTF8StringEncoding)!
+        let saltBytes = salt.cString(using: String.Encoding.utf8)!
         precondition(saltBytes.count == Int(crypto_pwhash_scryptsalsa208sha256_SALTBYTES), "\(saltBytes.count) is different than \(crypto_pwhash_scryptsalsa208sha256_SALTBYTES)")
         
-        var bytes = password.cString(using: NSUTF8StringEncoding)!
+        var bytes = password.cString(using: String.Encoding.utf8)!
         
         
         self.init(uninitializedSize: keySize)
@@ -141,12 +141,12 @@ extension KeyImpl {
      - parameter userDataBytes: Extra user data stored in this file that we don't consider part of the key.  This is returned in the userData parameter.*/
     convenience init (readFromFile file: String, userDataBytes: Int, userData: inout [UInt8]) throws {
         //check attributes
-        let attributes = try NSFileManager.`default`().attributesOfItem(atPath: file)
-        guard let num = attributes[NSFilePosixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[NSFilePosixPermissions]) an NSNumber?") }
+        let attributes = try FileManager.`default`.attributesOfItem(atPath: file)
+        guard let num = attributes[FileAttributeKey.posixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[FileAttributeKey.posixPermissions]) an NSNumber?") }
         if num.uint16Value != 0o0600 {
             throw NaOHError.FilePermissionsLookSuspicious
         }
-        let mutableData = try NSMutableData(contentsOfFile: file, options: NSDataReadingOptions())
+        let mutableData = try NSMutableData(contentsOfFile: file, options: [])
         let keySize = mutableData.length - userDataBytes
         self.init(uninitializedSize: keySize)
         memcpy(addrAsVoid, mutableData.bytes, keySize)
@@ -171,7 +171,7 @@ extension KeyImpl {
      - parameter userDataBytes: Extra user data stored in this file that we don't consider part of the key.  This is returned in the userData parameter.*/
     convenience init (readFromFile file: String, userDataBytes: Int, inout userData: [UInt8]) throws {
         //check attributes
-        let attributes = try NSFileManager.`default`().attributesOfItem(atPath: file)
+        let attributes = try FileManager.`default`.attributesOfItem(atPath: file)
         guard let num = attributes[NSFilePosixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[NSFilePosixPermissions]) an NSNumber?") }
         if num.shortValue != 0o0600 {
             throw NaOHError.FilePermissionsLookSuspicious
