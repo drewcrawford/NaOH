@@ -68,13 +68,13 @@ public func crypto_sign_detached(_ message: [UInt8], key: CryptoSigningSecretKey
     var sig = [UInt8](repeating: 0, count: Int(crypto_sign_bytes()))
     try! key.keyImpl__.unlock()
     defer { try! key.keyImpl__.lock() }
-    let result = crypto_sign_detached(&sig, UnsafeMutablePointer(nil), message, UInt64(message.count), key.keyImpl__.addr)
+    let result = crypto_sign_detached(&sig, nil, message, UInt64(message.count), key.keyImpl__.addr)
     precondition(result == 0)
     return sig
 }
 
 @available(iOS 9.3, *, *)
-public func crypto_sign_verify_detached(signature signature: [UInt8], message: [UInt8], key: CryptoSigningPublicKey) throws {
+public func crypto_sign_verify_detached(signature: [UInt8], message: [UInt8], key: CryptoSigningPublicKey) throws {
     precondition(key.bytes.count == Int(crypto_sign_PUBLICKEYBYTES))
     let result = crypto_sign_verify_detached(signature, message, UInt64(message.count), key.bytes)
     if result != 0 { throw NaOHError.CryptoSignError }

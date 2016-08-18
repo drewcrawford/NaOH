@@ -15,7 +15,7 @@ import Foundation
 /**Constant time memory comparison of arrays for cryptographic purposes
 - warning: Note that this is only constant time for constant-sized inputs.*/
 @available(iOS 9.3, *, *)
-@warn_unused_result
+
 public func sodium_memcmp(_ a: [UInt8], _ b: [UInt8]) -> Bool {
     let lengthMatches = a.count == b.count
     //we actually continue to evaluate regardless of whether the length matches or not

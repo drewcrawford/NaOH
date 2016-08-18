@@ -15,14 +15,10 @@ import Foundation
 extension Array {
     /**Increments an array of UInt8 (interpreted as an arbitrarily-long unsigned number) in a way resistant to timing attacks. */
     mutating func constantTimeIncrement() {
-        //fix this in Swift 3?
+        //fix this in Swift 4?
         precondition(Element.self == UInt8.self, "Unexpected element \(Element.self); only implemented for UInt8")
         withUnsafeMutableBufferPointer { (ptr) -> () in
-            #if swift(>=3.0)
-                let convertedPtr: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer(ptr.baseAddress)!
-            #else
-            let convertedPtr: UnsafeMutablePointer<UInt8> = UnsafeMutablePointer(ptr.baseAddress)
-            #endif
+            let convertedPtr = UnsafeMutableRawPointer(ptr.baseAddress!).assumingMemoryBound(to: UInt8.self)
             sodium_increment(convertedPtr, ptr.count)
         }
     }

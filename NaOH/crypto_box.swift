@@ -47,7 +47,7 @@ public struct CryptoBoxPublicKey: PublicKey {
     public init(bytes: [UInt8]) {
         self.bytes = bytes
     }
-    private init(secretKeyImpl: KeyImpl) {
+    fileprivate init(secretKeyImpl: KeyImpl) {
         try! secretKeyImpl.unlock()
         defer { try! secretKeyImpl.lock() }
         

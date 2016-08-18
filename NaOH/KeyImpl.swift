@@ -22,9 +22,9 @@ You should use this because:
 @available(iOS 9.3, *)
 final class KeyImpl {
     let addr : UnsafeMutablePointer<UInt8>
-    var addrAsVoid : UnsafeMutablePointer<Void> {
+    var addrAsVoid : UnsafeMutableRawPointer {
         get {
-            return unsafeBitCast(addr, to: UnsafeMutablePointer<Void>.self)
+            return unsafeBitCast(addr, to: UnsafeMutableRawPointer.self)
         }
     }
     
@@ -32,7 +32,7 @@ final class KeyImpl {
     internal init(uninitializedSize: Int) {
         sodium_init_wrap()
         self.size = uninitializedSize
-        addr = UnsafeMutablePointer<UInt8>(sodium_malloc(size))
+        addr = UnsafeMutablePointer<UInt8>(sodium_malloc(size).bindMemory(to: UInt8.self, capacity: size))
     }
     
     deinit {
@@ -57,7 +57,7 @@ final class KeyImpl {
             try! unlock()
             defer { try! lock() }
             var hash = [UInt8](repeating: 0, count: Int(crypto_generichash_BYTES))
-            if crypto_generichash(&hash, hash.count, addr, UInt64(size), UnsafePointer(nil), 0) != 0 {
+            if crypto_generichash(&hash, hash.count, addr, UInt64(size), nil, 0) != 0 {
                 preconditionFailure("Hash error")
             }
             var str = ""
