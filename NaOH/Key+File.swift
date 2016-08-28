@@ -41,10 +41,10 @@ extension SecretKey {
         let userNSData = userData.withUnsafeBufferPointer { (ptr) -> NSData in
             return NSData(bytes: ptr.baseAddress, length: ptr.count)
         }
-        #if swift(>=3.0)
+        #if os(OSX) || os(iOS)
         data.append(userNSData as Data)
         #else
-        data.append(userNSData)
+            data.append(userNSData.bridge())
         #endif
         try data.write(toFile: file, options: [])
         //scrub the data

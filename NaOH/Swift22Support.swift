@@ -11,6 +11,23 @@
 //  in the LICENSE file.
 import Foundation
 
+#if !swift(>=3.0) || os(Linux)
+    struct FileAttributeKey {
+        struct posixPermissions {
+            static var rawValue: String { return NSFilePosixPermissions }
+        }
+        
+    }
+    extension NSData {
+        @nonobjc
+        func base64EncodedString(options options: NSData.Base64EncodingOptions) -> String {
+            return self.base64EncodedString(options)
+        }
+        
+    }
+#endif
+
+
 #if !swift(>=3.0)
     typealias FileManager = NSFileManager
     
@@ -20,23 +37,10 @@ import Foundation
         }
     }
     
-    struct FileAttributeKey {
-        struct posixPermissions {
-            static var rawValue: String { return NSFilePosixPermissions }
-        }
-    }
     extension String {
         struct Encoding {
             static let utf8 = NSUTF8StringEncoding
         }
-    }
-    
-    extension NSData {
-        @nonobjc
-        func base64EncodedString(options options: NSDataBase64EncodingOptions) -> String {
-            return self.base64EncodedString(options)
-        }
-
     }
 
 #endif

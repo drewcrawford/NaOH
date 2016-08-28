@@ -15,7 +15,17 @@
       :payloads [
     {
       :key "git"
-      :used-commit "563b3f590527c8e2bf47116bb6beb68878600f74"
+      :used-commit "8553920fb82015a62207e0d6121b958e508d55ec"
+      :pin false
+    }
+      ]
+    }
+    {
+      :url "https://code.sealedabstract.com/drewcrawford/StandBack.git"
+      :payloads [
+    {
+      :key "git"
+      :used-commit "9f1d358015fbd6b568d93880be69ecc0f9397812"
       :pin false
     }
       ]
