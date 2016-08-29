@@ -15,7 +15,17 @@
       :payloads [
     {
       :key "git"
-      :used-commit "563b3f590527c8e2bf47116bb6beb68878600f74"
+      :used-commit "e7ef89e6efd9476d4fb8c07128372c9b2c526752"
+      :pin false
+    }
+      ]
+    }
+    {
+      :url "https://code.sealedabstract.com/drewcrawford/StandBack.git"
+      :payloads [
+    {
+      :key "git"
+      :used-commit "f6a17da3de4dd7706fb819cf6474148aaf272298"
       :pin false
     }
       ]
@@ -36,6 +46,13 @@
       :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/79fe493f843582d1ea374935cd8df988/CarolineCore-0.1-ios.tar.xz"
       :used-version "0.1-dev"
       :sha-sum "af6c48076c4fee335126c1a6b47b09d803cb20c593434facdae8fd66e8ed1ad1"
+    }
+    {
+      :key "core-ios-swift-2.3"
+      :pin false
+      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/75fff4f288c36d6dbfa09f350b1cbb61/CarolineCore-0.2-beta1-ios.tar.xz"
+      :used-version "0.2-beta1"
+      :sha-sum "953a1d17bfcea00af8ac1dd5d18f7b0bd5d47d17fe22b2d8a4c06a58fca367a2"
     }
       ]
     }

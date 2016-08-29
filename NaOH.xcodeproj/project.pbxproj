@@ -1240,6 +1240,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTestHostApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -1256,6 +1257,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTestHostApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1275,6 +1277,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTestHostAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaOHiOSTestHostApp.app/NaOHiOSTestHostApp";
 			};
 			name = Debug;
@@ -1294,6 +1297,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTestHostAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NaOHiOSTestHostApp.app/NaOHiOSTestHostApp";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1497,6 +1501,7 @@
 				PRODUCT_NAME = NaOH;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$SRCROOT/NaOH-iOS/libsodium-ios";
 			};
@@ -1528,6 +1533,7 @@
 				PRODUCT_NAME = NaOH;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$SRCROOT/NaOH-iOS/libsodium-ios";
 				VALIDATE_PRODUCT = YES;
