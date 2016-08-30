@@ -12,7 +12,7 @@ testMac:
   type: test
   script:
     - atpm fetch
-    - xcodebuild -scheme NaOH clean test
+    - DEVELOPER_DIR=/Applications/Xcode7.app/Contents/Developer xcodebuild -scheme NaOH clean test
   tags:
     - xcode7
     - atpm
@@ -21,7 +21,7 @@ testiOSSim64Swift22:
   type: test
   script:
     - atpm fetch
-    - killall Simulator
+    - killall Simulator || true
     - DEVELOPER_DIR=/Applications/Xcode7.app/Contents/Developer xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 6" clean test
   tags:
     - xcode7symlink
@@ -31,7 +31,7 @@ testiOSSim64Swift23:
   type: test
   script:
     - atpm fetch
-    - killall Simulator
+    - killall Simulator || true
     - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer TOOLCHAINS=com.apple.dt.toolchain.Swift_2_3 xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 6" clean test
   tags:
     - xcode8symlink 
