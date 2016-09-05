@@ -12,6 +12,8 @@ testMac:
   type: test
   script:
     - killall Simulator || true
+    - DEVELOPER_DIR=/Applications/Xcode7.app/ instruments -w 'Select a iOS Simulator UUID' || true
+    - sleep 10
     - atpm fetch
     - DEVELOPER_DIR=/Applications/Xcode7.app/Contents/Developer xcodebuild -scheme NaOH clean test
   tags:
@@ -23,6 +25,8 @@ testiOSSim64Swift22:
   script:
     - atpm fetch
     - killall Simulator || true
+    - DEVELOPER_DIR=/Applications/Xcode7.app/ instruments -w 'Select a iOS Simulator UUID' || true
+    - sleep 10
     - DEVELOPER_DIR=/Applications/Xcode7.app/Contents/Developer xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 6" clean test
   tags:
     - xcode7symlink
@@ -43,6 +47,8 @@ iosSwift22DeviceTest:
   type: test
   script:
     - atpm fetch
+    - DEVELOPER_DIR=/Applications/Xcode7.app/ instruments -w 'Select a iOS Simulator UUID' || true
+    - sleep 10
     - DEVELOPER_DIR=/Applications/Xcode7.app/Contents/Developer xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS,name=DCA" clean test
   tags:
     - xcode7symlink
@@ -56,7 +62,7 @@ iosSwift23DeviceTest:
     - cp -R external/Caroline/channels/core-ios-swift-2.3/bin/CarolineCore.framework external/Caroline/channels/core-ios-swift-2.2/bin
     - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer TOOLCHAINS=com.apple.dt.toolchain.Swift_2_3 xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS,name=DCA" clean test
   tags:
-    - xcode7symlink
+    - xcode8symlink
     - iosDevice
     - atpm
 
@@ -64,6 +70,8 @@ archiveiOS:
    type: package
    script:
       - killall Simulator || true
+      - DEVELOPER_DIR=/Applications/Xcode7.app/ instruments -w 'Select a iOS Simulator UUID' || true
+      - sleep 10
       - DEVELOPER_DIR=/Applications/Xcode7.app/Contents/Developer carthage build --no-skip-current --platform ios
       - mkdir binaries
       - cp -R Carthage/Build/iOS/* binaries/
@@ -99,6 +107,8 @@ archiveMac:
    type: package
    script:
       - killall Simulator || true
+      - xcrun instruments -w 'Select a iOS Simulator UUID' || true
+      - sleep 10
       - "DEVELOPER_DIR=/Applications/Xcode7.app/Contents/Developer carthage build --no-skip-current --platform osx"
       - mkdir binaries
       - cp -R Carthage/Build/Mac/* binaries/
