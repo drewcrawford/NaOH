@@ -63,6 +63,7 @@ iosSwift23DeviceTest:
 archiveiOS:
    type: package
    script:
+      - killall Simulator || true
       - DEVELOPER_DIR=/Applications/Xcode7.app/Contents/Developer carthage build --no-skip-current --platform ios
       - mkdir binaries
       - cp -R Carthage/Build/iOS/* binaries/
@@ -79,6 +80,7 @@ archiveiOS:
 archiveiOS23:
    type: package
    script:
+      - killall Simulator || true
       - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer TOOLCHAINS=com.apple.dt.toolchain.Swift_2_3 carthage build --no-skip-current --platform ios
       - mkdir binaries
       - cp -R Carthage/Build/iOS/* binaries/
@@ -96,6 +98,7 @@ archiveiOS23:
 archiveMac:
    type: package
    script:
+      - killall Simulator || true
       - "DEVELOPER_DIR=/Applications/Xcode7.app/Contents/Developer carthage build --no-skip-current --platform osx"
       - mkdir binaries
       - cp -R Carthage/Build/Mac/* binaries/
