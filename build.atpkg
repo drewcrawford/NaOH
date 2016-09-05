@@ -8,7 +8,7 @@
     }
     {
       :version [">=0.1"]
-      :channels ["core-osx-swift-2.2" "core-ios-swift-2.2"]
+      :channels ["core-osx-swift-3.0" "core-ios-swift-3.0"]
       :url "https://code.sealedabstract.com/drewcrawford/Caroline/raw/master/manifest.atpkg"
     }
   ]
