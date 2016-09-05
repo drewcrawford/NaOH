@@ -33,7 +33,7 @@ testiOSSim32:
   script:
     - atpm fetch
     - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true; killall Simulator || true
-    - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 4s" clean test
+    - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 5" clean test
   tags:
     - xcode8symlink
     - atpm
