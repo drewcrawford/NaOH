@@ -12,49 +12,54 @@ testMac:
   type: test
   script:
     - atpm fetch
-    - xcodebuild -scheme NaOH clean test
+    - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true; killall Simulator || true
+    - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer xcodebuild -scheme NaOH clean test
   tags:
-    - xc7
+    - xcode8symlink
     - atpm
 
 testiOSSim64:
   type: test
   script:
     - atpm fetch
-    - xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 6" clean test
+    - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true; killall Simulator || true
+    - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 6" clean test
   tags:
-    - xc7
+    - xcode8symlink
     - atpm
 
-testiOSSim64:
+testiOSSim32:
   type: test
   script:
     - atpm fetch
-    - xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 4s" clean test
+    - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true; killall Simulator || true
+    - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 4s" clean test
   tags:
-    - xc7
+    - xcode8symlink
     - atpm
 
 iosDeviceTest:
   type: test
   script:
     - atpm fetch
-    - xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS,name=Dca's iPod touch" clean test
+    - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true; killall Simulator || true
+    - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS,name=Dca's iPod touch" clean test
   tags:
-    - xc7
+    - xcode8symlink
     - iosDevice
     - atpm
 
 archiveiOS:
    type: package
    script:
-      - carthage build --no-skip-current --platform ios
+      - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true; killall Simulator || true
+      - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer carthage build --no-skip-current --platform ios
       - mkdir binaries
       - cp -R Carthage/Build/iOS/* binaries/
       - strip -S -x binaries/NaOH.framework/NaOH
       - plutil -replace CFBundleVersion -string "$CI_BUILD_ID" binaries/NaOH.framework/Info.plist
    tags:
-    - xc7
+    - xcode8symlink
 
    artifacts:
       paths:
@@ -65,7 +70,8 @@ archiveiOS:
 archiveMac:
    type: package
    script:
-      - "carthage build --no-skip-current --platform osx"
+      - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true; killall Simulator || true
+      - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer carthage build --no-skip-current --platform osx
       - mkdir binaries
       - cp -R Carthage/Build/Mac/* binaries/
       - strip -S -x binaries/NaOH.framework/NaOH 
@@ -77,7 +83,7 @@ archiveMac:
       name: "NaOH-OSX-${CI_BUILD_REF_NAME}-${CI_BUILD_ID}"
 
    tags:
-    - xc7
+    - xcode8symlink
 
 atbuildMac:
   type: test
