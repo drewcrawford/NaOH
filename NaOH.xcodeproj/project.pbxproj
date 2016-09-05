@@ -23,6 +23,7 @@
 		3A1BC1491D7D043700C47F6F /* CarolineCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1BC1471D7D03DF00C47F6F /* CarolineCore.framework */; };
 		3A1BC14B1D7D052900C47F6F /* CarolineCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1BC14A1D7D052900C47F6F /* CarolineCore.framework */; };
 		3A1BC14C1D7D054F00C47F6F /* CarolineCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A1BC14A1D7D052900C47F6F /* CarolineCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A1BC14E1D7D10AC00C47F6F /* CarolineCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1BC1471D7D03DF00C47F6F /* CarolineCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A2AF84C1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */; };
 		3A2AF84E1B95B52500A3BEF3 /* CryptoStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */; };
 		3A30E5361CABA6FA00E08FB4 /* crypto_sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E5351CABA6FA00E08FB4 /* crypto_sign.swift */; };
@@ -233,6 +234,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3A1BC14E1D7D10AC00C47F6F /* CarolineCore.framework in Embed Frameworks */,
 				3A07A6E31CABDB0800B3FB82 /* NaOH.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
