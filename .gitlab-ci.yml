@@ -51,6 +51,8 @@ iosSwift22DeviceTest:
   type: test
   script:
     - atpm fetch
+    - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true
+    - killall Simulator || true
     - DEVELOPER_DIR=/Applications/Xcode7.app/ instruments -w 'Select a iOS Simulator UUID' || true
     - sleep 10
     - DEVELOPER_DIR=/Applications/Xcode7.app/Contents/Developer xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS,name=DCA" clean test
@@ -63,6 +65,8 @@ iosSwift23DeviceTest:
   type: test
   script:
     - atpm fetch
+    - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true
+    - killall Simulator || true
     - cp -R external/Caroline/channels/core-ios-swift-2.3/bin/CarolineCore.framework external/Caroline/channels/core-ios-swift-2.2/bin
     - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer TOOLCHAINS=com.apple.dt.toolchain.Swift_2_3 xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS,name=DCA" clean test
   tags:
