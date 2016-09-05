@@ -38,16 +38,16 @@ testiOSSim32:
     - xcode8symlink
     - atpm
 
-iosDeviceTest:
-  type: test
-  script:
-    - atpm fetch
-    - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true; killall Simulator || true
-    - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS,name=DCA" clean test
-  tags:
-    - xcode8symlink
-    - iosDevice
-    - atpm
+# iosDeviceTest:
+#   type: test
+#   script:
+#     - atpm fetch
+#     - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true; killall Simulator || true
+#     - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS,name=DCA" clean test
+#   tags:
+#     - xcode8symlink
+#     - iosDevice
+#     - atpm
 
 archiveiOS:
    type: package
