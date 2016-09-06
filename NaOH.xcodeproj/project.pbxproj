@@ -20,6 +20,10 @@
 		3A19220E1B8118140092C6B1 /* bob.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A19220D1B8118140092C6B1 /* bob.key */; };
 		3A1922131B811DD50092C6B1 /* Key+Zeroing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1922121B811DD50092C6B1 /* Key+Zeroing.swift */; };
 		3A19221B1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A19221A1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift */; };
+		3A1BC1491D7D043700C47F6F /* CarolineCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1BC1471D7D03DF00C47F6F /* CarolineCore.framework */; };
+		3A1BC14B1D7D052900C47F6F /* CarolineCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1BC14A1D7D052900C47F6F /* CarolineCore.framework */; };
+		3A1BC14C1D7D054F00C47F6F /* CarolineCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A1BC14A1D7D052900C47F6F /* CarolineCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A1BC14E1D7D10AC00C47F6F /* CarolineCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1BC1471D7D03DF00C47F6F /* CarolineCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A2AF84C1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */; };
 		3A2AF84E1B95B52500A3BEF3 /* CryptoStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */; };
 		3A30E5361CABA6FA00E08FB4 /* crypto_sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A30E5351CABA6FA00E08FB4 /* crypto_sign.swift */; };
@@ -44,9 +48,6 @@
 		3A410EC71C239C7F00C1C879 /* IncrementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB474D61C1D998A00651809 /* IncrementTests.swift */; };
 		3A410EC81C239CA900C1C879 /* bob.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A19220D1B8118140092C6B1 /* bob.key */; };
 		3A410EC91C239CA900C1C879 /* alice.key in Resources */ = {isa = PBXBuildFile; fileRef = 3A19220B1B8112A30092C6B1 /* alice.key */; };
-		3A4471701D3321F200D40353 /* CarolineCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A569C0D1D327A0A009BC0BA /* CarolineCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3A4471741D3325C400D40353 /* CarolineCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4471731D3325C400D40353 /* CarolineCore.framework */; };
-		3A4471761D33264300D40353 /* CarolineCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A4471731D3325C400D40353 /* CarolineCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A4471781D33695400D40353 /* CarolineXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4471771D33695400D40353 /* CarolineXCTest.swift */; };
 		3A526F6B1B80AC130092BA60 /* SwiftAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F681B80AC130092BA60 /* SwiftAPI.swift */; };
 		3A526F6C1B80AC130092BA60 /* KeyImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526F691B80AC130092BA60 /* KeyImpl.swift */; };
@@ -109,7 +110,6 @@
 		3A526FDF1B80AD4F0092BA60 /* CryptoSecretBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526FDD1B80AD4F0092BA60 /* CryptoSecretBoxTests.swift */; };
 		3A526FE01B80AD4F0092BA60 /* KeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A526FDE1B80AD4F0092BA60 /* KeyTests.swift */; };
 		3A526FE31B80B4E90092BA60 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3A526FE21B80B4E90092BA60 /* LICENSE */; };
-		3A569C0E1D327A0A009BC0BA /* CarolineCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A569C0D1D327A0A009BC0BA /* CarolineCore.framework */; };
 		3A569C141D332194009BC0BA /* CarolineXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A569C131D332194009BC0BA /* CarolineXCTest.swift */; };
 		3A6C74E11C0842700055B55B /* crypto_aead_aes256gcm.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6C74E01C0842700055B55B /* crypto_aead_aes256gcm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3A704D321C9D2CA500298A9C /* Swift22Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A704D311C9D2CA500298A9C /* Swift22Support.swift */; };
@@ -234,7 +234,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3A4471701D3321F200D40353 /* CarolineCore.framework in Embed Frameworks */,
+				3A1BC14E1D7D10AC00C47F6F /* CarolineCore.framework in Embed Frameworks */,
 				3A07A6E31CABDB0800B3FB82 /* NaOH.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -246,7 +246,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3A4471761D33264300D40353 /* CarolineCore.framework in CopyFiles */,
+				3A1BC14C1D7D054F00C47F6F /* CarolineCore.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +262,8 @@
 		3A19220D1B8118140092C6B1 /* bob.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bob.key; sourceTree = "<group>"; };
 		3A1922121B811DD50092C6B1 /* Key+Zeroing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Key+Zeroing.swift"; sourceTree = "<group>"; };
 		3A19221A1B8127720092C6B1 /* Key+EncryptedWithPublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Key+EncryptedWithPublicKey.swift"; sourceTree = "<group>"; };
+		3A1BC1471D7D03DF00C47F6F /* CarolineCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarolineCore.framework; path = "external/Caroline/channels/core-ios-swift-3.0/bin/CarolineCore.framework"; sourceTree = "<group>"; };
+		3A1BC14A1D7D052900C47F6F /* CarolineCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarolineCore.framework; path = "external/Caroline/channels/core-osx-swift-3.0/bin/CarolineCore.framework"; sourceTree = "<group>"; };
 		3A2AF84B1B95B3A400A3BEF3 /* crypto_stream_chacha20.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_stream_chacha20.swift; sourceTree = "<group>"; };
 		3A2AF84D1B95B52500A3BEF3 /* CryptoStreamTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoStreamTests.swift; sourceTree = "<group>"; };
 		3A30E5351CABA6FA00E08FB4 /* crypto_sign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = crypto_sign.swift; sourceTree = "<group>"; };
@@ -279,7 +281,6 @@
 		3A410EB31C239C6000C1C879 /* NaOHiOSTestHostAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NaOHiOSTestHostAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A410EB71C239C6000C1C879 /* NaOHiOSTestHostAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaOHiOSTestHostAppTests.swift; sourceTree = "<group>"; };
 		3A410EB91C239C6000C1C879 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A4471731D3325C400D40353 /* CarolineCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarolineCore.framework; path = "external/Caroline/channels/core-osx-swift-2.2/bin/CarolineCore.framework"; sourceTree = "<group>"; };
 		3A4471771D33695400D40353 /* CarolineXCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarolineXCTest.swift; sourceTree = "<group>"; };
 		3A526F681B80AC130092BA60 /* SwiftAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftAPI.swift; sourceTree = "<group>"; };
 		3A526F691B80AC130092BA60 /* KeyImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyImpl.swift; sourceTree = "<group>"; };
@@ -342,7 +343,6 @@
 		3A526FDD1B80AD4F0092BA60 /* CryptoSecretBoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoSecretBoxTests.swift; sourceTree = "<group>"; };
 		3A526FDE1B80AD4F0092BA60 /* KeyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTests.swift; sourceTree = "<group>"; };
 		3A526FE21B80B4E90092BA60 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		3A569C0D1D327A0A009BC0BA /* CarolineCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CarolineCore.framework; path = "external/Caroline/channels/core-ios-swift-2.2/bin/CarolineCore.framework"; sourceTree = "<group>"; };
 		3A569C131D332194009BC0BA /* CarolineXCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarolineXCTest.swift; sourceTree = "<group>"; };
 		3A6C74E01C0842700055B55B /* crypto_aead_aes256gcm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypto_aead_aes256gcm.h; sourceTree = "<group>"; };
 		3A704D311C9D2CA500298A9C /* Swift22Support.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swift22Support.swift; sourceTree = "<group>"; };
@@ -434,7 +434,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A569C0E1D327A0A009BC0BA /* CarolineCore.framework in Frameworks */,
+				3A1BC1491D7D043700C47F6F /* CarolineCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +450,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A4471741D3325C400D40353 /* CarolineCore.framework in Frameworks */,
+				3A1BC14B1D7D052900C47F6F /* CarolineCore.framework in Frameworks */,
 				3AAAC7B51B80AB40009431FC /* NaOH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,8 +492,8 @@
 		3AAAC7A01B80AB40009431FC = {
 			isa = PBXGroup;
 			children = (
-				3A4471731D3325C400D40353 /* CarolineCore.framework */,
-				3A569C0D1D327A0A009BC0BA /* CarolineCore.framework */,
+				3A1BC14A1D7D052900C47F6F /* CarolineCore.framework */,
+				3A1BC1471D7D03DF00C47F6F /* CarolineCore.framework */,
 				3A526FE21B80B4E90092BA60 /* LICENSE */,
 				3AAAC7AC1B80AB40009431FC /* NaOH */,
 				3AAAC7B81B80AB40009431FC /* NaOHTests */,
@@ -1234,8 +1234,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/external/Caroline/channels/core-ios-swift-3.0/bin",
+				);
 				INFOPLIST_FILE = NaOHiOSTestHostApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTestHostApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1250,8 +1254,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/external/Caroline/channels/core-ios-swift-3.0/bin",
+				);
 				INFOPLIST_FILE = NaOHiOSTestHostApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTestHostApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1268,9 +1276,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/external/Caroline/channels/core-ios-swift-2.2/bin",
+					"$(PROJECT_DIR)/external/Caroline/channels/core-ios-swift-3.0/bin",
 				);
 				INFOPLIST_FILE = NaOHiOSTestHostAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTestHostAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1287,9 +1296,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/external/Caroline/channels/core-ios-swift-2.2/bin",
+					"$(PROJECT_DIR)/external/Caroline/channels/core-ios-swift-3.0/bin",
 				);
 				INFOPLIST_FILE = NaOHiOSTestHostAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dca.NaOHiOSTestHostAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1340,6 +1350,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1378,6 +1389,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1408,6 +1420,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1436,6 +1449,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1447,6 +1461,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/external/Caroline/channels/core-osx-swift-2.2/bin",
+					"$(PROJECT_DIR)/external/Caroline/channels/core-osx-swift-3.0/bin",
 				);
 				INFOPLIST_FILE = NaOHTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -1463,6 +1478,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/external/Caroline/channels/core-osx-swift-2.2/bin",
+					"$(PROJECT_DIR)/external/Caroline/channels/core-osx-swift-3.0/bin",
 				);
 				INFOPLIST_FILE = NaOHTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";

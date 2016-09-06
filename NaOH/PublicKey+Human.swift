@@ -14,7 +14,7 @@ import Foundation
 extension PublicKey  {
     public var humanReadable: String {
         get {
-            return NSData(bytes: bytes, length: bytes.count).base64EncodedString(NSDataBase64EncodingOptions())
+            return NSData(bytes: bytes, length: bytes.count).base64EncodedString(options: [])
         }
     }
 }

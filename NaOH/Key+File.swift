@@ -25,13 +25,13 @@ extension SecretKey {
     
     /**This internal variant allows a custom key to serialize its own data.*/
     func _saveToFile(_ file: String, userData: [UInt8]) throws {
-        if NSFileManager.`default`().fileExists(atPath: file) {
+        if FileManager.`default`.fileExists(atPath: file) {
             throw NaOHError.WontOverwriteKey
         }
         //create a locked down file
         //so that we only write if everything's good
-        try NSData().write(toFile: file, options: NSDataWritingOptions())
-        try NSFileManager.`default`().setSWIFTBUGAttributes([NSFilePosixPermissions: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: file)
+        try NSData().write(toFile: file, options: [])
+        try FileManager.`default`.setSWIFTBUGAttributes([FileAttributeKey.posixPermissions.rawValue: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: file)
         
         //with that out of the way
         try self.keyImpl__.unlock()
@@ -41,8 +41,12 @@ extension SecretKey {
         let userNSData = userData.withUnsafeBufferPointer { (ptr) -> NSData in
             return NSData(bytes: ptr.baseAddress, length: ptr.count)
         }
-        data.append(userNSData)
-        try data.write(toFile: file, options: NSDataWritingOptions())
+        #if os(OSX) || os(iOS)
+        data.append(userNSData as Data)
+        #else
+            data.append(userNSData.bridge())
+        #endif
+        try data.write(toFile: file, options: [])
         //scrub the data
         sodium_memzero(data.mutableBytes, data.length)
     }

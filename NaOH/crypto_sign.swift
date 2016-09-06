@@ -48,7 +48,12 @@ public struct CryptoSigningSecretKey: SecretKey  {
 public struct CryptoSigningPublicKey: PublicKey {
     public let bytes: [UInt8]
     public init(humanReadableString: String) {
-        let data = NSData(base64Encoded: humanReadableString, options: NSDataBase64DecodingOptions())!
+        #if swift(>=3.0)
+            let options = NSData.Base64DecodingOptions()
+        #else
+            let options = NSDataBase64DecodingOptions()
+        #endif
+        let data = NSData(base64Encoded: humanReadableString, options: options)!
         var array = [UInt8](repeating: 0, count: data.length)
         data.getBytes(&array,length:data.length)
         self.init(bytes: array)
@@ -63,13 +68,13 @@ public func crypto_sign_detached(_ message: [UInt8], key: CryptoSigningSecretKey
     var sig = [UInt8](repeating: 0, count: Int(crypto_sign_bytes()))
     try! key.keyImpl__.unlock()
     defer { try! key.keyImpl__.lock() }
-    let result = crypto_sign_detached(&sig, UnsafeMutablePointer(nil), message, UInt64(message.count), key.keyImpl__.addr)
+    let result = crypto_sign_detached(&sig, nil, message, UInt64(message.count), key.keyImpl__.addr)
     precondition(result == 0)
     return sig
 }
 
 @available(iOS 9.3, *, *)
-public func crypto_sign_verify_detached(signature signature: [UInt8], message: [UInt8], key: CryptoSigningPublicKey) throws {
+public func crypto_sign_verify_detached(signature: [UInt8], message: [UInt8], key: CryptoSigningPublicKey) throws {
     precondition(key.bytes.count == Int(crypto_sign_PUBLICKEYBYTES))
     let result = crypto_sign_verify_detached(signature, message, UInt64(message.count), key.bytes)
     if result != 0 { throw NaOHError.CryptoSignError }

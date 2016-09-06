@@ -47,7 +47,7 @@ public struct CryptoBoxPublicKey: PublicKey {
     public init(bytes: [UInt8]) {
         self.bytes = bytes
     }
-    private init(secretKeyImpl: KeyImpl) {
+    fileprivate init(secretKeyImpl: KeyImpl) {
         try! secretKeyImpl.unlock()
         defer { try! secretKeyImpl.lock() }
         
@@ -61,7 +61,7 @@ public struct CryptoBoxPublicKey: PublicKey {
         self.init(secretKeyImpl: secretKey.keyImpl__)
     }
     public init(humanReadableString: String) {
-        let data = NSData(base64Encoded: humanReadableString, options: NSDataBase64DecodingOptions())!
+        let data = NSData(base64Encoded: humanReadableString, options: [])!
         var array = [UInt8](repeating: 0, count: data.length)
         data.getBytes(&array,length:data.length)
         self.init(bytes: array)

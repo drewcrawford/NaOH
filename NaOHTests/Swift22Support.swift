@@ -12,9 +12,3 @@
 
 import Foundation
 
-#if ATBUILD && os(OSX)
-#else
-    extension NSUUID {
-        var uuidString: String { return self.UUIDString }
-    }
-#endif
