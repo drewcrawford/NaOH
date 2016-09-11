@@ -15,7 +15,7 @@
       :payloads [
     {
       :key "git"
-      :used-commit "a2042c8a28394e0c87d2a55b17c363cbc6d86cf6"
+      :used-commit "3c5554fa0053dc47e76bc41a49741c3de1419a13"
       :pin false
     }
       ]
@@ -50,9 +50,9 @@
     {
       :key "core-ios-swift-2.3"
       :pin false
-      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/a4ece2bd6719d454b451ed266b7ffe4c/CarolineCore-0.2-beta2-ios.tar.xz"
-      :used-version "0.2-beta2"
-      :sha-sum "fc8714db61fa38873b59367b40c60d55b4cace696998a7623f36d25cd6459f06"
+      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/51b2c334de68c3325b3d35dba97d25af/CarolineCore-0.2-beta3-ios.tar.xz"
+      :used-version "0.2-beta3"
+      :sha-sum "2111ec69bacc39aba1b9fbe595561caaf51fada4fa84fc377329e9c2471864fb"
     }
       ]
     }
