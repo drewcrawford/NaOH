@@ -970,7 +970,7 @@
 					};
 					3AF839C01C22BAE6003EDAC1 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = P5GM95Q9VV;
+						DevelopmentTeam = 3DYA43XBA8;
 					};
 				};
 			};
