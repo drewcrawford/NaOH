@@ -956,10 +956,11 @@
 				TargetAttributes = {
 					3A410E9F1C239C6000C1C879 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = P5GM95Q9VV;
+						DevelopmentTeam = V2ZPDAMSL2;
 					};
 					3A410EB21C239C6000C1C879 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 3DYA43XBA8;
 						TestTargetID = 3A410E9F1C239C6000C1C879;
 					};
 					3AAAC7A91B80AB40009431FC = {
@@ -1233,6 +1234,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = V2ZPDAMSL2;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = NaOHiOSTestHostApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1250,6 +1252,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = V2ZPDAMSL2;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = NaOHiOSTestHostApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1267,6 +1270,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3DYA43XBA8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/external/Caroline/channels/core-ios-swift-2.2/bin",
@@ -1287,6 +1291,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3DYA43XBA8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/external/Caroline/channels/core-ios-swift-2.2/bin",
