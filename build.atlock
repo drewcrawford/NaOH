@@ -15,7 +15,7 @@
       :payloads [
     {
       :key "git"
-      :used-commit "3c5554fa0053dc47e76bc41a49741c3de1419a13"
+      :used-commit "0c6f9c22bae64e08459b5bc3f249b89cd8985d18"
       :pin false
     }
       ]
@@ -25,7 +25,7 @@
       :payloads [
     {
       :key "git"
-      :used-commit "f6a17da3de4dd7706fb819cf6474148aaf272298"
+      :used-commit "53ef640390d549803cf2bed1ba2dba919345d513"
       :pin false
     }
       ]
@@ -36,16 +36,16 @@
     {
       :key "core-osx-swift-3.0"
       :pin false
-      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/ed22358a0d1f3feb3db99248f8dc8522/CarolineCore-1.0-beta1-osx.tar.xz"
-      :used-version "1.0-beta1"
-      :sha-sum "6fbf3256378eceacfe1f9b597be09ef87aa5100777df13c8b2929d8dd1f66061"
+      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/6df0f0c819bbb8c0542c5d22be76356e/CarolineCore-1.0-osx.tar.xz"
+      :used-version "1.0"
+      :sha-sum "396215f522cd5959bbf396eef04c77eb8df2b215c7230cad9788287f6a40d607"
     }
     {
       :key "core-ios-swift-3.0"
       :pin false
-      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/3d547fbbed1c283e5936a113d1362997/CarolineCore-1.0-beta1-ios.tar.xz"
-      :used-version "1.0-beta1"
-      :sha-sum "3471f5a80710ff2e6f7bbf7380d238e2bb5b63d582dc04b914162bc73c56432f"
+      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/47b677a2a212e0bb14fbd8cf9fb747d7/CarolineCore-1.0-ios.tar.xz"
+      :used-version "1.0"
+      :sha-sum "8fd7e284d6b9a1e839e037829457ca2ca0c5ef16840e0e42c34c1072cb345df4"
     }
       ]
     }
