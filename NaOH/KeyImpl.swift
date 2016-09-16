@@ -143,7 +143,7 @@ extension KeyImpl {
         //check attributes
         let attributes = try FileManager.`default`.attributesOfItem(atPath: file)
         #if os(Linux)
-        guard let num = attributes[FileAttributeKey.posixPermissions.rawValue] as? NSNumber else { fatalError("Weird; why isn't \(attributes[FileAttributeKey.posixPermissions.rawValue]) an NSNumber?") }
+        guard let num = attributes[FileAttributeKey.posixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[FileAttributeKey.posixPermissions]) an NSNumber?") }
         #else
         guard let num = attributes[FileAttributeKey.posixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[FileAttributeKey.posixPermissions]) an NSNumber?") }
         #endif

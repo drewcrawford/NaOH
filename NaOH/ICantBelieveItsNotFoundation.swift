@@ -11,39 +11,10 @@ import Foundation
 extension NSString {
     var toString: String {
         #if os(Linux)
-            return self.bridge()
+            return self._bridgeToSwift()
         #else
             return self as String
         #endif
-    }
-}
-
-//setAttributesOfItemAtPath isn't implemented
-//https://github.com/apple/swift-corelibs-foundation/pull/243
-extension FileManager {
-    func setSWIFTBUGAttributes(_ attributes: [String : AnyObject], ofItemAtPath path: String) throws {
-        for attribute in attributes.keys {
-            switch attribute {
-            case FileAttributeKey.posixPermissions.rawValue:
-                guard let number = attributes[attribute] as? NSNumber else {
-                    fatalError("Can't set file permissions to \(attributes[attribute])")
-                }
-                #if os(OSX) || os(iOS)
-                    #if swift(>=3.0)
-                        let modeT = number.uint16Value
-                    #else
-                        let modeT = number.unsignedShortValue
-                    #endif
-                #elseif os(Linux)
-                    let modeT = number.uint32Value
-                #endif
-                if chmod(path, modeT) != 0 {
-                    fatalError("errno \(errno)")
-                }
-            default:
-                fatalError("Attribute type not implemented: \(attribute)")
-            }
-        }
     }
 }
 

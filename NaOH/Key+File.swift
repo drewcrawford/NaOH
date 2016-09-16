@@ -31,7 +31,7 @@ extension SecretKey {
         //create a locked down file
         //so that we only write if everything's good
         try NSData().write(toFile: file, options: [])
-        try FileManager.`default`.setSWIFTBUGAttributes([FileAttributeKey.posixPermissions.rawValue: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: file)
+        try FileManager.`default`.setAttributes([FileAttributeKey.posixPermissions: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: file)
         
         //with that out of the way
         try self.keyImpl__.unlock()
@@ -44,7 +44,7 @@ extension SecretKey {
         #if os(OSX) || os(iOS)
         data.append(userNSData as Data)
         #else
-            data.append(userNSData.bridge())
+            data.append(userNSData._bridgeToSwift())
         #endif
         try data.write(toFile: file, options: [])
         //scrub the data

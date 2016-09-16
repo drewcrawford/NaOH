@@ -60,8 +60,8 @@ func aliceBob() -> (CryptoBoxSecretKey, CryptoBoxSecretKey) {
         bobPath = newBobPath
     #endif
     
-    try! FileManager.`default`.setSWIFTBUGAttributes([FileAttributeKey.posixPermissions.rawValue: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: alicePath)
-    try! FileManager.`default`.setSWIFTBUGAttributes([FileAttributeKey.posixPermissions.rawValue: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: bobPath)
+    try! FileManager.`default`.setAttributes([FileAttributeKey.posixPermissions: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: alicePath)
+    try! FileManager.`default`.setAttributes([FileAttributeKey.posixPermissions: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: bobPath)
     
     let alice = try! CryptoBoxSecretKey(readFromFile: alicePath)
     let bob = try! CryptoBoxSecretKey(readFromFile: bobPath)

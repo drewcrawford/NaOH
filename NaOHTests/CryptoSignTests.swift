@@ -25,7 +25,7 @@ private func signingKey() -> CryptoSigningSecretKey {
         try! FileManager.`default`.copyItem(atPath: signingPath, toPath: newAlicePath)
         signingPath = newAlicePath
     #endif
-    try! FileManager.`default`.setSWIFTBUGAttributes([FileAttributeKey.posixPermissions.rawValue: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: signingPath)
+    try! FileManager.`default`.setAttributes([FileAttributeKey.posixPermissions: NSNumber(value: 0o0600 as UInt16)], ofItemAtPath: signingPath)
     return try! CryptoSigningSecretKey(readFromFile: signingPath)
 }
 
