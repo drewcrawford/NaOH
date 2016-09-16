@@ -39,7 +39,7 @@ class BadDecrypt: CarolineTest {
         var badCipher = known_ciphertext
         badCipher[3] = 2
         do {
-            try crypto_secretbox_open(badCipher, key: k, nonce: NotReallyNonce)
+            let _ = try crypto_secretbox_open(badCipher, key: k, nonce: NotReallyNonce)
             self.fail()
         }
         catch NaOHError.CryptoSecretBoxError { /* */ }

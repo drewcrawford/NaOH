@@ -20,7 +20,7 @@ import Foundation
     }
     extension NSData {
         @nonobjc
-        func base64EncodedString(options options: NSData.Base64EncodingOptions) -> String {
+        func base64EncodedString(options: NSData.Base64EncodingOptions) -> String {
             return self.base64EncodedString(options)
         }
         
