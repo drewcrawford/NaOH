@@ -22,9 +22,9 @@ You should use this because:
 @available(iOS 9.3, *)
 final class KeyImpl {
     let addr : UnsafeMutablePointer<UInt8>
-    var addrAsVoid : UnsafeMutablePointer<Void> {
+    var addrAsVoid : UnsafeMutableRawPointer {
         get {
-            return unsafeBitCast(addr, to: UnsafeMutablePointer<Void>.self)
+            return unsafeBitCast(addr, to: UnsafeMutableRawPointer.self)
         }
     }
     
@@ -32,7 +32,7 @@ final class KeyImpl {
     internal init(uninitializedSize: Int) {
         sodium_init_wrap()
         self.size = uninitializedSize
-        addr = UnsafeMutablePointer<UInt8>(sodium_malloc(size))
+        addr = UnsafeMutablePointer<UInt8>(sodium_malloc(size).bindMemory(to: UInt8.self, capacity: size))
     }
     
     deinit {
@@ -57,7 +57,7 @@ final class KeyImpl {
             try! unlock()
             defer { try! lock() }
             var hash = [UInt8](repeating: 0, count: Int(crypto_generichash_BYTES))
-            if crypto_generichash(&hash, hash.count, addr, UInt64(size), UnsafePointer(nil), 0) != 0 {
+            if crypto_generichash(&hash, hash.count, addr, UInt64(size), nil, 0) != 0 {
                 preconditionFailure("Hash error")
             }
             var str = ""
@@ -101,10 +101,10 @@ public enum KeySizes {
 extension KeyImpl {
     convenience init(password: String, salt: String, keySize: Int) throws  {
         sodium_init_wrap()
-        let saltBytes = salt.cString(using: NSUTF8StringEncoding)!
+        let saltBytes = salt.cString(using: String.Encoding.utf8)!
         precondition(saltBytes.count == Int(crypto_pwhash_scryptsalsa208sha256_SALTBYTES), "\(saltBytes.count) is different than \(crypto_pwhash_scryptsalsa208sha256_SALTBYTES)")
         
-        var bytes = password.cString(using: NSUTF8StringEncoding)!
+        var bytes = password.cString(using: String.Encoding.utf8)!
         
         
         self.init(uninitializedSize: keySize)
@@ -141,12 +141,16 @@ extension KeyImpl {
      - parameter userDataBytes: Extra user data stored in this file that we don't consider part of the key.  This is returned in the userData parameter.*/
     convenience init (readFromFile file: String, userDataBytes: Int, userData: inout [UInt8]) throws {
         //check attributes
-        let attributes = try NSFileManager.`default`().attributesOfItem(atPath: file)
-        guard let num = attributes[NSFilePosixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[NSFilePosixPermissions]) an NSNumber?") }
+        let attributes = try FileManager.`default`.attributesOfItem(atPath: file)
+        #if os(Linux)
+        guard let num = attributes[FileAttributeKey.posixPermissions.rawValue] as? NSNumber else { fatalError("Weird; why isn't \(attributes[FileAttributeKey.posixPermissions.rawValue]) an NSNumber?") }
+        #else
+        guard let num = attributes[FileAttributeKey.posixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[FileAttributeKey.posixPermissions]) an NSNumber?") }
+        #endif
         if num.uint16Value != 0o0600 {
             throw NaOHError.FilePermissionsLookSuspicious
         }
-        let mutableData = try NSMutableData(contentsOfFile: file, options: NSDataReadingOptions())
+        let mutableData = try NSMutableData(contentsOfFile: file, options: [])
         let keySize = mutableData.length - userDataBytes
         self.init(uninitializedSize: keySize)
         memcpy(addrAsVoid, mutableData.bytes, keySize)
@@ -171,7 +175,7 @@ extension KeyImpl {
      - parameter userDataBytes: Extra user data stored in this file that we don't consider part of the key.  This is returned in the userData parameter.*/
     convenience init (readFromFile file: String, userDataBytes: Int, inout userData: [UInt8]) throws {
         //check attributes
-        let attributes = try NSFileManager.`default`().attributesOfItem(atPath: file)
+        let attributes = try FileManager.`default`.attributesOfItem(atPath: file)
         guard let num = attributes[NSFilePosixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[NSFilePosixPermissions]) an NSNumber?") }
         if num.shortValue != 0o0600 {
             throw NaOHError.FilePermissionsLookSuspicious

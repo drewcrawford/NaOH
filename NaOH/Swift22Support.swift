@@ -11,6 +11,40 @@
 //  in the LICENSE file.
 import Foundation
 
+#if !swift(>=3.0) || os(Linux)
+    struct FileAttributeKey {
+        struct posixPermissions {
+            static var rawValue: String { return NSFilePosixPermissions }
+        }
+        
+    }
+    extension NSData {
+        @nonobjc
+        func base64EncodedString(options options: NSData.Base64EncodingOptions) -> String {
+            return self.base64EncodedString(options)
+        }
+        
+    }
+#endif
+
+
+#if !swift(>=3.0)
+    typealias FileManager = NSFileManager
+    
+    extension NSFileManager {
+        static var `default`: NSFileManager {
+            return self.defaultManager()
+        }
+    }
+    
+    extension String {
+        struct Encoding {
+            static let utf8 = NSUTF8StringEncoding
+        }
+    }
+
+#endif
+
 #if swift(>=3.0)
 #else
     extension Array {
@@ -81,15 +115,6 @@ extension NSNumber {
         self.init(unsignedShort: value)
     }
     var uint16Value: UInt16 { return self.unsignedShortValue }
-}
-#endif
-
-#if !swift(>=3.0)  || os(Linux)
-extension NSFileManager {
-    @nonobjc
-    class func `default`() -> NSFileManager {
-        return self.defaultManager()
-    }
 }
 #endif
 

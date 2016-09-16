@@ -8,7 +8,7 @@
     }
     {
       :version [">=0.1"]
-      :channels ["core-osx-swift-2.2" "core-ios-swift-2.2"]
+      :channels ["core-osx-swift-3.0" "core-ios-swift-3.0"]
       :url "https://code.sealedabstract.com/drewcrawford/Caroline/raw/master/manifest.atpkg"
     }
   ]
@@ -60,13 +60,16 @@
       :compile-options ["-I" "libsodium/"]
       :link-with-product ["NaOH.a" "CarolineCore.a"]
       :use-overlays ["link"]
-      :link-options ["-Xlinker" "-ObjC"]
       :dependencies ["Caroline.core" "gen-tests" "default"]
 
       :publish-product true
       :overlays {
         :atbuild.platform.linux {
           :compile-options ["-I" "/usr/local/include/dispatch/haxx" "-Xcc" "-fblocks"]
+        }
+        :atbuild.platform.osx {
+          ;; we need this for our foundation-compat extensions
+          :link-options ["-Xlinker" "-ObjC"]
         }
       }
     }

@@ -15,7 +15,17 @@
       :payloads [
     {
       :key "git"
-      :used-commit "563b3f590527c8e2bf47116bb6beb68878600f74"
+      :used-commit "3c5554fa0053dc47e76bc41a49741c3de1419a13"
+      :pin false
+    }
+      ]
+    }
+    {
+      :url "https://code.sealedabstract.com/drewcrawford/StandBack.git"
+      :payloads [
+    {
+      :key "git"
+      :used-commit "f6a17da3de4dd7706fb819cf6474148aaf272298"
       :pin false
     }
       ]
@@ -24,18 +34,18 @@
       :url "https://code.sealedabstract.com/drewcrawford/Caroline/raw/master/manifest.atpkg"
       :payloads [
     {
-      :key "core-osx-swift-2.2"
+      :key "core-osx-swift-3.0"
       :pin false
-      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/a14e283bc683886c7a83d2419c0cdf4b/CarolineCore-0.1-osx.tar.xz"
-      :used-version "0.1"
-      :sha-sum "a5ca5d882813ac6b4c565a44765db8af469fbfc6cc69414b26d7ec83b3813c9a"
+      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/ed22358a0d1f3feb3db99248f8dc8522/CarolineCore-1.0-beta1-osx.tar.xz"
+      :used-version "1.0-beta1"
+      :sha-sum "6fbf3256378eceacfe1f9b597be09ef87aa5100777df13c8b2929d8dd1f66061"
     }
     {
-      :key "core-ios-swift-2.2"
+      :key "core-ios-swift-3.0"
       :pin false
-      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/79fe493f843582d1ea374935cd8df988/CarolineCore-0.1-ios.tar.xz"
-      :used-version "0.1-dev"
-      :sha-sum "af6c48076c4fee335126c1a6b47b09d803cb20c593434facdae8fd66e8ed1ad1"
+      :used-url "https://code.sealedabstract.com/drewcrawford/Caroline/uploads/3d547fbbed1c283e5936a113d1362997/CarolineCore-1.0-beta1-ios.tar.xz"
+      :used-version "1.0-beta1"
+      :sha-sum "3471f5a80710ff2e6f7bbf7380d238e2bb5b63d582dc04b914162bc73c56432f"
     }
       ]
     }
