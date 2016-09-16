@@ -3,19 +3,19 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
-# 1.4.0 2016-09-15
+# 1.4.0 - 2016-09-15
 
 * Deployment target is now iOS 9
 * APIs continue to be only supported on iOS 9.3 and later.  
 * Swift 3 compatibility
 * Swift 2 support is dropped for 1.4+.  Please use a previous version for Swift 2.
 
-# 1.2.2 2016-04-06
+# 1.2.2 - 2016-04-06
 
 * Deployment target is now iOS 8
 * However, APIs are only supported on iOS 9.3.  For more information, see https://lists.swift.org/pipermail/swift-evolution/Week-of-Mon-20160404/014171.html
 
-# 1.2.1 2016-04-04
+# 1.2.1 - 2016-04-04
 
 Add a missing constructor
 
