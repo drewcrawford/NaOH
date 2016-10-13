@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
+# 1.4.1 - 2016-10-13
+
+* Deployment target is now iOS 8
+
 # 1.4.0 - 2016-09-15
 
 * Deployment target is now iOS 9
