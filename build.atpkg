@@ -39,6 +39,9 @@
       :compile-options ["-enable-testing"]
       :include-with-user ["libsodium/libsodium/src/libsodium/include/"]
       :overlays {
+        :at.xcode-emit {
+          :use-overlays ["link"]
+        }
         :atbuild.platform.osx {
         }
         :atbuild.platform.linux {
