@@ -11,7 +11,7 @@ variables:
 testMac:
   type: test
   script:
-    - atpm fetch --including NaOH.xcode-tests
+    - atpm fetch --include NaOH.xcode-tests
     - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true; killall Simulator || true
     - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer xcodebuild -scheme NaOH clean test
   tags:
@@ -21,7 +21,7 @@ testMac:
 testiOSSim64:
   type: test
   script:
-    - atpm fetch --including NaOH.xcode-tests
+    - atpm fetch --include NaOH.xcode-tests
     - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true; killall Simulator || true
     - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 6" clean test
   tags:
@@ -31,7 +31,7 @@ testiOSSim64:
 testiOSSim32:
   type: test
   script:
-    - atpm fetch --including NaOH.xcode-tests
+    - atpm fetch --include NaOH.xcode-tests
     - killall -9 com.apple.CoreSimulator.CoreSimulatorService || true; killall Simulator || true
     - DEVELOPER_DIR=/Applications/Xcode8.app/Contents/Developer xcodebuild -scheme NaOHiOSTestHostApp -configuration Debug -destination "platform=iOS Simulator,name=iPhone 5" clean test
   tags:
