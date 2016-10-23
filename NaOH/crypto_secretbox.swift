@@ -18,7 +18,7 @@ public let crypto_secretbox_NONCESIZE = Int(crypto_secretbox_NONCEBYTES)
 @available(iOS 9.3, *, *)
 public struct CryptoSecretBoxSecretKey : SecretKey {
     public let keyImpl_: KeyImplProtocol_
-    init() {
+    public init() {
         self.keyImpl_ = KeyImpl(randomSize: Int(crypto_secretbox_KEYBYTES))
     }
     
