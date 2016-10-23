@@ -17,6 +17,11 @@
   :overlays {
     :link {
       :link-options ["-Xlinker" "user/libsodium/libsodium/src/libsodium/.libs/libsodium.a"]
+      :overlays {
+        :at.xcode-emit {
+          :include-with-user ["libsodium/libsodium/src/libsodium/include/"]
+        }
+      }
     }
   }
 
