@@ -42,8 +42,8 @@ func aliceBob() -> (CryptoBoxSecretKey, CryptoBoxSecretKey) {
         var alicePath = "NaOHTests/alice.key"
         var bobPath = "NaOHTests/bob.key"
     #else
-        var alicePath = Bundle(for: CarolineEngineTests.self).path(forResource: "alice", ofType: "key")!
-        var bobPath = Bundle(for: CarolineEngineTests.self).path(forResource: "bob", ofType: "key")!
+        var alicePath = Bundle(for: CarolineCoreEngine.self).path(forResource: "alice", ofType: "key")!
+        var bobPath = Bundle(for: CarolineCoreEngine.self).path(forResource: "bob", ofType: "key")!
     #endif
     //fix the permsisions on this key so we don't freak out the security goalie
     //on iOS 9.3+, we can't edit the permissions of a file in our app bundle.  Therefore, we have to copy them to a temporary path so the permissions are valid.

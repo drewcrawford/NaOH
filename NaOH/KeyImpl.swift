@@ -134,7 +134,19 @@ extension KeyImpl {
         try self.init(readFromFile: file, userDataBytes: 0,  userData: &data)
     }
     
-    #if swift(>=3.0)
+    /**Constructs the key from the bytes.
+ - note: This zeroes the bytes, therefore they must be mutable
+ - warning: We cannot zero other copies of the data that may exist.  Please be careful with key material.*/
+    convenience init (bytes: inout [UInt8]) {
+        let keySize = bytes.count
+        self.init(uninitializedSize: keySize)
+        bytes.withUnsafeMutableBytes { (ptr) -> () in
+            memcpy(addrAsVoid, ptr.baseAddress!, ptr.count)
+            sodium_memzero(ptr.baseAddress!, ptr.count)
+        }
+        try! self.lock()
+    }
+    
     /** Reads the key from the file indicated.
      - note: This function ensures that the key is read from a file only readable by the user.
      - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
@@ -157,42 +169,11 @@ extension KeyImpl {
         
         var localUserData = [UInt8](repeating: 0, count: userDataBytes)
         localUserData.withUnsafeMutableBufferPointer { (ptr) -> () in
-    #if swift(>=3.0)
             mutableData.getBytes(ptr.baseAddress!, range: NSRange(location: keySize, length: userDataBytes))
-    #else
-        mutableData.getBytes(ptr.baseAddress, range: NSRange(location: keySize, length: userDataBytes))
-    #endif
         }
         userData = localUserData
         //zero out the data
         sodium_memzero(mutableData.mutableBytes, mutableData.length)
         try! self.lock()
     }
-    #else
-    /** Reads the key from the file indicated.
-     - note: This function ensures that the key is read from a file only readable by the user.
-     - warning: Using the keychain is probably better, but it isn't appropriate for certain applications.
-     - parameter userDataBytes: Extra user data stored in this file that we don't consider part of the key.  This is returned in the userData parameter.*/
-    convenience init (readFromFile file: String, userDataBytes: Int, inout userData: [UInt8]) throws {
-        //check attributes
-        let attributes = try FileManager.`default`.attributesOfItem(atPath: file)
-        guard let num = attributes[NSFilePosixPermissions] as? NSNumber else { fatalError("Weird; why isn't \(attributes[NSFilePosixPermissions]) an NSNumber?") }
-        if num.shortValue != 0o0600 {
-            throw NaOHError.FilePermissionsLookSuspicious
-        }
-        let mutableData = try NSMutableData(contentsOfFile: file, options: NSDataReadingOptions())
-        let keySize = mutableData.length - userDataBytes
-        self.init(uninitializedSize: keySize)
-        memcpy(addrAsVoid, mutableData.bytes, keySize)
-        
-        var localUserData = [UInt8](repeating: 0, count: userDataBytes)
-        localUserData.withUnsafeMutableBufferPointer { (ptr) -> () in
-            mutableData.getBytes(ptr.baseAddress, range: NSRange(location: keySize, length: userDataBytes))
-        }
-        userData = localUserData
-        //zero out the data
-        sodium_memzero(mutableData.mutableBytes, mutableData.length)
-        try! self.lock()
-    }
-    #endif
 }

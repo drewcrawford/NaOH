@@ -14,7 +14,7 @@ private func signingKey() -> CryptoSigningSecretKey {
     #if ATBUILD
         var signingPath = "NaOHTests/signing.key"
     #else
-        var signingPath = Bundle(for: CarolineEngineTests.self).path(forResource: "signing", ofType: "key")!
+        var signingPath = Bundle(for: CarolineCoreEngine.self).path(forResource: "signing", ofType: "key")!
     #endif
     //fix the permsisions on this key so we don't freak out the security goalie
     //on iOS 9.3+, we can't edit the permissions of a file in our app bundle.  Therefore, we have to copy them to a temporary path so the permissions are valid.
