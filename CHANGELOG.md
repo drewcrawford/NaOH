@@ -6,6 +6,7 @@ This project does not follow semver.
 # 1.5 - 2016-11-03
 
 * Add CryptoSecretBoxSecretKey random constructor
+* Add bytes constructor for CryptoBoxKey.  This constructor is not recommended but available to callers that need it.
 * (AT) no longer downloading test dependencies with atpm by default
 * (AT) improvements for xcode-emit
 
