@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 This project does not follow semver.
 
+# 1.5 - 2016-11-03
+
+* Add CryptoSecretBoxSecretKey random constructor
+* (AT) no longer downloading test dependencies with atpm by default
+* (AT) improvements for xcode-emit
+
 # 1.4.1 - 2016-10-13
 
 * Deployment target is now iOS 8
