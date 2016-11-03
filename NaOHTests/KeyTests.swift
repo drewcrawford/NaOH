@@ -60,6 +60,21 @@ class CryptoBoxKey: CarolineTest {
     }
 }
 
+class CryptoBoxFromBytes: CarolineTest {
+    func test() throws {
+        let temporaryFile = NSTemporaryDirectory() + "/\(NSUUID().uuidString)test.key"
+
+        let key1 = CryptoBoxSecretKey()
+        try key1.saveToFile(temporaryFile)
+        let bytes = try Data(contentsOf: URL(fileURLWithPath: temporaryFile))
+        var array = bytes.withUnsafeBytes {
+            [UInt8](UnsafeBufferPointer(start: $0, count: bytes.count))
+        }
+        let _ = CryptoBoxSecretKey(bytes: &array)
+        self.assert(array, equals: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    }
+}
+
 class HumanReadable : CarolineTest {
     func test() {
         let a = CryptoBoxSecretKey().publicKey

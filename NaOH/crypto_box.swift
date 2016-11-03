@@ -39,6 +39,13 @@ public struct CryptoBoxSecretKey : SecretKey {
         self.keyImpl_ = try KeyImpl(readFromFile: readFromFile)
         self.publicKey = CryptoBoxPublicKey(secretKeyImpl: self.keyImpl_ as! KeyImpl)
     }
+    /**Construct a secret key from a set of bytes.  The bytes must be mutable as they will be zeroed.
+     
+- warning: This will not zero other copies of the bytes which may exist.  Please be careful when dealing with secret key data.*/
+    public init(bytes: inout [UInt8]) {
+        self.keyImpl_ = KeyImpl(bytes: &bytes)
+        self.publicKey = CryptoBoxPublicKey(secretKeyImpl: self.keyImpl_ as! KeyImpl)
+    }
 }
 @available(iOS 9.3, *, *)
 public struct CryptoBoxPublicKey: PublicKey {

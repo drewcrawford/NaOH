@@ -42,6 +42,7 @@ func aliceBob() -> (CryptoBoxSecretKey, CryptoBoxSecretKey) {
         var alicePath = "NaOHTests/alice.key"
         var bobPath = "NaOHTests/bob.key"
     #else
+        //this refers to the xcode-generated class
         var alicePath = Bundle(for: CarolineEngineTests.self).path(forResource: "alice", ofType: "key")!
         var bobPath = Bundle(for: CarolineEngineTests.self).path(forResource: "bob", ofType: "key")!
     #endif
